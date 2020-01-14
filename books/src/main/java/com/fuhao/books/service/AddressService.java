@@ -1,6 +1,6 @@
 package com.fuhao.books.service;
 
-import com.fuhao.books.domain.Book;
+import com.fuhao.books.domain.Address;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author FuHao
  * @since 2020-01-14
  */
-public interface BookService extends IService<Book> {
+public interface AddressService extends IService<Address> {
 
 }

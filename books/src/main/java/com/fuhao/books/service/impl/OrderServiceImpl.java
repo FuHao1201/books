@@ -1,14 +1,20 @@
 package com.fuhao.books.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.fuhao.books.dao.OrderDao;
+import com.fuhao.books.domain.Order;
+import com.fuhao.books.service.OrderService;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
-import com.fuhao.books.dao.OrderDao;
-import com.fuhao.books.service.OrderSevice;
-
+/**
+ * <p>
+ *  服务实现类
+ * </p>
+ *
+ * @author FuHao
+ * @since 2020-01-14
+ */
 @Service
-public class OrderServiceImpl implements OrderSevice{
+public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements OrderService {
 
-	@Autowired
-	private OrderDao orderDao;
 }

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>图书售卖系统v1.0</title>
+<link rel="stylesheet" href="/layui/css/layui.css" media="all">
+</head>
+<body class="layui-layout-body layui-bg-gray">
+<!-- <h1>图书售卖系统v1.0</h1> -->
+<hr>
+<div class="login-main" style="">
+    <form class="layui-form">
+    	<div class="layui-form-item">
+    		<label class="layui-form-label">登录名：</label>
+    		<div class="layui-input-inline">
+      			<input type="text" name="loginname" id="loginname" required lay-verify="required" placeholder="请输入登录名" autocomplete="off" class="layui-input">
+    		</div>
+    	</div>
+    	<div class="layui-form-item">
+    		<label class="layui-form-label">密码：</label>
+    		<div class="layui-input-inline">
+      			<input type="password" name="password" id="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+    		</div>
+    	</div>
+    	<div class="layui-form-item">
+    		<div class="layui-input-block">
+    			<button class="layui-btn" lay-submit lay-filter="login">登录</button>
+    		</div>
+  		</div>
+    </form>
+</div>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/login.js"></script>
+</body>
+</html>

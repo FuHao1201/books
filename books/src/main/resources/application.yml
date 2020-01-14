@@ -2,27 +2,50 @@ server:
   port: 8088
 
 spring:
-    datasource:
-        name: books
-        url: jdbc:mysql://localhost:3306/books
-        username: root
-        password: 
-        # 使用druid数据源
-        #type: com.alibaba.druid.pool.DruidDataSource
-        driver-class-name: com.mysql.jdbc.Driver
-        filters: stat
-        maxActive: 20
-        initialSize: 1
-        maxWait: 60000
-        minIdle: 1
-        timeBetweenEvictionRunsMillis: 60000
-        minEvictableIdleTimeMillis: 300000
-        validationQuery: select 'x'
-        testWhileIdle: true
-        testOnBorrow: false
-        testOnReturn: false
-        poolPreparedStatements: true
-        maxOpenPreparedStatements: 20
-        
-thymeleaf:
+  datasource:
+    name: books
+    url: jdbc:mysql://localhost:3306/books
+    username: root
+    password: 
+    # 使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+  mvc:
+    static-path-pattern: /**
+  resources:
+    static-locations: classpath:/static/       
+    #热部署--静态资源立即生效
+  thymeleaf:
     cache: false
+    encoding: UTF-8
+    mode: LEGACYHTML5
+    check-template-location: true
+  #热部署生效
+devtools:
+    restart:
+    enabled: true
+mybatis-plus:
+    mapper-locations: classpath:mapper/*.xml
+    type-aliases-package: com.fuhao.books.domain   
+logging:
+  level:
+    com.fuhao.books: debug
+    com.baomidou: info
+    org.mybatis: info
+    org.springframework: info
+    org.thymeleaf: info
+  path: ./src/main/resources/log
+    

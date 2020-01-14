@@ -1,14 +1,20 @@
 package com.fuhao.books.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.fuhao.books.dao.CollectionDao;
+import com.fuhao.books.domain.Collection;
+import com.fuhao.books.service.CollectionService;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
-import com.fuhao.books.dao.CollectionDao;
-import com.fuhao.books.service.CollectionService;
-
+/**
+ * <p>
+ *  服务实现类
+ * </p>
+ *
+ * @author FuHao
+ * @since 2020-01-14
+ */
 @Service
-public class CollectionServiceImpl implements CollectionService{
+public class CollectionServiceImpl extends ServiceImpl<CollectionDao, Collection> implements CollectionService {
 
-	@Autowired
-	private CollectionDao collectionDao;
 }

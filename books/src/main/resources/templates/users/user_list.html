@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>用户列表</title>
+<link rel="stylesheet" href="/layui/css/layui.css">
+</head>
+<body>
+<table class="layui-table" lay-data="{height:315, url:'/user/list/', page:false, id:'user'}" lay-filter="user">
+  <thead>
+    <tr>
+      <th lay-data="{field:'id', width:80, sort: true}">id</th>
+      <th lay-data="{field:'name', width:80}">姓名</th>
+      <th lay-data="{field:'loginname', width:80}">登录名</th>
+      <th lay-data="{field:'password', width:80, sort: true}">密码</th>
+      <th lay-data="{field:'sex'}">性别</th>
+      <th lay-data="{field:'identity'}">身份证号</th>
+      <th lay-data="{field:'phone'}">电话号码</th>
+      <th lay-data="{field:'createTime'}">创建时间</th>
+      <th lay-data="{field:'updateTime'}">修改时间</th>
+    </tr>
+  </thead>
+</table>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/user_list.js"></script>
+</body>
+</html>

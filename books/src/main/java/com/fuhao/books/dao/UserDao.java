@@ -1,8 +1,16 @@
 package com.fuhao.books.dao;
 
-import org.apache.ibatis.annotations.Mapper;
+import com.fuhao.books.domain.User;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
-@Mapper
-public interface UserDao {
+/**
+ * <p>
+ *  Mapper 接口
+ * </p>
+ *
+ * @author FuHao
+ * @since 2020-01-14
+ */
+public interface UserDao extends BaseMapper<User> {
 
 }

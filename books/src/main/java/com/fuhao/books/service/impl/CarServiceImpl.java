@@ -1,14 +1,20 @@
 package com.fuhao.books.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.fuhao.books.dao.CarDao;
+import com.fuhao.books.domain.Car;
+import com.fuhao.books.service.CarService;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
-import com.fuhao.books.dao.CarDao;
-import com.fuhao.books.service.CarService;
-
+/**
+ * <p>
+ *  服务实现类
+ * </p>
+ *
+ * @author FuHao
+ * @since 2020-01-14
+ */
 @Service
-public class CarServiceImpl implements CarService{
+public class CarServiceImpl extends ServiceImpl<CarDao, Car> implements CarService {
 
-	@Autowired
-	private CarDao carDao;
 }
