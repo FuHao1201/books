@@ -1,9 +1,7 @@
 /** 
   * 登录 
   */ 
-
-
-      layui.use(['form' ,'layer'], function() { 
+layui.use(['form' ,'layer'], function() { 
           var _form = layui.form; 
           var $ = layui.$; 
           //var _layer = layui.layer; 
@@ -16,6 +14,8 @@
               return false;
           }); 
       }) 
+
+      
 //function login(){ 
 //	debugger
 //    var json={

@@ -58,7 +58,7 @@ public class CodeGeneration {
         StrategyConfig strategy = new StrategyConfig();
         // strategy.setTablePrefix(new String[] { "sys_" });// 此处可以修改为您的表前缀
         strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
-        strategy.setInclude(new String[] { "user","book","address","car","collection","order" }); // 需要生成的表
+        strategy.setInclude(new String[] { "user","book" }); // 需要生成的表
         //strategy.setDbColumnUnderline(true);   //指定表名字段是否使用下划线
 
         strategy.setSuperServiceClass(null);

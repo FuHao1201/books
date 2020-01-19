@@ -16,4 +16,12 @@
         <result column="create_time" property="createTime" />
         <result column="update_time" property="updateTime" />
     </resultMap>
+    <select id="login" resultType="com.fuhao.books.domain.User">
+SELECT
+	`password` 
+FROM
+	`user` 
+WHERE
+	loginname = #{user.loginname}
+    </select>
 </mapper>

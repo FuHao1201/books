@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/layui/css/layui.css">
+</head>
+<body>
+<form class="layui-form" action="" lay-filter="formData">
+<br>
+   <div class="layui-tools">
+       <a href="#" class="layui-btn layui-btn-sm" lay-submit><i class="layui-icon layui-icon-ok"></i>保存</a>
+<!--        <a href="#" class="layui-btn layui-btn-sm" id="closeBtn"><i class="layui-icon layui-icon-close"></i>关闭</a> -->
+   </div>
+   <br>
+   <div class="layui-card layui-padding-15 layui-margin-50 auto-height">
+   <div class="layui-form-item">
+	    <label class="layui-form-label">id：</label>
+	    <div class="layui-input-inline">
+	      <input type="text" placeholder="id" name="id" autocomplete="off" class="layui-input" width="60px">
+	    </div>
+	  </div>
+	  <div class="layui-form-item">
+	    <label class="layui-form-label">姓名：</label>
+	    <div class="layui-input-inline">
+	      <input type="text" placeholder="姓名" name="name" autocomplete="off" class="layui-input" width="60px">
+	    </div>
+	  </div>
+	  <div class="layui-form-item">
+	    <label class="layui-form-label">登录名：</label>
+	    <div class="layui-input-inline">
+	      <input type="text" placeholder="登录名" name="loginname" autocomplete="off" class="layui-input" width="60px">
+	    </div>
+	  </div>
+	  <div class="layui-form-item">
+	    <label class="layui-form-label">密码：</label>
+	    <div class="layui-input-inline">
+	      <input type="text" placeholder="密码" name="password" autocomplete="off" class="layui-input" width="60px">
+	    </div>
+	  </div>
+	  <div class="layui-form-item">
+	    <label class="layui-form-label">用户身份：</label>
+	    <div class="layui-input-inline">
+	      <!-- <input type="text" placeholder="用户身份" name="status" autocomplete="off" class="layui-input" width="60px"> -->
+	      <select name="status" style="width:200px" class="layui-input">
+	      	<option value="">请选择</option>
+  			<option value="管理员">管理员</option>
+  			<option value="用户">用户</option>
+		  </select>
+	    </div>
+	  </div>
+	  <div class="layui-form-item">
+	    <label class="layui-form-label">用户性别：</label>
+	    <div class="layui-input-inline">
+	      <!-- <input type="text" placeholder="用户性别" name="sex" autocomplete="off" class="layui-input" width="60px"> -->
+	      <select name="sex" style="width:200px" class="layui-input">
+  			 <option value="">请选择</option>
+  					<option value="">请选择</option>
+  					<option value="男">男</option>
+  					<option value="女">女</option>
+			</select>
+	    </div>
+	  </div>
+	  <div class="layui-form-item">
+	    <label class="layui-form-label">身份证号：</label>
+	    <div class="layui-input-inline">
+	      <input type="text" placeholder="身份证号" name="identity" autocomplete="off" class="layui-input" width="60px">
+	    </div>
+	  </div>
+	  <div class="layui-form-item">
+	    <label class="layui-form-label">电话号码：</label>
+	    <div class="layui-input-inline">
+	      <input type="text" placeholder="电话号码" name="phone" autocomplete="off" class="layui-input" width="60px">
+	    </div>
+	  </div>
+   </div>
+</form>
+</body>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/user_form.js"></script>
+</html>

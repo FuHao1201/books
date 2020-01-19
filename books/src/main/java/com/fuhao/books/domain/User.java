@@ -1,8 +1,14 @@
 package com.fuhao.books.domain;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
-import java.sql.Blob;
+
+import lombok.Data;
+
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 import java.io.Serializable;
 /**
  * <p>
@@ -12,6 +18,7 @@ import java.io.Serializable;
  * @author FuHao
  * @since 2020-01-14
  */
+@Data
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -20,12 +27,12 @@ public class User implements Serializable {
      * 用户编号
      */
     @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    private String id;
 
     /**
      * 用户头像
      */
-    private Blob head;
+    private String head;
 
     /**
      * 用户登录名
@@ -65,115 +72,17 @@ public class User implements Serializable {
     /**
      * 创建时间
      */
-    private LocalDateTime createTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:MM:SS")
+    private Date createTime;
 
     /**
      * 修改时间
      */
-    private LocalDateTime updateTime;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Blob getHead() {
-        return head;
-    }
-
-    public void setHead(Blob head) {
-        this.head = head;
-    }
-
-    public String getLoginname() {
-        return loginname;
-    }
-
-    public void setLoginname(String loginname) {
-        this.loginname = loginname;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getIdentity() {
-        return identity;
-    }
-
-    public void setIdentity(String identity) {
-        this.identity = identity;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public LocalDateTime getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
-    }
-
-    public LocalDateTime getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(LocalDateTime updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-        ", id=" + id +
-        ", head=" + head +
-        ", loginname=" + loginname +
-        ", name=" + name +
-        ", password=" + password +
-        ", status=" + status +
-        ", sex=" + sex +
-        ", identity=" + identity +
-        ", phone=" + phone +
-        ", createTime=" + createTime +
-        ", updateTime=" + updateTime +
-        "}";
-    }
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:MM:SS")
+    private Date updateTime;
+    
+    /**
+     * 逻辑删除
+     */
+    private String logicDeleteFlag;
 }
