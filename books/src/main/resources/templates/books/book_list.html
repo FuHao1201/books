@@ -2,39 +2,31 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>用户列表</title>
+<title>图书列表</title>
 <link rel="stylesheet" href="/layui/css/layui.css">
 </head>
 <body>
 <div class="form-search-con layui-bg-white layui-fluid">
-	<div class="layui-row layui-col-md-offset2">
+	<div class="layui-row">
 		<form class="layui-form" id="searchForm" autocomplete="off">
    		<br>
 	   	  <div class="layui-form-item">
-	   	  	<div class="layui-col-md5">
-	   	  		<label class="layui-form-label">姓名：</label>
+	   	  	<div class="layui-col-md4">
+	   	  		<label class="layui-form-label">图书名：</label>
 		    	<div class="layui-input-inline">
-		      		<input type="text" placeholder="姓名" name="name" autocomplete="off" class="layui-input" width="60px">
+		      		<input type="text" placeholder="图书名" name="bookName" autocomplete="off" class="layui-input" width="60px">
 		    	</div>
 	   	  	</div>
-		    <div class="layui-col-md5">
-		    	<label class="layui-form-label">登录名：</label>
+		    <div class="layui-col-md4">
+		  		<label class="layui-form-label">作者：</label>
 		    	<div class="layui-input-inline">
-		      		<input type="text" placeholder="登录名" name="loginname" autocomplete="off" class="layui-input" width="60px">
-		    	</div>
-		    </div>
-		  </div>
-		  <div class="layui-form-item">
-		  	<div class="layui-col-md5">
-		  		<label class="layui-form-label">身份证号：</label>
-		    	<div class="layui-input-inline">
-		      		<input type="text" placeholder="身份证号" name="identity" autocomplete="off" class="layui-input" width="60px">
+		      		<input type="text" placeholder="作者" name="author" autocomplete="off" class="layui-input" width="60px">
 		    	</div>
 		  	</div>
-		  	<div class="layui-col-md5">
-		  		<label class="layui-form-label">用户身份：</label>
+		  	<div class="layui-col-md4">
+		  		<label class="layui-form-label">图书类型：</label>
 		    	<div class="layui-input-inline">
-		      		<select name="status" style="width:200px" class="layui-input">
+		      		<select name="bookType" style="width:200px" class="layui-input">
 		      			<option value="">请选择</option>
 	  					<option value="管理员">管理员</option>
 	  					<option value="用户">用户</option>
@@ -42,24 +34,24 @@
 		    	</div>
 		  	</div>
 		  </div>
-		  <div class="form-btn-nav layui-col-md-offset4">
+		  <div class="form-btn-nav  layui-col-md-offset5">
 				<button type="button" class="layui-btn" lay-submit lay-filter="SearchForm">查询</button>
 				<button type="reset" class="layui-btn" >重置</button>
 			</div>
 		</form>
 	</div>  		
 </div>
-<table class="layui-table" align="center" lay-skin="line" lay-data="{height:500, url:'/user/list/', id:'user', toolbar:'#tableToolbar'}" lay-filter="user">
+<table class="layui-table" align="center" lay-skin="line" lay-data="{height:500, url:'/book/list/', id:'book', toolbar:'#tableToolbar'}" lay-filter="book">
   <thead>
     <tr>
       <th lay-data="{type:'checkbox'}"></th>
       <!-- <th lay-data="{field:'id', width:60, align:'center', sort: true}">id</th> -->
-      <th lay-data="{field:'name', width:80, align:'center', sort: true}">姓名</th>
-      <th lay-data="{field:'loginname', width:100, align:'center', sort: true}">登录名</th>
-      <th lay-data="{field:'password', width:80, align:'center', sort: true}">密码</th>
-      <th lay-data="{field:'sex', width:80, align:'center', sort: true}">性别</th>
-      <th lay-data="{field:'identity', width:180, align:'center', sort: true}">身份证号</th>
-      <th lay-data="{field:'phone', width:120, align:'center', sort: true}">电话号码</th>
+      <th lay-data="{field:'bookName', width:100, align:'center', sort: true}">图书名</th>
+      <th lay-data="{field:'bookType', width:120, align:'center', sort: true}">图书类型</th>
+      <th lay-data="{field:'bookNum', width:120, align:'center', sort: true}">图书数量</th>
+      <th lay-data="{field:'price', width:120, align:'center', sort: true}">图书单价</th>
+      <th lay-data="{field:'author', width:80, align:'center', sort: true}">作者</th>
+      <th lay-data="{field:'synopsis', width:80, align:'center', sort: true}">简介</th>
 	  <th lay-data="{field:'createTime', align:'center', sort: true}">创建时间</th>
       <th lay-data="{field:'updateTime', align:'center', sort: true}">修改时间</th>
       <th lay-data="{toolbar:'#toolbar', align:'center', fixed:'right'}">操作</th>
@@ -67,7 +59,7 @@
   </thead>
 </table>
 <script type="text/javascript" src="/layui/layui.js"></script>
-<script type="text/javascript" src="/js/user_list.js"></script>
+<script type="text/javascript" src="/js/book_list.js"></script>
 </body>
 <script type="text/html" id="toolbar">
   <div class="layui-btn-container">

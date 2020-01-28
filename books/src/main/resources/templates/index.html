@@ -28,13 +28,17 @@
   <div class="layui-side layui-bg-black">
     <div class="layui-side-scroll">
       <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+      <ul class="layui-nav layui-nav-tree">
+      	<li class="layui-nav-item">
+          <a class="" href="javascript:;">图书分类</a>
+          <dl class="layui-nav-child" lay-filter="bookType" id="type">
+            <dd><a href="/book/books/book_list" target="main">图书列表</a></dd>
+          </dl>
+        </li>
         <li class="layui-nav-item">
           <a class="" href="javascript:;">图书管理</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">所有图书</a></dd>
-            <dd><a href="javascript:;">列表二</a></dd>
-            <dd><a href="javascript:;">列表三</a></dd>
+            <dd><a href="/book/books/book_list" target="main">图书列表</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item">
@@ -49,22 +53,9 @@
   </div>
   <div class="layui-body">
     <!-- 内容主体区域 -->
-    <iframe src="/user/main" name="main" id="main" width="100%" height="100%"></iframe>
-    <!-- <div style="padding: 15px;">内容</div> -->
+    <iframe src="/user/main" name="main" id="main" width="100%" height="95%"></iframe>
   </div>
-  
-  <!-- <div class="layui-footer">
-    底部固定区域
-    © layui.com - 底部固定区域
-  </div> -->
 </div>
-<!-- <script>
-//JavaScript代码区域
-layui.use('element', function(){
-  var element = layui.element;
-  
-});
-</script> -->
 <script type="text/javascript" src="/layui/layui.all.js"></script>
 <script type="text/javascript" src="/js/index.js"></script>
 </body>

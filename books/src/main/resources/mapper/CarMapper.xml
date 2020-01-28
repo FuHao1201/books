@@ -10,5 +10,6 @@
         <result column="book_num" property="bookNum" />
         <result column="create_time" property="createTime" />
         <result column="update_time" property="updateTime" />
+        <result column="logic_delete_flag" property="logicDeleteFlag" />
     </resultMap>
 </mapper>

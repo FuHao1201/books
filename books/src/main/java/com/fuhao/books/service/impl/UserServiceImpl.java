@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author FuHao
- * @since 2020-01-14
+ * @since 2020-01-19
  */
 @Service
 public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserService {
@@ -24,7 +24,13 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserS
 	
 	@Override
 	public User login(User user) {
-		return userdao.login(user);
+		User user1 = userdao.login(user);
+		if(user1 != null) {
+			if (user1.getPassword().equals(user.getPassword())) {
+				return user1;
+			}
+		}
+		return null;
 	}
 
 }

@@ -1,14 +1,14 @@
 /** 
-  * 用户列表 
+  * 图书列表 
   */ 
 
-layui.use(['form' ,'table' ,'layer','laypage'], function() { 
+layui.use(['form' ,'table' ,'layer'], function() { 
 	var $ = layui.$; 
-    var _table = layui.table,_form = layui.form,_layer= layui.layer,_laypage = layui.laypage;
+    var _table = layui.table,_form = layui.form,_layer= layui.layer;
     
     function init() {
 		// 工具栏监听
-	    _table.on('tool(user)', function(obj){
+	    _table.on('tool(book)', function(obj){
             var event = obj.event;
 	    	var data = obj.data;
             if(event == 'reload') {
@@ -24,11 +24,11 @@ layui.use(['form' ,'table' ,'layer','laypage'], function() {
             }
 	    });
 	  //表头排序监听
-		_table.on('sort(user)',function(obj){   
+		_table.on('sort(book)',function(obj){   
             methods.reload();
         });
 	    //单行监听
-		_table.on('toolbar(user)',function(obj){ 
+		_table.on('toolbar(book)',function(obj){ 
 			console.log(obj)
             var event = obj.event;
             var data = obj.data;
@@ -41,25 +41,25 @@ layui.use(['form' ,'table' ,'layer','laypage'], function() {
         });
 		_form.on('submit(SearchForm)', function(data){
 			  var condition = {where : data.field, page : 1};
-			  _table.reload('user', condition);
+			  _table.reload('book', condition);
 			  return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
 		});
 	};
 	function add() { //新增
 		_layer.open({
-			title : '新增用户',
+			title : '新增图书',
 			type : 2,
 			area: ['500px', '500px'],
-			content : '/user/users/user_add'
+			content : '/book/books/book_add'
 		})
 	};
 	function edit(id) { //编辑
 		console.log(id)
 		_layer.open({
-			title : "编辑用户",
+			title : "编辑图书",
 			type : 2,
 			area: ['500px', '500px'],
-			content : '/user/users/user_update?id='+ id
+			content : '/book/books/book_update?id='+ id
 		});
 	};
 	function remove(ids) { //删除
@@ -69,7 +69,7 @@ layui.use(['form' ,'table' ,'layer','laypage'], function() {
 		_layer.confirm('确认是否删除？', {
 			  btn: ['确认','取消'] //按钮
 			}, function(){
-				$.post("/user/remove", {ids:ids}, function(res){
+				$.post("/book/remove", {ids:ids}, function(res){
 					var msg = res.message;
 					_layer.msg(msg, {icon: 1});
 //					_table.render().reload(options);
@@ -93,12 +93,12 @@ layui.use(['form' ,'table' ,'layer','laypage'], function() {
 		remove(ids);
 	};
 	function reload(condition) { // 重载列表
-		_table.reload('user',{
+		_table.reload('book',{
 			condition
 		});
 	}; 	
     $(function() {
-    	_table.init('user', {
+    	_table.init('book', {
 		  	  height: 315 //设置高度
 //		  	  ,limit: 10//注意：请务必确保 limit 参数（默认：10）是与你服务端限定的数据条数一致
 		  	  ,parseData: function(res){ //res 即为原始返回的数据
@@ -115,7 +115,7 @@ layui.use(['form' ,'table' ,'layer','laypage'], function() {
 			  			var update2 = update1.replace("T"," ");
 			  			res.data[i].updateTime = update2;
 		  			}
-		  		  }
+		  		  }		  		  	 
 		       return {
 		          "code": res.code, //解析接口状态
 		          "msg": res.message, //解析提示文本
@@ -125,7 +125,6 @@ layui.use(['form' ,'table' ,'layer','laypage'], function() {
 		  	  }
 		  	  //支持所有基础参数
 		  	});
-    	
     	init();
 	});
 }) 

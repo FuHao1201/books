@@ -2,27 +2,23 @@
   * 登录 
   */ 
 layui.use(['form' ,'layer'], function() { 
-          var _form = layui.form; 
-          var $ = layui.$; 
-          //var _layer = layui.layer; 
+          var _form = layui.form,_layer = layui.layer; 
+          var $ = layui.$;  
           _form.on("submit(login)",function (data) { 
-//        	  console.log("123");
-        	  debugger
         		$.post("/user/login",data.field,function(res) {
-//        		    	location.href="/user/manager";
+        			console.log(res)
+//        			var loginname = res.data.loginname;
+        			var msg = res.message;
+        			if(msg == "登录成功"){
+        				_layer.msg(msg, {icon: 1});
+        				debugger
+        				$.get("/user/index",res.data,function(res){
+        					
+        				});
+        			}else{
+        				_layer.msg(msg, {icon: 2});
+        			}
         		});
               return false;
           }); 
       }) 
-
-      
-//function login(){ 
-//	debugger
-//    var json={
-//		loginname:$("#loginname").val(), 
-//		password:$("#password").val() 
-//	};    
-//    $.post("/user/login",json,function(res) {
-////    	location.href="/user/manager";
-//    });
-//} 

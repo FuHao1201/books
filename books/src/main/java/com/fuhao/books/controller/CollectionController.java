@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
  * </p>
  *
  * @author FuHao
- * @since 2020-01-14
+ * @since 2020-01-19
  */
 @Controller
 @RequestMapping("/collection")

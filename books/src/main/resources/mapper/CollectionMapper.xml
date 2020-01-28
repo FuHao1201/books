@@ -8,5 +8,6 @@
         <result column="book_id" property="bookId" />
         <result column="user_id" property="userId" />
         <result column="create_time" property="createTime" />
+        <result column="logic_delete_flag" property="logicDeleteFlag" />
     </resultMap>
 </mapper>

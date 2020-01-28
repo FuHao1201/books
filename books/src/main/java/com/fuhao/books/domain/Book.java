@@ -2,10 +2,10 @@ package com.fuhao.books.domain;
 import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 
 import lombok.Data;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.io.Serializable;
 /**
@@ -14,7 +14,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author FuHao
- * @since 2020-01-14
+ * @since 2020-01-19
  */
 @Data
 public class Book implements Serializable {
@@ -45,7 +45,7 @@ public class Book implements Serializable {
     /**
      * 图书数量
      */
-    private String bookNum;
+    private Integer bookNum;
 
     /**
      * 图书单价
@@ -71,4 +71,10 @@ public class Book implements Serializable {
      * 修改时间
      */
     private Date updateTime;
+
+    /**
+     * 逻辑删除字段
+     */
+    @TableLogic
+    private Integer logicDeleteFlag;
 }

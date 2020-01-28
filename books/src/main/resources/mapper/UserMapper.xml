@@ -13,15 +13,17 @@
         <result column="sex" property="sex" />
         <result column="identity" property="identity" />
         <result column="phone" property="phone" />
+        <result column="logic_delete_flag" property="logicDeleteFlag" />
         <result column="create_time" property="createTime" />
         <result column="update_time" property="updateTime" />
     </resultMap>
     <select id="login" resultType="com.fuhao.books.domain.User">
 SELECT
-	`password` 
+	id,loginname,password,status
 FROM
 	`user` 
 WHERE
+	logic_delete_flag = 0 and
 	loginname = #{user.loginname}
     </select>
 </mapper>

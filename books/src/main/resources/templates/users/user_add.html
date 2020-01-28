@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>编辑用户</title>
+<title>新增用户</title>
 <link rel="stylesheet" href="/layui/css/layui.css">
 </head>
 <body>
@@ -17,26 +17,26 @@
 	  <div class="layui-form-item">
 	    <label class="layui-form-label">姓名：</label>
 	    <div class="layui-input-inline">
-	      <input type="text" placeholder="姓名" name="name" autocomplete="off" class="layui-input" width="60px">
+	      <input type="text" placeholder="姓名" name="name" lay-verify="required" autocomplete="off" class="layui-input" width="60px">
 	    </div>
 	  </div>
 	  <div class="layui-form-item">
 	    <label class="layui-form-label">登录名：</label>
 	    <div class="layui-input-inline">
-	      <input type="text" placeholder="登录名" name="loginname" autocomplete="off" class="layui-input" width="60px">
+	      <input type="text" placeholder="登录名" name="loginname" lay-verify="required" autocomplete="off" class="layui-input" width="60px">
 	    </div>
 	  </div>
 	  <div class="layui-form-item">
 	    <label class="layui-form-label">密码：</label>
 	    <div class="layui-input-inline">
-	      <input type="text" placeholder="密码" name="password" autocomplete="off" class="layui-input" width="60px">
+	      <input type="password" placeholder="密码" name="password" lay-verify="required" autocomplete="off" class="layui-input" width="60px">
 	    </div>
 	  </div>
 	  <div class="layui-form-item">
 	    <label class="layui-form-label">用户身份：</label>
 	    <div class="layui-input-inline">
 	      <!-- <input type="text" placeholder="用户身份" name="status" autocomplete="off" class="layui-input" width="60px"> -->
-	      <select name="status" style="width:200px" class="layui-input">
+	      <select name="status" style="width:200px" class="layui-input" lay-verify="required">
 	      	<option value="">请选择</option>
   			<option value="管理员">管理员</option>
   			<option value="用户">用户</option>
@@ -46,25 +46,23 @@
 	  <div class="layui-form-item">
 	    <label class="layui-form-label">用户性别：</label>
 	    <div class="layui-input-inline">
-	      <!-- <input type="text" placeholder="用户性别" name="sex" autocomplete="off" class="layui-input" width="60px"> -->
-	      <select name="sex" style="width:200px" class="layui-input">
-  			 <option value="">请选择</option>
-  					<option value="">请选择</option>
-  					<option value="男">男</option>
-  					<option value="女">女</option>
+	      <select name="sex" style="width:200px" class="layui-input" lay-verify="required">
+  				<option value="">请选择</option>
+  				<option value="男">男</option>
+  				<option value="女">女</option>
 			</select>
 	    </div>
 	  </div>
 	  <div class="layui-form-item">
 	    <label class="layui-form-label">身份证号：</label>
 	    <div class="layui-input-inline">
-	      <input type="text" placeholder="身份证号" name="identity" autocomplete="off" class="layui-input" width="60px">
+	      <input type="text" placeholder="身份证号" name="identity" lay-verify="required|identity" autocomplete="off" class="layui-input" width="60px">
 	    </div>
 	  </div>
 	  <div class="layui-form-item">
 	    <label class="layui-form-label">电话号码：</label>
 	    <div class="layui-input-inline">
-	      <input type="text" placeholder="电话号码" name="phone" autocomplete="off" class="layui-input" width="60px">
+	      <input type="text" placeholder="电话号码" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input" width="60px">
 	    </div>
 	  </div>
    </div>

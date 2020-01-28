@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>新增图书</title>
+<link rel="stylesheet" href="/layui/css/layui.css">
+</head>
+<body>
+<form class="layui-form" action="" lay-filter="formData">
+<br>
+   <div class="layui-tools">
+       <a href="#" class="layui-btn layui-btn-sm" lay-submit><i class="layui-icon layui-icon-ok"></i>保存</a>
+<!--        <a href="#" class="layui-btn layui-btn-sm" id="closeBtn"><i class="layui-icon layui-icon-close"></i>关闭</a> -->
+   </div>
+   <br>
+   <div class="layui-card layui-padding-15 layui-margin-50 auto-height">
+   	 <input type=hidden placeholder="图书名" name="id" id="id" th:value="${id}" lay-verify="required" autocomplete="off" class="layui-input" width="60px">
+	  <div class="layui-form-item">
+	    <label class="layui-form-label">图书名：</label>
+	    <div class="layui-input-inline">
+	      <input type="text" placeholder="图书名" name="bookName" lay-verify="required" autocomplete="off" class="layui-input" width="60px">
+	    </div>
+	  </div>
+	  <div class="layui-form-item">
+	    <label class="layui-form-label">图书类型：</label>
+	    <div class="layui-input-inline">
+	      <input type="text" placeholder="图书类型" name="bookType" lay-verify="required" autocomplete="off" class="layui-input" width="60px">
+	    </div>
+	  </div>
+	  <div class="layui-form-item">
+	    <label class="layui-form-label">图书数量：</label>
+	    <div class="layui-input-inline">
+	      <input type="text" placeholder="图书数量" name="bookNum" lay-verify="required" autocomplete="off" class="layui-input" width="60px">
+	    </div>
+	  </div>
+	  <div class="layui-form-item">
+	    <label class="layui-form-label">图书单价：</label>
+	    <div class="layui-input-inline">
+	      <input type="text" placeholder="图书单价" name="price" lay-verify="required" autocomplete="off" class="layui-input" width="60px">
+	    </div>
+	  </div>
+	  <div class="layui-form-item">
+	    <label class="layui-form-label">作者：</label>
+	    <div class="layui-input-inline">
+	      <input type="text" placeholder="作者" name="author" lay-verify="required" autocomplete="off" class="layui-input" width="60px">
+	    </div>
+	  </div>
+	  <div class="layui-form-item">
+	    <label class="layui-form-label">简介：</label>
+	    <div class="layui-input-inline">
+	      <textarea placeholder="简介" name="synopsis" lay-verify="required" autocomplete="off" class="layui-textarea" width="60px"></textarea>
+	    </div>
+	  </div>
+   </div>
+</form>
+</body>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/book_form.js"></script>
+</html>

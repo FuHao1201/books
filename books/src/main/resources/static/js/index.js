@@ -1,31 +1,26 @@
 /** 
   * 主页 
   */ 
-layui.use(['form' ,'layer'], function() { 
+layui.use(['form' ,'layer' ,'element'], function() { 
     var _form = layui.form,_element = layui.element;
     var $ = layui.$;
-    //getTime();
-    //var _layer = layui.layer; 
+    function init() {
+    	getBookType();
+    };
+    function getBookType(){
+    	$.get("/book/getBookType",{},function(res){
+    		console.log(res)
+    		var str = "";
+			if(res.data !=null){
+				for(var i = 0;i < res.data.length;i++){
+					str += "<dd><a href=/book/books/book_list_type?bookType="+res.data[i].bookType+" target='main'>"+res.data[i].bookType+"</a></dd>"
+					_element.render('bookType');
+				}
+			}
+			$("#type").html(str);
+    	})
+    };
+    $(function(){
+    	init();
+    });
 })
-//function getTime(){
-//	debugger
-//	$.post("/user/getTime",{},function(res){
-//		console.log(res)
-//		$("#time").find('a').remove();
-//		var str = "";
-//		var $li = $("<a>"+res.time+"</a>");
-//		$("#time").append($li);
-//		var layFilter = $("#time").attr('lay-filter');
-//	    _element.render('time', layFilter);
-//	})
-//}
-//function login(){ 
-//	debugger
-//    var json={
-//		loginname:$("#loginname").val(), 
-//		password:$("#password").val() 
-//	};    
-//    $.post("/user/login",json,function(res) {
-//    	//location.href="/user/manager";
-//    });
-//}

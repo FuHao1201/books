@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/layui/css/layui.css">
+</head>
+<body>
+
+<input type="text" th:value="${bookType}" id="bookType"/>
+<div class="layui-tab layui-nav-tree">
+	<ul class="layui-tab-item" id="book" lay-filter="book">
+		<li><a>111</a></li>	
+	</ul>
+</div>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/book_list_type.js"></script>
+</body>
+<script type="text/html" id="toolbar">
+  <div class="layui-btn-container">
+    <button class="layui-btn layui-btn-sm" lay-event="update">编辑</button>
+    <button class="layui-btn layui-btn-sm" lay-event="remove">删除</button>
+  </div>
+</script>
+<script type="text/html" id="tableToolbar">
+  <div class="layui-btn-container">
+    <button class="layui-btn layui-btn-sm" lay-event="add">新增</button>
+    <button class="layui-btn layui-btn-sm" lay-event="removeBatch">批量删除</button>
+  </div>
+</script>
+</body>
+</html>

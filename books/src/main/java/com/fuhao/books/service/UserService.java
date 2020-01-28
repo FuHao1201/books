@@ -1,6 +1,7 @@
 package com.fuhao.books.service;
 
 import com.fuhao.books.domain.User;
+
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -9,7 +10,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author FuHao
- * @since 2020-01-14
+ * @since 2020-01-19
  */
 public interface UserService extends IService<User> {
 
