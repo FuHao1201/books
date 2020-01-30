@@ -58,6 +58,16 @@ public class Book implements Serializable {
     private String author;
 
     /**
+     * 出版社
+     */
+    private String publishingHouse;
+    
+    /**
+     * 出版时间
+     */
+    private Date publicationTime;
+    
+    /**
      * 简介
      */
     private String synopsis;

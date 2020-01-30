@@ -6,27 +6,28 @@
 <link rel="stylesheet" href="/layui/css/layui.css">
 </head>
 <body>
-
 <input type="text" th:value="${bookType}" id="bookType"/>
-<div class="layui-tab layui-nav-tree">
-	<ul class="layui-tab-item" id="book" lay-filter="book">
-		<li><a>111</a></li>	
+<div class="">
+	<ul class="layui-row" id="book" lay-filter="book">
+		<!-- <li>
+			    <div class="layui-col-md2">
+			            <a title="老人与海(温暖插画纪念版)">
+			            <img src="http://image12.bookschina.com/2019/20191128/1/s7663892.jpg" alt="老人与海(温暖插画纪念版)" data-original="http://image12.bookschina.com/2019/20191128/1/s7663892.jpg" class="lazyImg"></a>
+			    </div>
+				<div class="layui-col-md9">
+				    <h2 class="name"><a>老人与海(温暖插画纪念版)</a></h2>
+				    <div><a>[美]厄尼斯特·海明威 著,何超/王鹏 译,宋晓宇 绘</a><i>&nbsp;&nbsp;/&nbsp;&nbsp;</i><span class="pulishTiem" title="出版时间">2015-08-01&nbsp;&nbsp;/&nbsp;&nbsp;</span><a href="/publish/5021/" target="_blank" class="publisher">石油工业出版社</a></div>
+				    <div><span class="" style="color: red; font-size: 26px;">¥34.8</span></div>
+				    <p style="height: 100px;">简介</p>
+				 <div>
+				    <button onclick="AddCar" class="layui-btn layui-bg-red"><i class="layui-icon layui-icon-cart"></i>加入购物车</button>
+				    <button onclick="AddCollection" class="layui-btn"><i class="layui-icon layui-icon-star"></i>收藏</button>
+				 </div>
+			</div>
+		</li> -->	
 	</ul>
 </div>
 <script type="text/javascript" src="/layui/layui.js"></script>
 <script type="text/javascript" src="/js/book_list_type.js"></script>
-</body>
-<script type="text/html" id="toolbar">
-  <div class="layui-btn-container">
-    <button class="layui-btn layui-btn-sm" lay-event="update">编辑</button>
-    <button class="layui-btn layui-btn-sm" lay-event="remove">删除</button>
-  </div>
-</script>
-<script type="text/html" id="tableToolbar">
-  <div class="layui-btn-container">
-    <button class="layui-btn layui-btn-sm" lay-event="add">新增</button>
-    <button class="layui-btn layui-btn-sm" lay-event="removeBatch">批量删除</button>
-  </div>
-</script>
 </body>
 </html>

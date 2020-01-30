@@ -11,13 +11,15 @@
         <result column="book_num" property="bookNum" />
         <result column="price" property="price" />
         <result column="author" property="author" />
+        <result column="publishing_house" property="publishingHouse" />
+        <result column="publication_time" property="publicationTime" />
         <result column="synopsis" property="synopsis" />
         <result column="create_time" property="createTime" />
         <result column="update_time" property="updateTime" />
         <result column="logic_delete_flag" property="logicDeleteFlag" />
     </resultMap>
     <select id="getBookType" resultType="com.fuhao.books.domain.Book">
-    	select book_type from book
+    	select DISTINCT book_type from book
     </select>
     <select id="listBytype" resultType="com.fuhao.books.domain.Book">
     	select * from book where book_type = #{book.bookType}

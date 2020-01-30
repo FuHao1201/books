@@ -1,7 +1,13 @@
 package com.fuhao.books.domain;
 import com.baomidou.mybatisplus.annotation.IdType;
 import java.time.LocalDateTime;
+import java.util.Date;
+
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
+
+import lombok.Data;
+
 import java.io.Serializable;
 /**
  * <p>
@@ -11,6 +17,7 @@ import java.io.Serializable;
  * @author FuHao
  * @since 2020-01-19
  */
+@Data
 public class Collection implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -34,61 +41,11 @@ public class Collection implements Serializable {
     /**
      * 创建时间
      */
-    private LocalDateTime createTime;
+    private Date createTime;
 
     /**
      * 逻辑删除字段
      */
+    @TableLogic
     private Integer logicDeleteFlag;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getBookId() {
-        return bookId;
-    }
-
-    public void setBookId(Integer bookId) {
-        this.bookId = bookId;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public LocalDateTime getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
-    }
-
-    public Integer getLogicDeleteFlag() {
-        return logicDeleteFlag;
-    }
-
-    public void setLogicDeleteFlag(Integer logicDeleteFlag) {
-        this.logicDeleteFlag = logicDeleteFlag;
-    }
-
-    @Override
-    public String toString() {
-        return "Collection{" +
-        ", id=" + id +
-        ", bookId=" + bookId +
-        ", userId=" + userId +
-        ", createTime=" + createTime +
-        ", logicDeleteFlag=" + logicDeleteFlag +
-        "}";
-    }
 }
