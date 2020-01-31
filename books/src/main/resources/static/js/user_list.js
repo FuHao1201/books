@@ -125,7 +125,6 @@ layui.use(['form' ,'table' ,'layer','laypage'], function() {
 		  	  }
 		  	  //支持所有基础参数
 		  	});
-    	
     	init();
 	});
 }) 
