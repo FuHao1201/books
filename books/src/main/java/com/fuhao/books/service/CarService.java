@@ -17,8 +17,18 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface CarService extends IService<Car> {
 
+	/**
+	 * 根据用户id查询购物车列表
+	 * @param car 查询的表单参数
+	 * @return 购物车集合
+	 */
 	List<CarForm> listByUserId(CarForm car);
 
+	/**
+	 * 删除
+	 * @param car 参数
+	 * @return
+	 */
 	boolean removeByBookId(Car car);
 
 }

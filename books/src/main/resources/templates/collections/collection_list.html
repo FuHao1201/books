@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/layui/css/layui.css">
+</head>
+<style>
+	.layui-table-cell{
+		height:auto!important;
+		white-space: normal;
+	}		
+</style>
+<body>
+<input type="hidden" name="userId" th:value="${userId}" id="userId">
+<div class="layui-card layui-admin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb" id="breadcrumb">
+    	<a>主页</a>
+        <a><cite>收藏</cite></a>
+    </div>
+</div>
+<table class="layui-table" align="center" lay-data="{ id:'collection', toolbar:'#tableToolbar', defaultToolbar: [], }" lay-filter="collection">
+  <thead>
+    <tr>
+      <th lay-data="{type:'checkbox'}"></th>
+      <!-- <th lay-data="{field:'id', width:60, align:'center'}">id</th> -->
+      <th lay-data="{field:'bookPictures', width:150, align:'center', templet:'#bookPictures',}">图书图片</th>
+      <th lay-data="{field:'bookName', width:300, align:'center'}">图书名</th>
+      <th lay-data="{field:'price', width:80, align:'center'}">单价</th>
+      <th lay-data="{field:'createTime', width:200, align:'center',templet:function (d){return showTime(d.createTime);}}">存入时间</th>
+      <th lay-data="{toolbar:'#toolbar', align:'center', fixed:'right'}">操作</th>
+    </tr>
+  </thead>
+</table>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/collection_list.js"></script>
+</body>
+<script type="text/html" id="bookPictures">
+	<img src="{{d.bookPictures}}" height="60px"/>
+</script>
+<script type="text/html" id="toolbar">
+  <div class="layui-btn-container">
+    <a class="layui-btn layui-btn-xs" lay-event="addCar">加入购物车</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="remove">删除</a>
+  </div>
+</script>
+<script type="text/html" id="tableToolbar">
+  <div class="layui-btn-container">
+	<a class="layui-btn layui-btn-danger layui-btn-md" lay-event="removeBatch">删除选中</a>
+    <a class="layui-btn layui-btn-md" lay-event="addCarBatch">加入购物车</a> 
+  </div>
+</script>
+</html>

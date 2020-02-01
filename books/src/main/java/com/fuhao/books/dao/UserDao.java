@@ -16,6 +16,11 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface UserDao extends BaseMapper<User> {
 
+	/**
+	 * 登录
+	 * @param user 参数
+	 * @return 用户信息
+	 */
 	User login(@Param("user")User user);
 
 }

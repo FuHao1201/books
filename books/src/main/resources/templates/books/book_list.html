@@ -52,8 +52,8 @@
       <th lay-data="{field:'price', width:120, align:'center', sort: true}">图书单价</th>
       <th lay-data="{field:'author', width:80, align:'center', sort: true}">作者</th>
       <th lay-data="{field:'synopsis', width:80, align:'center', sort: true}">简介</th>
-	  <th lay-data="{field:'createTime', align:'center', sort: true}">创建时间</th>
-      <th lay-data="{field:'updateTime', align:'center', sort: true}">修改时间</th>
+	  <th lay-data="{field:'createTime', align:'center', sort: true ,templet:function (d){return showTime(d.createTime);}}">创建时间</th>
+      <th lay-data="{field:'updateTime', align:'center', sort: true ,templet:function (d){return showTime(d.updateTime);}}">修改时间</th>
       <th lay-data="{toolbar:'#toolbar', align:'center', fixed:'right'}">操作</th>
     </tr>
   </thead>

@@ -5,7 +5,6 @@ layui.use(['form','layer'], function() {
 	var _form = layui.form,_layer = layui.layer;
     var $ = layui.$; 
 	function init(){
-//		debugger
 	    getForm();
 	    _form.render();
 	    _form.on('submit',function(data){
@@ -20,7 +19,7 @@ layui.use(['form','layer'], function() {
 				});
 			});
 	};
-	function getForm(){
+	function getForm(){//根据id获取用户信息
 		var id = $("#id").val();
 		if(id == "") return;
 		$.get("/user/get", {id:id}, function(res) {

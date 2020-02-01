@@ -103,19 +103,7 @@ layui.use(['form' ,'table' ,'layer'], function() {
 //		  	  ,limit: 10//注意：请务必确保 limit 参数（默认：10）是与你服务端限定的数据条数一致
 		  	  ,parseData: function(res){ //res 即为原始返回的数据
 //		  		  debugger
-		  		  console.log(res.data)
-		  		  for(var i = 0;i < res.data.length;i++){
-		  			res.data[i].createTime  
-		  			var create1 = res.data[i]["createTime"].split(".")[0];
-		  			var create2 = create1.replace("T"," ");
-		  			res.data[i].createTime = create2;
-		  			
-		  			if(res.data[i]["updateTime"] != null){
-		  				var update1 = res.data[i]["updateTime"].split(".")[0];
-			  			var update2 = update1.replace("T"," ");
-			  			res.data[i].updateTime = update2;
-		  			}
-		  		  }		  		  	 
+		  		  console.log(res.data)	  		  	 
 		       return {
 		          "code": res.code, //解析接口状态
 		          "msg": res.message, //解析提示文本
@@ -128,3 +116,25 @@ layui.use(['form' ,'table' ,'layer'], function() {
     	init();
 	});
 }) 
+//时间转换函数
+function showTime(tempDate)
+{
+	if(tempDate == null){
+		return '';
+	}
+	var d = new Date(tempDate); 
+	var year = d.getFullYear();
+	var month = d.getMonth();
+	month++;
+	var day = d.getDate();
+	var hours = d.getHours();
+	var minutes = d.getMinutes();
+	var seconds = d.getSeconds();
+	month = month<10 ? "0"+month:month;
+	day = day<10 ? "0"+day:day;
+	hours = hours<10 ? "0"+hours:hours;
+	minutes = minutes<10 ? "0"+minutes:minutes;
+	seconds = seconds<10 ? "0"+seconds:seconds;
+	var time = year+"-"+month+"-"+day+" "+hours+":"+minutes+":"+seconds;
+	return time;
+};

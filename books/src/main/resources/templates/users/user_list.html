@@ -60,8 +60,8 @@
       <th lay-data="{field:'sex', width:80, align:'center', sort: true}">性别</th>
       <th lay-data="{field:'identity', width:180, align:'center', sort: true}">身份证号</th>
       <th lay-data="{field:'phone', width:120, align:'center', sort: true}">电话号码</th>
-	  <th lay-data="{field:'createTime', align:'center', sort: true}">创建时间</th>
-      <th lay-data="{field:'updateTime', align:'center', sort: true}">修改时间</th>
+	  <th lay-data="{field:'createTime', align:'center', sort: true ,templet:function (d){return showTime(d.createTime);}}">创建时间</th>
+      <th lay-data="{field:'updateTime', align:'center', sort: true ,templet:function (d){return showTime(d.updateTime);}}">修改时间</th>
       <th lay-data="{toolbar:'#toolbar', align:'center', fixed:'right'}">操作</th>
     </tr>
   </thead>

@@ -40,6 +40,14 @@ public class BookController extends BaseController{
 	@Autowired
 	private BookService bookService;
 	
+	/**
+	 * 跳转图书有关的界面
+	 * @param html 界面名
+	 * @param id 图书id
+	 * @param bookType 图书类型
+	 * @param model 参数
+	 * @return 界面
+	 */
 	@GetMapping("/books/{html}")
 	public ModelAndView views(@PathVariable String html,String id,String bookType,ModelMap model) {
 		if(html.equals("book_update")) {
@@ -56,7 +64,7 @@ public class BookController extends BaseController{
 	/**
 	 * 查询所有的图书信息
 	 * @param book 查询的表单参数
-	 * @return 图书集合
+	 * @return json
 	 */
 	@GetMapping("/list")
 	@ResponseBody
@@ -68,6 +76,11 @@ public class BookController extends BaseController{
 		return jr(GlobalConstants.ERROR,"未找到资源");	
 	}
 	
+	/**
+	 * 查询图书信息
+	 * @param id 图书id
+	 * @return json
+	 */
 	@GetMapping("/get")
 	@ResponseBody
 	public JsonResult<Book> get(String id){
@@ -78,6 +91,11 @@ public class BookController extends BaseController{
 		return jr(GlobalConstants.ERROR,"未找到资源");	
 	}
 	
+	/**
+	 * 保存
+	 * @param book 表单参数
+	 * @return json
+	 */
 	@PostMapping("/save")
 	@ResponseBody
 	public JsonResult<Book> saveOrUpdate(Book book) {
@@ -97,6 +115,11 @@ public class BookController extends BaseController{
 		return jr(GlobalConstants.ERROR, "保存失败");
 	}
 	
+	/**
+	 * 删除
+	 * @param ids 图书id
+	 * @return json
+	 */
 	@PostMapping("/remove")
 	public JsonResult<Book> remove(@NotNull @RequestParam(value = "ids[]") String[] ids){
 		//System.out.println();
@@ -106,6 +129,10 @@ public class BookController extends BaseController{
 		return jr(GlobalConstants.ERROR, "删除失败");
 	}
 	
+	/**
+	 * 查询图书类型
+	 * @return json
+	 */
 	@GetMapping("/getBookType")
 	public JsonResult<List<Book>> getBookType(){
 		List<Book> list = bookService.getBookType();
@@ -115,6 +142,11 @@ public class BookController extends BaseController{
 		return jr(GlobalConstants.ERROR,"未找到资源");	
 	}
 	
+	/**
+	 * 根据图书类型查询图书列表
+	 * @param book 查询的表单参数
+	 * @return json
+	 */
 	@PostMapping("/listBytype")
 	@ResponseBody
 	public JsonResult<List<Book>> listBytype(Book book){

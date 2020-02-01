@@ -7,7 +7,7 @@ layui.use(['form' ,'layer' ,'element'], function() {
     function init() {
     	getBookType();
     };
-    function getBookType(){
+    function getBookType(){//获取图书类型
     	$.get("/book/getBookType",{},function(res){
     		console.log(res)
     		var str = "";

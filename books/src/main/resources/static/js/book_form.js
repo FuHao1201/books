@@ -20,7 +20,7 @@ layui.use(['form','layer'], function() {
 				});
 			});
 	};
-	function getForm(){
+	function getForm(){//根据id获取图书信息
 		var id = $("#id").val();
 		if(id == "") return;
 		$.get("/book/get", {id:id}, function(res) {

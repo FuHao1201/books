@@ -19,8 +19,18 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface CarDao extends BaseMapper<Car> {
 
+	/**
+	 * 通过用户id查询购物车列表
+	 * @param car 查询的参数
+	 * @return 购物车集合
+	 */
 	List<CarForm> listByUserId(@Param("car")CarForm car);
 
+	/**
+	 * 通过图书id删除
+	 * @param car 参数
+	 * @return
+	 */
 	boolean removeByBookId(@Param("car")Car car);
 
 }

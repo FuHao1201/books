@@ -3,6 +3,8 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import java.time.LocalDateTime;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 
@@ -20,7 +22,7 @@ import java.io.Serializable;
 @Data
 public class Collection implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
     /**
      * 收藏id
@@ -41,8 +43,10 @@ public class Collection implements Serializable {
     /**
      * 创建时间
      */
+//    @DateTimeFormat(pattern="yyyy-MM-dd")//页面写入数据库时格式化
+//    @JSONField(format="yyyy-MM-dd")//数据库导出页面时json格式化
     private Date createTime;
-
+    
     /**
      * 逻辑删除字段
      */

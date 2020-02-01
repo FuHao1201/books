@@ -6,7 +6,11 @@
 <link rel="stylesheet" href="/layui/css/layui.css">
 </head>
 <body>
-<input type="text" th:value="${bookType}" id="bookType"/>
+<input type="hidden" th:value="${bookType}" id="bookType"/>
+<div class="layui-card layui-admin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb" id="breadcrumb">
+    </div>
+</div>
 <div class="">
 	<ul class="layui-row" id="book" lay-filter="book">
 		<!-- <li>

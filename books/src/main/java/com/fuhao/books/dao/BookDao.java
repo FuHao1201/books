@@ -18,8 +18,17 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface BookDao extends BaseMapper<Book> {
 
+	/**
+	 * 查询图书类型
+	 * @return 图书类型集合
+	 */
 	List<Book> getBookType();
 
+	/**
+	 * 通过图书类型查询图书列表
+	 * @param book 查询的 参数
+	 * @return 图书集合
+	 */
 	List<Book> listBytype(@Param("book")Book book);
 
 }

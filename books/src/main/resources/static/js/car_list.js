@@ -12,22 +12,30 @@ layui.use(['form' ,'table' ,'layer','element'], function() {
     		var spanid = "sum"+data.target.id.split('-')[0];
     		var price = data.target.id.split('-')[1];
     		var number = data.delegateTarget.value;
-    		var sum = price*number;
-    		console.log(sum)		    
+    		var sum = price*number;		    
     		$("#"+spanid).html("￥"+sum);
-		  });
+    	  });
     	_table.on('checkbox(car)', function(obj){
+    		$(".number").on("input",function(data){
+    			var checkStatus = _table.checkStatus('car');
+        		var sumNum = checkStatus.data.length;
+        		var sum_all=0;
+        		$("#sumNum").html(sumNum);
+        		for(var i=0; i<checkStatus.data.length; i++){
+        			var sumid = "sum"+checkStatus.data[i].id;
+        			var sum = parseFloat($("#"+sumid).text().split('￥')[1]);
+        			sum_all+=sum;
+        		}
+        		$("#sum_all").html("￥"+sum_all);     
+        	  });
     		var checkStatus = _table.checkStatus('car');
-    		console.log(checkStatus.data)
     		var sumNum = checkStatus.data.length;
     		var sum_all=0;
     		$("#sumNum").html(sumNum);
     		for(var i=0; i<checkStatus.data.length; i++){
     			var sumid = "sum"+checkStatus.data[i].id;
     			var sum = parseFloat($("#"+sumid).text().split('￥')[1]);
-    			console.log(sum)
     			sum_all+=sum;
-    			console.log(sum_all)
     		}
     		$("#sum_all").html("￥"+sum_all);         
     	});
@@ -42,6 +50,13 @@ layui.use(['form' ,'table' ,'layer','element'], function() {
             	}
             	remove(json);
             }
+            if(event == 'toCollection'){
+            	var json = {
+            			userId : userId,
+            			bookId : data.bookId
+            	}
+            	toCollection(json);
+            }
 	    });
 	    //单行监听
 		_table.on('toolbar(car)',function(obj){
@@ -55,15 +70,42 @@ layui.use(['form' ,'table' ,'layer','element'], function() {
             }
         });
 	};
-	function remove(json) { //删除
+	
+	function remove(json) { //单个删除
 		_layer.confirm('确认是否删除？', {
 			  btn: ['确认','取消'] //按钮
 			}, function(){
 				$.post("/car/remove", json, function(res){
-					console.log(res)
 					var msg = res.message;
-					_layer.msg(msg, {icon: 1});
-					_table.reload('car');
+					if(res.code == "SUCCESS"){
+						_layer.msg(msg, {icon: 1});
+						_table.reload('car');
+					}
+					if(res.code == "ERROR"){
+						_layer.msg(msg, {icon: 2});
+					}
+				})
+			}, function(){
+				_layer.close();
+			});
+	};
+	function toCollection(json) { //移入收藏
+		_layer.confirm('确认移入收藏？', {
+			  btn: ['确认','取消'] //按钮
+			}, function(){
+				$.post("/collection/addCollection", json, function(res){
+					var msg = res.message;
+					if(res.code == "SUCCESS"){
+						$.post("/car/remove", json, function(res){
+							if(res.code == "SUCCESS"){
+								_layer.msg("移入收藏成功", {icon: 1});
+								_table.reload('car');
+							}
+							if(res.code == "ERROR"){
+								_layer.msg("移入收藏失败", {icon: 2});
+							}
+						})
+					}
 				})
 			}, function(){
 				_layer.close();
@@ -73,7 +115,6 @@ layui.use(['form' ,'table' ,'layer','element'], function() {
         var checkStatus = _table.checkStatus(obj.config.id)
         , data = checkStatus.data //获取选中的数据
 		, ids = [];
-		console.log(checkStatus.data)
 		$.each(data, function(i,val){
 			ids.push(val.id);
 		});
@@ -90,24 +131,26 @@ layui.use(['form' ,'table' ,'layer','element'], function() {
 							bookId : checkStatus.data[i].bookId
 					}					
 					$.post("/car/remove", json, function(res){
-						console.log(res)
 						var msg = res.message;
-						_layer.msg(msg, {icon: 1});
-						_table.reload('car');
+						if(res.code == "SUCCESS"){
+							_layer.msg(msg, {icon: 1});
+							_table.reload('car');
+						}
+						if(res.code == "ERROR"){
+							_layer.msg(msg, {icon: 2});
+						}
 					})
 				}
 			}, function(){
 				_layer.close();
 			});
 	};
-	function buy(obj){
+	function buy(obj){//结算
 		var checkStatus = _table.checkStatus(obj.config.id)
         , data = checkStatus.data //获取选中的数据
         , ids = [];
 		var sum_all = $("#sum_all").text().split('￥')[1];
 		var bookId = data;
-		console.log(data)
-		console.log(sum_all)
 		$.each(data, function(i,val){
 			ids.push(val.id);
 		});
@@ -127,8 +170,9 @@ layui.use(['form' ,'table' ,'layer','element'], function() {
 //		$.post("/order/orders/order_list/")
 	}
     $(function() {
-    	_table.init('user', {
-		  	  height: 315 //设置高度
+    	var userId=$("#userId").val();
+    	_table.render('car', {
+    		   url:'/car/car_list/?userId='+userId
 		  	  ,parseData: function(res){ //res 即为原始返回的数据
 		  		  console.log(res.data);
 		  		return {
