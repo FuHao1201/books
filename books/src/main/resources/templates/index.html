@@ -6,8 +6,14 @@
   <title>主页</title>
   <link rel="stylesheet" href="/layui/css/layui.css">
 </head>
+<style>
+	.layui-layout-admin .layui-body{
+		bottom : 5px;
+	}
+</style>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
+  <input id="userId" type="hidden" value="1">
   <div class="layui-header">
     <div class="layui-logo layui-bg-blue">西柚图书售卖系统</div>
     <ul class="layui-nav layui-layout-right">
@@ -37,6 +43,9 @@
           </dl>
         </li>
         <li class="layui-nav-item">
+          <a class="" href="/buy/buys/buy_list?userId=1" target="main">下单</a>
+        </li>
+        <li class="layui-nav-item">
           <a class="" href="javascript:;">图书管理</a>
           <dl class="layui-nav-child">
             <dd><a href="/book/books/book_list" target="main">图书列表</a></dd>
@@ -52,7 +61,7 @@
       </ul>
     </div>
   </div>
-  <div class="layui-body">
+  <div class="layui-body" id="body">
     <!-- 内容主体区域 -->
     <iframe src="/user/main" name="main" id="main" width="100%" height="500px" frameborder="0"></iframe>
   </div>

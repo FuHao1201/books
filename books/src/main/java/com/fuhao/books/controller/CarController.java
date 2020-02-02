@@ -59,8 +59,9 @@ public class CarController extends BaseController{
 	 */
 	@GetMapping("/car_list")
 	public JsonResult<List<CarForm>> car_list(CarForm car){
+		System.out.println(car.getUserId());
 		List<CarForm> list = carService.listByUserId(car);
-		if (list != null) {
+		if (list.get(0) != null) {
 			System.out.println(list);
 			return jr("0","查询成功",list); 
 			}

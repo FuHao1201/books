@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/layui/css/layui.css">
+</head>
+<body>
+<form class="layui-form" action="" lay-filter="formData">
+<br>
+   <div class="layui-tools">
+       <a href="#" class="layui-btn layui-btn-sm" lay-submit><i class="layui-icon layui-icon-ok"></i>保存</a>
+   </div>
+   <br>
+   <div class="layui-card layui-padding-15 layui-margin-50 auto-height">
+      	<input type="hidden" id="userId" name="userId" th:value="${userId}" class="layui-input">
+	  <div class="layui-form-item">
+	    <label class="layui-form-label">姓名：</label>
+	    <div class="layui-input-inline">
+	      <input type="text" placeholder="姓名" name="name" autocomplete="off" class="layui-input" width="60px">
+	    </div>
+	  </div>
+	  <div class="layui-form-item">
+	    <label class="layui-form-label">电话号码：</label>
+	    <div class="layui-input-inline">
+	      <input type="text" placeholder="电话号码" name="phone" autocomplete="off" class="layui-input" width="60px">
+	    </div>
+	  </div>
+	  <div class="layui-form-item">
+	    <label class="layui-form-label">详细地址：</label>
+	    <div class="layui-input-inline">
+	      <input type="text" placeholder="地址" name="address" autocomplete="off" class="layui-input" width="60px">
+	    </div>
+	  </div>
+	  <div class="layui-form-item">
+	    <label class="layui-form-label">邮政编码：</label>
+	    <div class="layui-input-inline">
+	      <input type="text" placeholder="邮政编码" name="postCode" autocomplete="off" class="layui-input" width="60px">
+	    </div>
+	  </div>
+   </div>
+</form>
+</body>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/address_add.js"></script>
+</html>

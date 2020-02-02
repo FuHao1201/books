@@ -23,14 +23,17 @@
     </resultMap>
     
     <select id="listByUserId" resultType="com.fuhao.books.form.CarForm">
-   	SELECT	
-	car.*,
+   		SELECT	
+	car.id,
+	car.book_id,
+	car.user_id,
 	book.book_name,
 	book.book_pictures,
+	book.book_num,
 	book.price
 	FROM car
 	JOIN book ON car.book_id = book.id
-	where car.user_id = "1"
+	where car.user_id = #{car.userId}
 	and car.logic_delete_flag = 0
 	and book.logic_delete_flag = 0
 	GROUP BY book.id

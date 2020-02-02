@@ -11,11 +11,12 @@ layui.use(['form','layer'], function() {
 	  	  console.log(data)
 				$.post("/user/save", data.field, function(res) {
 					var msg = res.message;
-					layer.msg(msg, {
+					_layer.msg(msg, {
 						  icon: 1,
-						})
+						});
 					_form.val('formData', res.data);
-					_layer.close();
+					parent.layui.layer.closeAll();
+					parent.layui.table.reload('user');//重载父页表格，参数为表格ID
 				});
 			});
 	};

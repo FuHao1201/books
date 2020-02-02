@@ -21,6 +21,8 @@ layui.use(['form' ,'layer' ,'element'], function() {
     	})
     };
     $(function(){
+    	var userId = $("#userId").val();
+    	console.log(userId)
     	init();
     });
 })

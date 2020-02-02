@@ -24,17 +24,17 @@ public class Car implements Serializable {
      * 购物车编号
      */
     @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    private String id;
 
     /**
      * 图书编号
      */
-    private Integer bookId;
+    private String bookId;
 
     /**
      * 用户编号
      */
-    private Integer userId;
+    private String userId;
 
     /**
      * 加入数量

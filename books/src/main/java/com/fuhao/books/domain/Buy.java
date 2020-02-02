@@ -1,39 +1,31 @@
 package com.fuhao.books.domain;
 import com.baomidou.mybatisplus.annotation.IdType;
-import java.time.LocalDateTime;
-import java.util.Date;
-
-import org.springframework.format.annotation.DateTimeFormat;
-
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 
 import lombok.Data;
 
+import java.util.Date;
 import java.io.Serializable;
+import java.math.BigDecimal;
 /**
  * <p>
  * 
  * </p>
  *
  * @author FuHao
- * @since 2020-01-19
+ * @since 2020-02-02
  */
 @Data
-public class Collection implements Serializable {
+public class Buy implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     /**
-     * 收藏id
+     * 结算id
      */
     @TableId(value = "id", type = IdType.AUTO)
     private String id;
-
-    /**
-     * 图书id
-     */
-    private String bookId;
 
     /**
      * 用户id
@@ -41,12 +33,25 @@ public class Collection implements Serializable {
     private String userId;
 
     /**
-     * 创建时间
+     * 图书id
      */
-//    @DateTimeFormat(pattern="yyyy-MM-dd")//页面写入数据库时格式化
-//    @JSONField(format="yyyy-MM-dd")//数据库导出页面时json格式化
-    private Date createTime;
+    private String bookId;
+
+    /**
+     * 购买数量
+     */
+    private Integer bookNum;
     
+    /**
+     * 小计
+     */
+    private BigDecimal sum;
+
+    /**
+     * 结算时间
+     */
+    private Date createTime;
+
     /**
      * 逻辑删除字段
      */

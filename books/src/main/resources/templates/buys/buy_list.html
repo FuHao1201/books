@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>下单</title>
+<link rel="stylesheet" href="/layui/css/layui.css">
+</head>
+<style>
+	.layui-table-cell{
+		height:auto!important;
+		white-space: normal;
+	}		
+</style>
+<body>
+<input type="hidden" name="userId" th:value="${userId}" id="userId">
+<input type="hidden" name="addressId" id="addressId">
+<table class="layui-table" align="center" lay-skin="line" lay-data="{id:'address', toolbar:'#addressToolbar', defaultToolbar: [], }" lay-filter="address">
+  <thead>
+    <tr>
+      <th lay-data="{type:'radio', class:'radio', event:'check',}"></th>
+      <th lay-data="{field:'name', width:80, align:'center'}">收件人</th>
+      <th lay-data="{field:'address', width:300, align:'center'}">地址</th>
+      <th lay-data="{field:'phone', width:150, align:'center'}">电话号码</th>
+      <!-- <th lay-data="{field:'postCode', width:80, align:'center'}">邮政编码</th> -->
+      <th lay-data="{toolbar:'#addressbar',width:130, align:'center', fixed:'right'}">操作</th>
+    </tr>
+  </thead>
+</table>
+<table class="layui-table" align="center" lay-skin="line" lay-data="{id:'buy', toolbar:'#buyToolbar', defaultToolbar: [], }" lay-filter="buy">
+  <thead>
+    <tr>
+      <th lay-data="{field:'bookPictures', width:150, align:'center', templet:'#bookPictures',}">图书图片</th>
+      <th lay-data="{field:'bookName', width:300, align:'center'}">图书名</th>
+      <th lay-data="{field:'price', width:80, align:'center'}">单价</th>
+      <th lay-data="{field:'bookNum', width:80, align:'center'}">数量</th>
+      <th lay-data="{field:'sum', width:80, align:'center', templet:'#sum',}">小计</th>
+    </tr>
+  </thead>
+</table>
+<span>合计</span>
+<span id="sum_all" style="color: red;font-weight: bold;font-size: 22px;"></span>
+<a id="order" class="layui-btn layui-btn-disabled layui-btn-danger layui-btn-lg">提交订单</a>
+<a id="toCar" class="layui-btn layui-btn-danger layui-btn-xs">返回购物车</a>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/buy_list.js"></script>
+</body>
+<script type="text/html" id="bookPictures">
+	<img src="{{d.bookPictures}}" height="40px"/>
+</script>
+<script type="text/html" id="sum">
+	<span name="sum" style="color: red;font-weight: bold;font-size: 18px;" id="sum{{d.id}}" value="{{d.sum}}" readonly="true">{{d.sum}}</span>
+</script>
+<script type="text/html" id="buyToolbar">
+	<span style="font-weight: bold;font-size: 18px;">图书清单</span>
+</script>
+<script type="text/html" id="addressToolbar">
+	<span style="font-weight: bold;font-size: 18px;">收件人选择</span>
+	<a class="layui-btn layui-btn-xs layui-icon layui-icon-addition" style="float:right;" lay-event="addAddress">新增收件人</a>
+</script>
+<script type="text/html" id="addressbar">
+  <div class="layui-btn-container">
+    <a class="layui-btn layui-btn-xs" lay-event="updateAddress">修改</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="removeAddress">删除</a>
+  </div>
+</script>
+</html>

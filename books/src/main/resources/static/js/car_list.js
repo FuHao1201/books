@@ -8,13 +8,7 @@ layui.use(['form' ,'table' ,'layer','element'], function() {
     
     function init() {
     	var userId=$("#userId").val();
-    	$(".number").on("input",function(data){
-    		var spanid = "sum"+data.target.id.split('-')[0];
-    		var price = data.target.id.split('-')[1];
-    		var number = data.delegateTarget.value;
-    		var sum = price*number;		    
-    		$("#"+spanid).html("￥"+sum);
-    	  });
+    	
     	_table.on('checkbox(car)', function(obj){
     		$(".number").on("input",function(data){
     			var checkStatus = _table.checkStatus('car');
@@ -149,40 +143,59 @@ layui.use(['form' ,'table' ,'layer','element'], function() {
 		var checkStatus = _table.checkStatus(obj.config.id)
         , data = checkStatus.data //获取选中的数据
         , ids = [];
-		var sum_all = $("#sum_all").text().split('￥')[1];
-		var bookId = data;
+		console.log(data)
+//		var sum_all = $("#sum_all").text().split('￥')[1];
+//		var bookId = data;
 		$.each(data, function(i,val){
 			ids.push(val.id);
 		});
 		if(ids.length == 0) {
 			_layer.msg('请选择商品', {icon: 0});
 			return;
-		}		
-		var json = {
-				
 		}
+//		console.log(data)
+		for(var i=0; i<data.length; i++){
+			var numId = data[i].id;
+			var bookNum = $("#"+numId).val();
+			var sumId = "sum"+data[i].id;
+			var sum = parseFloat($("#"+sumId).text().split('￥')[1]);
+			var json = {
+					userId : data[i].userId,
+					bookId : data[i].bookId,
+					price : data[i].price,
+					bookNum : bookNum,
+					sum : sum,
+				}
+			$.post("/buy/addBuy/",json);
+			console.log(json)
+		}
+		var userId = $("#userId").val();
+		console.log(userId)
+		//$.get("/buy/buys/buy_list/?userId="+userId);
 		_layer.open({
 			title: '下单',
 			type : 2,
-			area: ['500px', '500px'],
-//			content : '/car/cars/car_buy/?bookId='+ bookId
-		})
-//		$.post("/order/orders/order_list/")
+			area: ['750px', '500px'],
+			content: '/buy/buys/buy_list/?userId='+userId,
+			closeBtn: 0
+		});
 	}
     $(function() {
     	var userId=$("#userId").val();
-    	_table.render('car', {
-    		   url:'/car/car_list/?userId='+userId
-		  	  ,parseData: function(res){ //res 即为原始返回的数据
-		  		  console.log(res.data);
-		  		return {
-			          "code": res.code, //解析接口状态
-			          "msg": res.message, //解析提示文本
-			          "count": res.data.length, //解析数据长度
-			          "data": res.data, //解析数据列表
-			        };
-		  	  }
-    	});
+    	
+    	_table.init('car', {
+    		url:'/car/car_list/?userId='+userId
+    		,done: function(res){
+    			$(".number").on("input",function(data){
+    	    		console.log(data)
+    	    		var spanid = "sum"+data.target.id;
+    	    		var price = data.target.name;
+    	    		var number = data.delegateTarget.value;
+    	    		var sum = price*number;		    
+    	    		$("#"+spanid).html("￥"+sum);
+    	    	  });
+    			}
+    		}); 
     	init();
 	});
 }) 

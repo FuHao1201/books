@@ -1,6 +1,7 @@
 package com.fuhao.books.dao;
 
-import com.fuhao.books.domain.Address;
+import com.fuhao.books.domain.Buy;
+import com.fuhao.books.form.BuyForm;
 
 import java.util.List;
 
@@ -14,10 +15,10 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author FuHao
- * @since 2020-01-19
+ * @since 2020-02-02
  */
-public interface AddressDao extends BaseMapper<Address> {
+public interface BuyDao extends BaseMapper<Buy> {
 
-	List<Address> listByUserId(@Param("address")Address address);
+	List<BuyForm> listByUserId(@Param("buy")BuyForm buy);
 
 }

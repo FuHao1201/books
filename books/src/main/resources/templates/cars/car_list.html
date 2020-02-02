@@ -19,7 +19,7 @@
         <a><cite>购物车</cite></a>
     </div>
 </div>
-<table class="layui-table" lay-size="lg" align="center" lay-skin="line" lay-data="{url:'/car/car_list/', id:'car', toolbar:'#tableToolbar', defaultToolbar: [], }" lay-filter="car">
+<table class="layui-table" lay-size="lg" align="center" lay-skin="line" lay-data="{ id:'car', toolbar:'#tableToolbar', defaultToolbar: [], }" lay-filter="car">
   <thead>
     <tr style="height: 200px;">
       <th lay-data="{type:'checkbox', event:'checks',}"></th>
@@ -43,7 +43,7 @@
 	<span name="price" value="{{d.price}}" readonly="true">￥{{d.price}}</span>
 </script>
 <script type="text/html" id="number">
-	<input id="{{d.id}}-{{d.price}}" type="number" class="number layui-input" value="1" style="width: 60px; height: 30px;" min="1" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"/>
+	<input id="{{d.id}}" name="{{d.price}}" type="number" class="number layui-input" value="1" style="width: 60px; height: 30px;" min="1" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"/>
 </script>
 <script type="text/html" id="sum">
 	<span name="sum" style="color: red;" id="sum{{d.id}}" value="{{d.price}}" readonly="true">￥{{d.price}}</span>
