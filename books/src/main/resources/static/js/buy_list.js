@@ -1,4 +1,5 @@
 /** 
+
   * 结算列表 
   */ 
 
@@ -92,6 +93,41 @@ layui.use(['form' ,'table' ,'layer','element'], function() {
 		var userId=$("#userId").val();
 		console.log(addressId)
 		_layer.msg("提交订单");
+		var json = {
+//				out_trade_no : "111",
+				subject : "图书",
+				total_amount : sum_all,
+				body : "西柚图书"
+		}
+		$.post("/buy/paySum",json,function(res){
+			  var obj = window.open("about:blank");   
+			  obj.document.write(res);
+			  console.log(userId);
+			  $.get("/buy/buy_list",{userId:userId},function(res){
+				  for(var i=0; i<res.data.length; i++){
+  						var bookId = res.data[i].bookId;
+  						var json = {
+  								userId:userId,
+  								bookId:bookId
+  						}
+  						$.post("/car/remove",json);
+//  						var jsonOrder = {
+//  								userId:userId,
+//  								bookId:bookId,
+//  								addressId:addressId,
+//  								book_num:res.data[i].book_num,
+//  								sum:res.data[i].sum
+//  						}
+//  						$.post("/order/addOrder",jsonOrder,function(res){
+//  							console.log(res)
+//  						});
+  					}
+				  $.post("/buy/removeByUserId",{userId:userId},function(res){
+					  parent.layui.layer.closeAll();
+					  parent.layui.table.reload('car');//重载父页表格，参数为表格ID
+				  });
+			  }); 
+		});
 	};
     $(function() {
     	var userId=$("#userId").val();

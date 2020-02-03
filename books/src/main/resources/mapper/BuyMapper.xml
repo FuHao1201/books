@@ -26,4 +26,9 @@ FROM
 	where buy.user_id = #{buy.userId}
 	and buy.logic_delete_flag = "0"
     </select>
+    <update id="removeByUserId">
+    UPDATE buy set logic_delete_flag = 1
+	WHERE
+	user_id = #{buy.userId} 
+    </update>
 </mapper>

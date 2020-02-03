@@ -19,4 +19,6 @@ public interface BuyService extends IService<Buy> {
 
 	List<BuyForm> listByUserId(BuyForm buy);
 
+	boolean removeByUserId(Buy buy);
+
 }

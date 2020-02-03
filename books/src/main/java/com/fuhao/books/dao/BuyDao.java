@@ -21,4 +21,6 @@ public interface BuyDao extends BaseMapper<Buy> {
 
 	List<BuyForm> listByUserId(@Param("buy")BuyForm buy);
 
+	boolean removeByUserId(@Param("buy")Buy buy);
+
 }

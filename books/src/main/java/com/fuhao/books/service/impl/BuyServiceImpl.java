@@ -30,4 +30,9 @@ public class BuyServiceImpl extends ServiceImpl<BuyDao, Buy> implements BuyServi
 		return buyDao.listByUserId(buy);
 	}
 
+	@Override
+	public boolean removeByUserId(Buy buy) {
+		return buyDao.removeByUserId(buy);
+	}
+
 }
