@@ -1,8 +1,6 @@
 package com.fuhao.books.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -25,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
+import com.alipay.api.AlipayObject;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.domain.AlipayTradePagePayModel;
 import com.alipay.api.internal.util.AlipaySignature;
@@ -95,6 +94,9 @@ public class BuyController extends BaseController{
     	//获取支付宝GET过来反馈信息
     	Map<String,String> params = new HashMap<String,String>();
     	Map<String,String[]> requestParams = request.getParameterMap();
+    	AlipayTradePagePayRequest pagePayRequest = new AlipayTradePagePayRequest();
+    	AlipayObject body = pagePayRequest.getBizModel();
+    	System.out.println("zz"+body);
     	for (Iterator<String> iter = requestParams.keySet().iterator(); iter.hasNext();) {
     		String name = (String) iter.next();
     		String[] values = (String[]) requestParams.get(name);
@@ -117,7 +119,11 @@ public class BuyController extends BaseController{
     		String trade_no = new String(request.getParameter("trade_no").getBytes("ISO-8859-1"),"UTF-8");
     		//付款金额
     		String total_amount = new String(request.getParameter("total_amount").getBytes("ISO-8859-1"),"UTF-8");
+    		
+    		//String body = new String(request.getParameter("body").getBytes("ISO-8859-1"),"UTF-8");
 //    		System.out.println("trade_no:"+trade_no+"<br/>out_trade_no:"+out_trade_no+"<br/>total_amount:"+total_amount);
+    		//System.out.println("用户"+body);
+    		//model.put("userId",body);
     		return view("index");
     	}else {
     		return null;
@@ -162,6 +168,9 @@ public class BuyController extends BaseController{
     	
     		//交易状态
     		String trade_status = new String(request.getParameter("trade_status").getBytes("ISO-8859-1"),"UTF-8");
+    		
+    		String body = new String(request.getParameter("body").getBytes("ISO-8859-1"),"UTF-8");
+    		
     		if(trade_status.equals("TRADE_FINISHED")){
     			//判断该笔订单是否在商户网站中已经做过处理
     			//如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序

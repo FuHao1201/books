@@ -69,7 +69,7 @@ public class UserController extends BaseController{
 	 * @return 登录界面
 	 */
 	@GetMapping("/login_view")
-	public ModelAndView login() {
+	public ModelAndView login_view() {
 		return view("login");
 	}
 	
@@ -95,7 +95,7 @@ public class UserController extends BaseController{
 	 * @return json
 	 */
 	@PostMapping("/login")
-    public JsonResult<User> login1(User user) {		
+    public JsonResult<User> login(User user) {		
 		User user1 = userService.login(user);
 		if (user1 != null) {
 			return jr(GlobalConstants.SUCCESS,"登录成功",user1);
@@ -112,7 +112,6 @@ public class UserController extends BaseController{
 	@ResponseBody
 	public JsonResult<List<User>> list(User user){
 		List<User> user1 = userService.list();
-		System.out.println("111"+user1);
 		if (user1 != null) { 
 			return jr("0","查询成功",user1); 
 			}

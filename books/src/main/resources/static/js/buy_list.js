@@ -94,10 +94,9 @@ layui.use(['form' ,'table' ,'layer','element'], function() {
 		console.log(addressId)
 		_layer.msg("提交订单");
 		var json = {
-//				out_trade_no : "111",
 				subject : "图书",
 				total_amount : sum_all,
-				body : "西柚图书"
+				body : userId
 		}
 		$.post("/buy/paySum",json,function(res){
 			  var obj = window.open("about:blank");   
