@@ -57,11 +57,13 @@ public class UserController extends BaseController{
 	 */
 	@GetMapping("/index")
 	public ModelAndView index(ModelMap model,String id,String loginname,String status) {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("index");
 		model.put("id", id);
 		model.put("loginname", loginname);
 		model.put("status", status);
 		System.out.println(model);
-		return view("index",model);
+		return modelAndView;
 	}
 	
 	/**
@@ -83,6 +85,9 @@ public class UserController extends BaseController{
 	@GetMapping("/users/{html}")
 	public ModelAndView views(@PathVariable String html,String id,ModelMap model) {
 		if(html.equals("user_update")) {
+			model.put("id", id);
+	        return view("users/"+html,model);
+		}if(html.equals("user_information")) {
 			model.put("id", id);
 	        return view("users/"+html,model);
 		}

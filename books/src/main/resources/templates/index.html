@@ -14,23 +14,11 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
   <input id="userId" type="hidden" value="1">
-  <input id="id" type="hidden" th:value="${id}">
+  <!-- <input id="id" type="hidden" th:value="${id}"> -->
   <div class="layui-header">
     <div class="layui-logo layui-bg-blue">西柚图书网</div>
-    <ul class="layui-nav layui-layout-right">
-      <li class="layui-nav-item"><a class="layui-icon layui-icon-cart" href="/car/cars/car_list" target="main">购物车</a></li>
-      <li class="layui-nav-item"><a class="layui-icon layui-icon-star" href="/collection/collections/collection_list" target="main">收藏</a></li>
-      <li class="layui-nav-item">
-        <a href="javascript:;">
-          <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-          张三
-        </a>
-        <dl class="layui-nav-child">
-          <dd><a href="/user/users/user_information" target="main">个人资料</a></dd>
-          <dd><a href="">修改密码</a></dd>
-        </dl>
-      </li>
-      <li class="layui-nav-item"><a href="">退出</a></li>
+    <ul class="layui-nav layui-layout-right" lay-filter="mine" id="mine">
+      <li class="layui-nav-item"><a href="/user/login_view">登录</a></li>
     </ul>
   </div>  
   <div class="layui-side layui-bg-black">

@@ -72,7 +72,7 @@ public class BuyController extends BaseController{
         Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 //		System.out.println(sdf.format(date));
-        model.setOutTradeNo(sdf.format(date));
+        model.setOutTradeNo(sdf.format(date)+"-"+body);
         model.setSubject(subject);
         model.setTotalAmount(total_amount);
         model.setBody(body);
@@ -94,9 +94,6 @@ public class BuyController extends BaseController{
     	//获取支付宝GET过来反馈信息
     	Map<String,String> params = new HashMap<String,String>();
     	Map<String,String[]> requestParams = request.getParameterMap();
-    	AlipayTradePagePayRequest pagePayRequest = new AlipayTradePagePayRequest();
-    	AlipayObject body = pagePayRequest.getBizModel();
-    	System.out.println("zz"+body);
     	for (Iterator<String> iter = requestParams.keySet().iterator(); iter.hasNext();) {
     		String name = (String) iter.next();
     		String[] values = (String[]) requestParams.get(name);
@@ -120,11 +117,13 @@ public class BuyController extends BaseController{
     		//付款金额
     		String total_amount = new String(request.getParameter("total_amount").getBytes("ISO-8859-1"),"UTF-8");
     		
+    		String userId = out_trade_no.substring(out_trade_no.indexOf("-")+1).trim();;
     		//String body = new String(request.getParameter("body").getBytes("ISO-8859-1"),"UTF-8");
 //    		System.out.println("trade_no:"+trade_no+"<br/>out_trade_no:"+out_trade_no+"<br/>total_amount:"+total_amount);
-    		//System.out.println("用户"+body);
-    		//model.put("userId",body);
-    		return view("index");
+    		ModelMap model = new ModelMap();
+    		model.put("userId",userId);
+    		System.out.println("用户"+userId);
+    		return view("index",model);
     	}else {
     		return null;
     	}
