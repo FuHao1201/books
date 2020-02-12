@@ -57,13 +57,11 @@ public class UserController extends BaseController{
 	 */
 	@GetMapping("/index")
 	public ModelAndView index(ModelMap model,String id,String loginname,String status) {
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("index");
 		model.put("id", id);
 		model.put("loginname", loginname);
 		model.put("status", status);
 		System.out.println(model);
-		return modelAndView;
+		return view("index",model);
 	}
 	
 	/**
@@ -116,9 +114,9 @@ public class UserController extends BaseController{
 	@GetMapping("/list")
 	@ResponseBody
 	public JsonResult<List<User>> list(User user){
-		List<User> user1 = userService.list();
-		if (user1 != null) { 
-			return jr("0","查询成功",user1); 
+		List<User> list = userService.list();
+		if (list != null) { 
+			return jr("0","查询成功",list); 
 			}
 		return jr(GlobalConstants.ERROR,"未找到资源");	
 	}

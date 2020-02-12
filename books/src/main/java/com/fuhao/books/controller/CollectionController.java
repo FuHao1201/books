@@ -75,11 +75,9 @@ public class CollectionController extends BaseController{
 	public JsonResult<List<CollectionForm>> collection_list(CollectionForm collection){
 //		System.out.println(collection.getUserId());
 		List<CollectionForm> list = collectionService.listByUserId(collection);
-		System.out.println(list.get(0).getCreateTime());
 		if (list != null) {
-			System.out.println(list);
 			return jr("0","查询成功",list); 
-			}
+		}
 		return jr(GlobalConstants.ERROR,"未找到资源");	
 	}
 	

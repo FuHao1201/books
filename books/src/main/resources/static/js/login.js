@@ -22,6 +22,7 @@ layui.use(['form' ,'layer'], function() {
 //        		debugger
         		_layer.msg('请输入验证码！',{icon: 0});
             }else if(val == num){
+//            	debugger
                 $("#code").val('');
                 getCanvas(show_num);
           		$.post("/user/login",data.field,function(res) {
@@ -32,9 +33,9 @@ layui.use(['form' ,'layer'], function() {
           				_layer.msg(msg, {icon: 1});
 //          				debugger
 //          				window.location.href="/user/index?id="+res.data.id;
-          				$.get("/user/index",res.data,function(res){
+          				$.post("/user/index",res.data,function(res){
           					console.log(res)
-          					document.write(res);
+//          					document.write(res);
           				});
           			}else{
           				_layer.msg(msg, {icon: 2});

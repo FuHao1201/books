@@ -69,9 +69,9 @@ public class BookController extends BaseController{
 	@GetMapping("/list")
 	@ResponseBody
 	public JsonResult<List<Book>> list(Book book){
-		List<Book> book1 = bookService.list();
-		if (book1 != null) { 
-			return jr("0","查询成功",book1); 
+		List<Book> list = bookService.list();
+		if (list != null) { 
+			return jr("0","查询成功",list); 
 			}
 		return jr(GlobalConstants.ERROR,"未找到资源");	
 	}
@@ -84,9 +84,9 @@ public class BookController extends BaseController{
 	@GetMapping("/get")
 	@ResponseBody
 	public JsonResult<Book> get(String id){
-		Book book1 = bookService.getById(id);
-		if (book1 != null) { 
-			return jr("0","查询成功",book1); 
+		Book book = bookService.getById(id);
+		if (book != null) { 
+			return jr("0","查询成功",book); 
 			}
 		return jr(GlobalConstants.ERROR,"未找到资源");	
 	}

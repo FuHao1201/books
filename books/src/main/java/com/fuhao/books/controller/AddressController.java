@@ -53,7 +53,7 @@ public class AddressController extends BaseController{
 	@GetMapping("address_list")
 	public JsonResult<List<Address>> address_list(Address address){
 		List<Address> list = addressService.listByUserId(address);
-		if(list.get(0)!=null) {
+		if(list != null) {
 			return jr("0","查询成功",list);
 		}
 		return jr(GlobalConstants.ERROR,"未找到资源");

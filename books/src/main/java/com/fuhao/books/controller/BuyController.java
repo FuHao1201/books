@@ -217,7 +217,7 @@ public class BuyController extends BaseController{
 	@GetMapping("/buy_list")
 	public JsonResult<List<BuyForm>> buy_list(BuyForm buy){
 		List<BuyForm> list = buyService.listByUserId(buy);
-		if (list.get(0).getBookName() != "") {
+		if (list != null) {
 			return jr("0","查询成功",list); 
 			}
 		return jr(GlobalConstants.ERROR,"未找到资源");	
@@ -225,7 +225,6 @@ public class BuyController extends BaseController{
 	
 	@PostMapping("/removeByUserId")
 	public JsonResult<Buy> removeByUserId(Buy buy){
-		System.out.println(buy);
 		if(buyService.removeByUserId(buy)) {
 			return jr(GlobalConstants.SUCCESS, "删除成功");
 		}
