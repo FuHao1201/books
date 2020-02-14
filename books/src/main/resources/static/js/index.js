@@ -65,5 +65,12 @@ layui.use(['form' ,'layer' ,'element'], function() {
     };
     $(function(){
     	init();
+    	$(document).ready(function () {
+
+    	     if(location.href.indexOf("")==-1){
+    	        location.href=location.href;
+    	        location.reload();
+    	    }
+    	 })
     });
 })
