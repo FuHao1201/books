@@ -5,13 +5,19 @@ layui.use(['form' ,'layer' ,'element'], function() {
     var _form = layui.form,_element = layui.element,_layer = layui.layer;
     var $ = layui.$;
     function init() {
-        var userId = $("#userId").val();
+//        var userId = $("#userId").val();
+        var userId = $("#id").val();
     	console.log(userId)
     	if(userId != ''){
     		getMine(userId , function(){
     			console.log($("#user_information")[0])
     			$("#user_information").click(function(){
-    				debugger
+    				//debugger
+    				getInformation();
+    			});
+    			$("#changePass").click(function(){
+    				//debugger
+    				changePass();
     			});
     		});
     	}
@@ -41,13 +47,23 @@ layui.use(['form' ,'layer' ,'element'], function() {
     	})
     };
     function getInformation(){
-    	debugger
+    	//debugger
         var userId = $("#userId").val();
     	_layer.open({
 			title: '个人资料',
 			type : 2,
-			area: ['750px', '500px'],
+			area: ['400px', '350px'],
 			content: '/user/users/user_information/?id='+userId,
+		});
+    };
+    function changePass(){
+    	//debugger
+        var userId = $("#userId").val();
+    	_layer.open({
+			title: '密码修改',
+			type : 2,
+			area: ['480px', '300px'],
+			content: '/user/users/user_changePass/?id='+userId,
 		});
     };
     function getBookType(){//获取图书类型
@@ -66,7 +82,6 @@ layui.use(['form' ,'layer' ,'element'], function() {
     $(function(){
     	init();
     	$(document).ready(function () {
-
     	     if(location.href.indexOf("")==-1){
     	        location.href=location.href;
     	        location.reload();

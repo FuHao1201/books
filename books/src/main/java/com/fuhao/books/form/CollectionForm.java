@@ -1,7 +1,6 @@
 package com.fuhao.books.form;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 import com.fuhao.books.domain.Collection;
 

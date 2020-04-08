@@ -74,6 +74,15 @@ public class UserController extends BaseController{
 	}
 	
 	/**
+	 * 跳转登录界面
+	 * @return 登录界面
+	 */
+	@GetMapping("/register_view")
+	public ModelAndView register_view() {
+		return view("register");
+	}
+	
+	/**
 	 * 跳转用户有关的界面
 	 * @param html 界面名
 	 * @param id 用户id
@@ -86,6 +95,10 @@ public class UserController extends BaseController{
 			model.put("id", id);
 	        return view("users/"+html,model);
 		}if(html.equals("user_information")) {
+			model.put("id", id);
+	        return view("users/"+html,model);
+		}
+		if(html.equals("user_changePass")) {
 			model.put("id", id);
 	        return view("users/"+html,model);
 		}
@@ -172,6 +185,19 @@ public class UserController extends BaseController{
 			return jr(GlobalConstants.SUCCESS, "删除成功");
 		}
 		return jr(GlobalConstants.ERROR, "删除失败");
-		
 	}
+	
+	/**
+	 * 修改密码时密码对比
+	 * @param user 查询参数
+	 * @return json
+	 */
+	@PostMapping("/comparePass")
+    public JsonResult<User> comparePass(User user) {
+		User user1 = userService.getById(user.getId());
+		if(user.getPassword().equals(user1.getPassword())) {
+			return jr(GlobalConstants.SUCCESS,"原密码正确");
+		}
+		return jr(GlobalConstants.ERROR,"原密码错误");
+    }
 }

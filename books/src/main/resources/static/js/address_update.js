@@ -9,15 +9,15 @@ layui.use(['form','layer'], function() {
 	    _form.render();
 	    _form.on('submit',function(data){
 	  	  console.log(data)
-				$.post("/address/save", data.field, function(res) {
-					console.log(res)
-					var msg = res.message;
-					_layer.msg(msg, {icon: 1});
-					_form.val('formData', res.data);
-					parent.layui.layer.closeAll();
-					parent.layui.table.reload('address');//重载父页表格，参数为表格ID
-				});
-			});
+	  	  $.post("/address/save", data.field, function(res) {
+			console.log(res)
+			var msg = res.message;
+			_layer.msg(msg, {icon: 1});
+			_form.val('formData', res.data);
+			parent.layui.layer.closeAll();
+			parent.layui.table.reload('address');//重载父页表格，参数为表格ID
+	  	  	});
+	    });
 	};
 	function getForm(){//根据id获取图书信息
 		var id = $("#id").val();

@@ -175,7 +175,7 @@ layui.use(['form' ,'table' ,'layer','element'], function() {
 		_layer.open({
 			title: '下单',
 			type : 2,
-			area: ['750px', '500px'],
+			area: ['750px', '400px'],
 			content: '/buy/buys/buy_list/?userId='+userId,
 			closeBtn: 0
 		});

@@ -32,11 +32,11 @@ layui.use(['form' ,'layer'], function() {
           			if(res.code == "SUCCESS"){
           				_layer.msg(msg, {icon: 1});
 //          				debugger
-//          				window.location.href="/user/index?id="+res.data.id;
-          				$.post("/user/index",res.data,function(res){
-          					console.log(res)
+          				window.location.href="/user/index?id="+res.data.id;
+//          				$.get("/user/index",res.data,function(res){
+//          					console.log(res)
 //          					document.write(res);
-          				});
+//          				});
           			}else{
           				_layer.msg(msg, {icon: 2});
           			}

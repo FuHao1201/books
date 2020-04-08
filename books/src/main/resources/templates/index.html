@@ -15,26 +15,16 @@
 		font-size: 12px;
 	}
 </style>
-<body class="layui-layout-body">
+<body class="layui-layout-body" style="height:600px">
   <input id="userId" type="hidden" value="1">
-  <!-- <input id="id" type="hidden" th:value="${id}"> -->
+  <input id="id" type="hidden" th:value="${id}">
   <div class="layui-header">
 	<div class="layui-nav" style="width: 100%;height: 60px">
-<!-- 		<ul class="layui-nav" style="height: 30px;">
-			<li class="layui-nav-item">欢迎光临西柚图书网</li>
-			<li class="layui-nav-item" ><a href="javascript:;">张三</a>
-				<dl class="layui-nav-child" style="">
-					<dd>个人信息</dd>
-					<dd>修改密码</dd>
-				</dl>
-			</li>
-		</ul> -->
-<!-- 		<div class="layui-logo layui-bg-blue">西柚图书网</div> -->
 		<ul class="layui-nav layui-layout-right" lay-filter="mine" id="mine">
-		  	<li class="layui-nav-item"><a class="layui-icon layui-icon-cart" href="/car/cars/car_list" target="main">购物车</a></li>
+<!--		  	<li class="layui-nav-item"><a class="layui-icon layui-icon-cart" href="/car/cars/car_list" target="main">购物车</a></li>
 		  	<li class="layui-nav-item"><a class="layui-icon layui-icon-star" href="/collection/collections/collection_list" target="main">收藏</a></li>
 		  	<li class="layui-nav-item">
-				<a href="javascript:;">
+ 				<a href="javascript:;">
 				<img src="http://t.cn/RCzsdCq" class="layui-nav-img">
 				张三
 				</a>
@@ -46,8 +36,8 @@
 					<dd><a href="/user/users/user_information" target="main">个人资料</a></dd>
 					<dd><a href="">修改密码</a></dd>
 				</dl>
-		  	</li>
-		  	<li class="layui-nav-item"><a href="">退出</a></li>
+		  	</li> -->
+		  	<li class="layui-nav-item"><a href="/user/login_view">登录</a></li>
 		</ul>
 		
 	</div> 
@@ -60,8 +50,8 @@
 			<button class="layui-btn layui-btn-normal" style="width: 80px;float: right;margin-top: -38px;">搜索</button>
 			<select class="layui-select" style=" width: 80px;float: right;margin-top: -38px;margin-right: 80px;">
 				<option value="bookName">书名</option>
-				<option value="bookName">作者</option>
-				<option value="">出版社</option>
+				<option value="author">作者</option>
+				<option value="publishingHouse">出版社</option>
 			</select>
 		</div>
 	</div>
@@ -92,7 +82,6 @@
 						<a href="">小说</a>
 						<a href="">青春文学</a>  
 					  </p>
-					  
 				  </dd>
 				</dl>
 			</li>
@@ -100,7 +89,7 @@
 	</div>
 	<hr />
   </div>
-  <div class="layui-main" id="body" style="border:1px solid #0000FF;width: 100%;margin-top: 150px;height: 400px;">
+  <div class="layui-main" id="body" style="border:1px solid #0000FF;width: 100%;margin-top: 150px;height: 390px;">
     <!-- 内容主体区域 -->
 <!--     <input id="id" name="id" class="layui-input" value="id"> -->
     <iframe src="/user/main" name="main" id="main" width="100%" height="100%" frameborder="0"></iframe>
