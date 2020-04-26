@@ -31,8 +31,10 @@ layui.use(['form' ,'table' ,'layer','element'], function() {
             }
         });
 		$("#toCar").click(function(){
-			parent.layui.layer.closeAll();
-			parent.layui.table.reload('car');//重载父页表格，参数为表格ID
+			var userId=$("#userId").val();
+			$.post("/buy/removeByUserId",{userId:userId},function(res){
+				  parent.layui.layer.closeAll();
+			  });
         });
 		$("#order").click(function(){
 			if($("#order").hasClass("layui-btn-disabled")==true){
@@ -123,7 +125,7 @@ layui.use(['form' ,'table' ,'layer','element'], function() {
   					}
 				  $.post("/buy/removeByUserId",{userId:userId},function(res){
 					  parent.layui.layer.closeAll();
-					  parent.layui.table.reload('car');//重载父页表格，参数为表格ID
+//					  parent.layui.table.reload('car');//重载父页表格，参数为表格ID
 				  });
 			  }); 
 		});

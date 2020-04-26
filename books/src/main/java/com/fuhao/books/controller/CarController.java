@@ -45,7 +45,6 @@ public class CarController extends BaseController{
 	@GetMapping("/cars/{html}")
 	public ModelAndView views(@PathVariable String html,String userId,ModelMap model) {
 		if(html.equals("car_list")) {
-			userId = "1";
 			model.put("userId", userId);
 	        return view("cars/"+html,model);
 		}

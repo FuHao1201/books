@@ -8,7 +8,6 @@ layui.use(['form' ,'table' ,'layer','element'], function() {
     
     function init() {
     	var userId=$("#userId").val();
-    	
     	_table.on('checkbox(car)', function(obj){
     		$(".number").on("input",function(data){
     			var checkStatus = _table.checkStatus('car');
@@ -144,8 +143,6 @@ layui.use(['form' ,'table' ,'layer','element'], function() {
         , data = checkStatus.data //获取选中的数据
         , ids = [];
 		console.log(data)
-//		var sum_all = $("#sum_all").text().split('￥')[1];
-//		var bookId = data;
 		$.each(data, function(i,val){
 			ids.push(val.id);
 		});
@@ -153,7 +150,6 @@ layui.use(['form' ,'table' ,'layer','element'], function() {
 			_layer.msg('请选择商品', {icon: 0});
 			return;
 		}
-//		console.log(data)
 		for(var i=0; i<data.length; i++){
 			var numId = data[i].id;
 			var bookNum = $("#"+numId).val();
@@ -177,12 +173,14 @@ layui.use(['form' ,'table' ,'layer','element'], function() {
 			type : 2,
 			area: ['750px', '400px'],
 			content: '/buy/buys/buy_list/?userId='+userId,
+			end: function(){
+				_table.reload();
+			},
 			closeBtn: 0
 		});
 	}
     $(function() {
     	var userId=$("#userId").val();
-    	
     	_table.init('car', {
     		url:'/car/car_list/?userId='+userId
     		,done: function(res){

@@ -44,7 +44,6 @@ public class CollectionController extends BaseController{
 	@GetMapping("/collections/{html}")
 	public ModelAndView views(@PathVariable String html,String userId,ModelMap model) {
 		if (html.equals("collection_list")) {
-			userId = "1";
 			model.put("userId", userId);
 			return view("collections/"+html,model);
 		}

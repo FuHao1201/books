@@ -31,12 +31,20 @@ layui.use(['form' ,'layer'], function() {
           			var msg = res.message;
           			if(res.code == "SUCCESS"){
           				_layer.msg(msg, {icon: 1});
-//          				debugger
-          				window.location.href="/user/index?id="+res.data.id;
-//          				$.get("/user/index",res.data,function(res){
-//          					console.log(res)
-//          					document.write(res);
-//          				});
+          				var form = $("<form>");
+          			    form.attr("style","display:none");
+          			    form.attr("target","");
+          			    form.attr("method","post");
+          			    //请求地址
+          			    form.attr("action","/user/index");
+          			    var input1 = $("<input>");
+          			    input1.attr("type","hidden");
+          			    input1.attr("name","id");
+          			    input1.attr("value",res.data.id);
+          			    $("body").append(form);
+          			    form.append(input1);
+          			    form.submit();
+          			    form.remove();
           			}else{
           				_layer.msg(msg, {icon: 2});
           			}

@@ -15,31 +15,14 @@
 		font-size: 12px;
 	}
 </style>
-<body class="layui-layout-body" style="height:600px">
-  <input id="userId" type="hidden" value="1">
-  <input id="id" type="hidden" th:value="${id}">
+<body class="layui-layout-body" style="height:400px;overflow:scroll;">
+  <!-- <input id="userId" type="hidden" value="1"> -->
+  <input id="userId" type="hidden" th:value="${id}">
   <div class="layui-header">
 	<div class="layui-nav" style="width: 100%;height: 60px">
 		<ul class="layui-nav layui-layout-right" lay-filter="mine" id="mine">
-<!--		  	<li class="layui-nav-item"><a class="layui-icon layui-icon-cart" href="/car/cars/car_list" target="main">购物车</a></li>
-		  	<li class="layui-nav-item"><a class="layui-icon layui-icon-star" href="/collection/collections/collection_list" target="main">收藏</a></li>
-		  	<li class="layui-nav-item">
- 				<a href="javascript:;">
-				<img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-				张三
-				</a>
-				<dl class="layui-nav-child">
-				          <dd><a href="">基本资料</a></dd>
-				          <dd><a href="">安全设置</a></dd>
-				        </dl>
-				<dl class="layui-nav-child">
-					<dd><a href="/user/users/user_information" target="main">个人资料</a></dd>
-					<dd><a href="">修改密码</a></dd>
-				</dl>
-		  	</li> -->
 		  	<li class="layui-nav-item"><a href="/user/login_view">登录</a></li>
-		</ul>
-		
+		</ul>		
 	</div> 
     <div style="margin-left: 80px;" class="layui-row">
     	<div class="layui-col-md4">
@@ -89,10 +72,16 @@
 	</div>
 	<hr />
   </div>
-  <div class="layui-main" id="body" style="border:1px solid #0000FF;width: 100%;margin-top: 150px;height: 390px;">
+  <div class="layui-main" id="body" style="border:1px solid #0000FF;width: 100%;margin-top: 150px;">
     <!-- 内容主体区域 -->
-<!--     <input id="id" name="id" class="layui-input" value="id"> -->
-    <iframe src="/user/main" name="main" id="main" width="100%" height="100%" frameborder="0"></iframe>
+    <div class="layui-card layui-admin-header">
+    	<div class="layui-breadcrumb" style="margin-left:20px" lay-filter="breadcrumb" id="breadcrumb">
+    	
+    	</div>
+	</div>
+    <ul class="layui-row" style="margin-left:30px" id="book" lay-filter="book">
+    
+    </ul>
   </div>
 <script type="text/javascript" src="/layui/layui.all.js"></script>
 <script type="text/javascript" src="/js/index.js"></script>

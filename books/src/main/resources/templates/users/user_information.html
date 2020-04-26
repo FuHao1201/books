@@ -6,7 +6,13 @@
 <link rel="stylesheet" href="/layui/css/layui.css">
 </head>
 <body>
-<h1>个人资料</h1>
-<input id="id" type="text" th:value="${id}" class="layui-input">
+  <br/>
+  <input id="id" type="hidden" th:value="${id}" class="layui-input">
+  <div id="information" lay-filter="information" style="margin-left:10px;">
+  </div>
+  <br/>
+  <button id="editInformation" class="layui-btn" style="margin-left:40px;">编辑个人资料</button>
 </body>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/user_information.js"></script>
 </html>

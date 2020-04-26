@@ -49,13 +49,17 @@ public class BookController extends BaseController{
 	 * @return 界面
 	 */
 	@GetMapping("/books/{html}")
-	public ModelAndView views(@PathVariable String html,String id,String bookType,ModelMap model) {
+	public ModelAndView views(@PathVariable String html,String id,String bookId,String userId,String bookType,ModelMap model) {
 		if(html.equals("book_update")) {
 			model.put("id", id);
 	        return view("books/"+html,model);
 		}if (html.equals("book_list_type")) {
 			model.put("bookType", bookType);
 			System.out.println(model);
+			return view("books/"+html,model);
+		}if (html.equals("book_detail")) {
+			model.put("bookId", bookId);
+			model.put("userId", userId);
 			return view("books/"+html,model);
 		}
 		return view("books/"+html);

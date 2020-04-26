@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>图书详情</title>
+<link rel="stylesheet" href="/layui/css/layui.css">
+<style>
+	.layui-input{
+		border : none;
+	}
+</style>
+</head>
+<body>
+<form class="layui-form" action="" lay-filter="formData">
+<br>
+<!--    <div class="layui-tools">
+       <a href="#" class="layui-btn layui-btn-sm" lay-submit><i class="layui-icon layui-icon-ok"></i>保存</a>
+   </div>
+   <br> -->
+   	 <input type="hidden" placeholder="图书id" name="bookId" id="bookId" th:value="${bookId}" class="layui-input">
+   	 <input type="hidden" placeholder="用户id" name="userId" id="userId" th:value="${userId}" class="layui-input">
+	 <div class="layui-form-item">
+	  	<div class="layui-col-sm3" style="margin-left:30px;">
+	      	<img name="bookPictures" id="bookPictures" alt="" src="">
+	  	</div>
+	  	<div class="layui-col-sm4">
+			<input type="text" name="bookName" class="layui-input" readOnly="true" width="60px">
+			<input type="text" name="bookType" readOnly="true" class="layui-input" width="60px">
+			<input type="text" name="bookNum" readOnly="true" class="layui-input" width="60px">
+	  		<input type="text" name="price" readOnly="true" class="layui-input" width="60px">
+	  		<input type="text" name="author" readOnly="true" class="layui-input" width="60px">
+	  		<textarea style="width: 500px; border: none;" name="synopsis" readOnly="true" class="layui-textarea"></textarea>
+	  	</div>
+	</div>
+</form>
+</body>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/book_detail.js"></script>
+</html>

@@ -55,12 +55,11 @@ public class UserController extends BaseController{
 	 * @param status 身份
 	 * @return 主页
 	 */
-	@GetMapping("/index")
+	@PostMapping("/index")
 	public ModelAndView index(ModelMap model,String id,String loginname,String status) {
 		model.put("id", id);
 		model.put("loginname", loginname);
 		model.put("status", status);
-		System.out.println(model);
 		return view("index",model);
 	}
 	
