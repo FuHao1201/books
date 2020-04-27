@@ -1,9 +1,14 @@
 package com.fuhao.books.service.impl;
 
 import com.fuhao.books.domain.User;
+import com.fuhao.books.form.UserForm;
 import com.fuhao.books.dao.UserDao;
 import com.fuhao.books.service.UserService;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +36,18 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserS
 			}
 		}
 		return null;
+	}
+
+	@Override
+	public List<UserForm> listAll(UserForm user) {
+		UserForm user1 = userdao.getCount(user);
+		
+		int cur = (user.getCurrent()-1)*user.getSize();
+		System.out.println("888"+cur);
+		user.setCurrent(cur);
+		List<UserForm> list = userdao.listAll(user);
+		list.get(0).setCount(user1.getCount());
+		return list;
 	}
 
 }

@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.fuhao.books.domain.JsonResult;
+import com.fuhao.books.domain.PageResult;
 
 /**
  * @Description API接口基类，所有返回json格式数据应该继承该类
@@ -93,5 +95,16 @@ public abstract class BaseController{
 		modelAndView.addObject(modelObject);
 		return modelAndView;
 	}
+    protected <T> PageResult<T> jr(IPage<T> page){
+        return jr(GlobalConstants.SUCCESS, "", page);
+    }
+
+    protected <T> PageResult<T> jr(String message, IPage<T> page){
+        return jr(GlobalConstants.SUCCESS, message, page);
+    }
+
+    protected <T> PageResult<T> jr(String code, String message, IPage<T> page){
+        return new PageResult<>(code, message, page);
+    }
 }
 

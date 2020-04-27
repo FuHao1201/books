@@ -32,7 +32,7 @@
         <li class="layui-nav-item">
           <a class="" href="javascript:;">图书管理</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">所有图书</a></dd>
+            <dd><a href="/book/books/book_list" target="main">所有图书</a></dd>
             <dd><a href="javascript:;">列表二</a></dd>
             <dd><a href="javascript:;">列表三</a></dd>
           </dl>
@@ -40,7 +40,7 @@
         <li class="layui-nav-item">
           <a href="javascript:;">用户管理</a>
           <dl class="layui-nav-child">
-            <dd><a href="/books/user_list.html">用户列表</a></dd>
+            <dd><a href="/user/users/user_list" target="main">用户列表</a></dd>
             <dd><a href="javascript:;">管理员列表</a></dd>
           </dl>
         </li>
@@ -48,25 +48,12 @@
     </div>
   </div>
   
-  <div class="layui-body">
+  <div class="layui-body" style="bottom: 0px;">
     <!-- 内容主体区域 -->
-    <iframe src="/main.html" name="main" id="main"></iframe>
-    <!-- <div style="padding: 15px;">内容主体区域</div> -->
-  </div>
-  
-  <div class="layui-footer">
-    <!-- 底部固定区域 -->
-    © layui.com - 底部固定区域
+    <iframe src="/user/main" name="main" id="main" width="100%" height="98%"></iframe>
   </div>
 </div>
-<!-- <script>
-//JavaScript代码区域
-layui.use('element', function(){
-  var element = layui.element;
-  
-});
-</script> -->
-<script type="text/javascript" src="/layui/layui.js"></script>
-<script type="text/javascript" src="/js/manager.js"></script>
+<script type="text/javascript" src="/layui/layui.all.js"></script>
+<script type="text/javascript" src="/js/admin.js"></script>
 </body>
 </html>

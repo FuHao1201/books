@@ -13,10 +13,9 @@ layui.use(['form' ,'table' ,'layer','laypage'], function() {
 	    	var data = obj.data;
             if(event == 'reload') {
             	obj = {page: 1}; //查询从首页开始
-            	reload();
+            	reload(obj);
             }
             if(event == 'update'){
-            	debugger
             	edit(data.id);
             }
             if(event == 'remove'){
@@ -97,19 +96,48 @@ layui.use(['form' ,'table' ,'layer','laypage'], function() {
 			condition
 		});
 	}; 	
-    $(function() {
+    $(function() {    	
     	_table.init('user', {
-		  	  height: 315 //设置高度
+		  	  height: 315, //设置高度
 //		  	  ,limit: 10//注意：请务必确保 limit 参数（默认：10）是与你服务端限定的数据条数一致
-		  	  ,parseData: function(res){ //res 即为原始返回的数据
+	  		  page: {
+	  			  curr: '1', //重新从第 1 页开始
+	  		  },
+		  	  limit: 6,
+	    	  limits: [6, 12, 20],
+	    	  first: '首页',
+	    	  last: '尾页',
+	    	  layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+	    	  parseData: function(res){ //res 即为原始返回的数据
 //		  		  debugger
-		  		  console.log(res.data)
+		  		  console.log(res)
 		       return {
 		          "code": res.code, //解析接口状态
 		          "msg": res.message, //解析提示文本
-		          "count": res.data.length, //解析数据长度
+		          "count": res.total, //解析数据长度
 		          "data": res.data, //解析数据列表
 		        };
+		    	
+		  	  }
+		  	  ,done : function(res){
+		  		  console.log(res)
+		  		  var i=0;
+		  		  if(i=0){
+		  			  debugger
+		  			i=i+1;
+		  			var size = $(".layui-laypage-limits").find("option:selected").val(); //分页数目
+				  	var current = $(".layui-laypage-skip .layui-input").val(); //当前页码值
+				  	var json = {
+				  		size : size,
+				  		current : current,
+				  	};
+		    		reload(json);
+				  	console.log(json)  
+		  		  }
+		  		$(".layui-laypage-skip .layui-input").on("propertychange", function () {
+		  			debugger
+		  	        console.log("正在输入...");
+		  		});
 		  	  }
 		  	  //支持所有基础参数
 		  	});

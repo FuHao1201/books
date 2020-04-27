@@ -17,10 +17,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.fuhao.books.common.BaseController;
 import com.fuhao.books.common.GlobalConstants;
 import com.fuhao.books.domain.JsonResult;
+import com.fuhao.books.domain.PageResult;
 import com.fuhao.books.domain.User;
+import com.fuhao.books.form.UserForm;
 import com.fuhao.books.service.UserService;
 
 /**
@@ -45,6 +48,17 @@ public class UserController extends BaseController{
 	@GetMapping("/main")
 	public ModelAndView main() {
 		return view("main");
+	}
+	
+	/**
+	 * 跳转管理员界面
+	 * @param id 用户id
+	 * @return 管理员界面
+	 */
+	@GetMapping("/admin")
+	public ModelAndView admin(ModelMap model,String id) {
+		model.put("id", id);
+		return view("admin",model);
 	}
 	
 	/**
@@ -117,20 +131,36 @@ public class UserController extends BaseController{
 		}
 		return jr(GlobalConstants.ERROR,"登录名或密码错误");
     }
+
+	/**
+	 * 用户查询
+	 * @param user 查询的表单参数
+	 * @return json
+	 */
+//	@PostMapping("/list")
+//	@ResponseBody
+//	public PageResult<User> list(Page<User> page,User user){
+//		Page<User> page1 = userService.listAll(page, user);
+//		System.out.println(page1.getTotal());
+//		return jr("0","查询成功",page1);
+////		if (list != null) { 
+////			return jr("0","查询成功",page); 
+////			}
+////		return jr(GlobalConstants.ERROR,"未找到资源",page);	
+//	}
 	
 	/**
 	 * 用户查询
 	 * @param user 查询的表单参数
 	 * @return json
 	 */
-	@GetMapping("/list")
+	@GetMapping("/listAll")
 	@ResponseBody
-	public JsonResult<List<User>> list(User user){
-		List<User> list = userService.list();
-		if (list != null) { 
-			return jr("0","查询成功",list); 
-			}
-		return jr(GlobalConstants.ERROR,"未找到资源");	
+	public JsonResult<List<UserForm>> listAll(UserForm user,String size,String current){
+		System.out.println("555"+size);
+		System.out.println("555"+current);
+		List<UserForm> list = userService.listAll(user);
+		return jr("0","查询成功",list);
 	}
 	
 	/**
