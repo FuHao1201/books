@@ -55,7 +55,7 @@ public class UserController extends BaseController{
 	 * @param id 用户id
 	 * @return 管理员界面
 	 */
-	@GetMapping("/admin")
+	@PostMapping("/admin")
 	public ModelAndView admin(ModelMap model,String id) {
 		model.put("id", id);
 		return view("admin",model);
@@ -84,6 +84,15 @@ public class UserController extends BaseController{
 	@GetMapping("/login_view")
 	public ModelAndView login_view() {
 		return view("login");
+	}
+	
+	/**
+	 * 跳转管理员登录界面
+	 * @return 登录界面
+	 */
+	@GetMapping("/admin_login_view")
+	public ModelAndView admin_login_view() {
+		return view("admin_login");
 	}
 	
 	/**
@@ -156,11 +165,16 @@ public class UserController extends BaseController{
 	 */
 	@GetMapping("/listAll")
 	@ResponseBody
-	public JsonResult<List<UserForm>> listAll(UserForm user,String size,String current){
-		System.out.println("555"+size);
-		System.out.println("555"+current);
+	public JsonResult<List<UserForm>> listAll(UserForm user){
+//		System.out.println(page);
+//		user.setPage(page);
+		System.out.println(user.getPage());
 		List<UserForm> list = userService.listAll(user);
-		return jr("0","查询成功",list);
+		System.out.println("444"+list);
+		if (list != null) { 
+			return jr("0","查询成功",list); 
+			}
+		return jr(GlobalConstants.ERROR,"未找到资源");
 	}
 	
 	/**

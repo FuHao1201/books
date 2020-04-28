@@ -34,10 +34,10 @@ FROM
 WHERE
 	logic_delete_flag = 0 
 	<if test="user.loginname != null and user.loginname != ''">
-	and loginname like %#{user.loginname}%
+	and loginname like "%"#{user.loginname}"%"
 	</if>
 	<if test="user.name != null and user.name != ''">
-	and name like %#{user.name}%
+	and name like "%"#{user.name}"%"
 	</if>
 	<if test="user.identity != null and user.identity != ''">
 	and identity = #{user.identity}
@@ -45,7 +45,7 @@ WHERE
 	<if test="user.status != null and user.status != ''">
 	and status = #{user.status}
 	</if>
-
+	limit #{user.page},20
     </select>
     <select id="getCount" resultType="com.fuhao.books.form.UserForm">
 SELECT
@@ -55,10 +55,10 @@ FROM
 WHERE
 	logic_delete_flag = 0 
 	<if test="user.loginname != null and user.loginname != ''">
-	and loginname like %#{user.loginname}%
+	and loginname like "%"#{user.loginname}"%"
 	</if>
 	<if test="user.name != null and user.name != ''">
-	and name like %#{user.name}%
+	and name like "%"#{user.name}"%"
 	</if>
 	<if test="user.identity != null and user.identity != ''">
 	and identity = #{user.identity}

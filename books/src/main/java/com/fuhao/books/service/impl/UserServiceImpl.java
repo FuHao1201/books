@@ -41,13 +41,16 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserS
 	@Override
 	public List<UserForm> listAll(UserForm user) {
 		UserForm user1 = userdao.getCount(user);
-		
-		int cur = (user.getCurrent()-1)*user.getSize();
-		System.out.println("888"+cur);
-		user.setCurrent(cur);
-		List<UserForm> list = userdao.listAll(user);
-		list.get(0).setCount(user1.getCount());
-		return list;
+		if(user1.getCount() == 0) {
+			return null;
+		}else {
+			int page = (user.getPage()-1)*20;
+			System.out.println("888"+page);
+			user.setPage(page);
+			List<UserForm> list = userdao.listAll(user);
+			list.get(0).setCount(user1.getCount());
+			return list;
+		}
 	}
 
 }

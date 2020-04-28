@@ -28,7 +28,7 @@
 		  	<div class="layui-col-md5">
 		  		<label class="layui-form-label">身份证号：</label>
 		    	<div class="layui-input-inline">
-		      		<input type="text" placeholder="身份证号" name="identity" autocomplete="off" class="layui-input" width="60px">
+		      		<input type="text" placeholder="请输入完整的身份证号"  name="identity" class="layui-input" width="60px">
 		    	</div>
 		  	</div>
 		  	<div class="layui-col-md5">
@@ -49,7 +49,7 @@
 		</form>
 	</div>  		
 </div>
-<table class="layui-table" align="center" lay-skin="line" lay-data="{height:500, url:'/user/listAll/', id:'user', toolbar:'#tableToolbar'}" lay-filter="user">
+<table class="layui-table" align="center" limit="20" page="true" lay-skin="line" lay-data="{height:500, url:'/user/listAll/', id:'user', toolbar:'#tableToolbar'}" lay-filter="user">
   <thead>
     <tr>
       <th lay-data="{type:'checkbox'}"></th>

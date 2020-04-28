@@ -1,6 +1,7 @@
 package com.fuhao.books.service;
 
 import com.fuhao.books.domain.Book;
+import com.fuhao.books.form.BookForm;
 
 import java.util.List;
 
@@ -28,5 +29,12 @@ public interface BookService extends IService<Book> {
 	 * @return 图书集合
 	 */
 	List<Book> listBytype(Book book);
+
+	/**
+	 * 
+	 * @param book
+	 * @return
+	 */
+	List<BookForm> listAll(BookForm book);
 
 }

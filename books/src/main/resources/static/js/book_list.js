@@ -4,9 +4,9 @@
 
 layui.use(['form' ,'table' ,'layer'], function() { 
 	var $ = layui.$; 
-    var _table = layui.table,_form = layui.form,_layer= layui.layer;
-    
+    var _table = layui.table,_form = layui.form,_layer= layui.layer; 
     function init() {
+    	getBookType();
 		// 工具栏监听
 	    _table.on('tool(book)', function(obj){
             var event = obj.event;
@@ -16,7 +16,6 @@ layui.use(['form' ,'table' ,'layer'], function() {
             	reload();
             }
             if(event == 'update'){
-            	debugger
             	edit(data.id);
             }
             if(event == 'remove'){
@@ -25,7 +24,7 @@ layui.use(['form' ,'table' ,'layer'], function() {
 	    });
 	  //表头排序监听
 		_table.on('sort(book)',function(obj){   
-            methods.reload();
+            reload();
         });
 	    //单行监听
 		_table.on('toolbar(book)',function(obj){ 
@@ -41,8 +40,27 @@ layui.use(['form' ,'table' ,'layer'], function() {
         });
 		_form.on('submit(SearchForm)', function(data){
 			  var condition = {where : data.field, page : 1};
-			  _table.reload('book', condition);
+			  _table.reload('book', {
+				  page: {
+		  			  layout: ['prev','page', 'next','count',],
+		  			  limit: 20,
+		  		  },where: {
+		  			  bookName : data.field.bookName,
+		  			  author : data.field.author,
+		  			  bookType : data.field.bookType,
+		  			  page : '1'
+		  		  	}
+		  		  });
 			  return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+		});
+	};
+	function getBookType(){
+		$.get("/book/getBookType",{}, function(res) {
+			$('#bookType').append(new Option('请选择', ''));// 下拉菜单里添加元素
+			$.each(res.data, function (index, item) {
+				$('#bookType').append(new Option(item.bookType, item.bookType));// 下拉菜单里添加元素
+			});
+			_form.render('select');
 		});
 	};
 	function add() { //新增
@@ -50,6 +68,9 @@ layui.use(['form' ,'table' ,'layer'], function() {
 			title : '新增图书',
 			type : 2,
 			area: ['500px', '500px'],
+			end: function(){
+				reload();
+			},
 			content : '/book/books/book_add'
 		})
 	};
@@ -59,6 +80,9 @@ layui.use(['form' ,'table' ,'layer'], function() {
 			title : "编辑图书",
 			type : 2,
 			area: ['500px', '500px'],
+			end: function(){
+				reload();
+			},
 			content : '/book/books/book_update?id='+ id
 		});
 	};
@@ -94,22 +118,56 @@ layui.use(['form' ,'table' ,'layer'], function() {
 	};
 	function reload(condition) { // 重载列表
 		_table.reload('book',{
-			condition
+			page: {
+	  			  layout: ['prev','page', 'next','count',],
+	  			  limit: 20,
+	  		  },where: {
+	  			condition
+	  		  }
 		});
 	}; 	
     $(function() {
+    	var flag = false;
     	_table.init('book', {
-		  	  height: 315 //设置高度
-//		  	  ,limit: 10//注意：请务必确保 limit 参数（默认：10）是与你服务端限定的数据条数一致
-		  	  ,parseData: function(res){ //res 即为原始返回的数据
-//		  		  debugger
-		  		  console.log(res.data)	  		  	 
+	  		  page: {
+	  			  curr: '1', //重新从第 1 页开始
+	  			  layout: ['prev','page', 'next','count',],
+	  			  limit: 20,
+	  		  },    	  
+	    	  parseData: function(res){ //res 即为原始返回的数据
+	    		  console.log(res)
+	    		  if(res.data == null){
+                      //显示无数据提示内容
+                      return {
+                          "code": 201, //解析接口状态
+                          "msg": '未查到数据' //解析提示文本
+                      };
+                  }
 		       return {
 		          "code": res.code, //解析接口状态
 		          "msg": res.message, //解析提示文本
-		          "count": res.data.length, //解析数据长度
+		          "count": res.data[0].count, //解析数据长度
 		          "data": res.data, //解析数据列表
 		        };
+		  	  }
+		  	  ,done : function(res){
+		  		  console.log(res)
+		  		  if(!flag){
+		  			  var page = $(".layui-laypage-curr").text();
+					  var json = {
+					  		page : page
+					  };
+					  reload(json);
+					  console.log(json) 
+					  flag = true;
+		  		  }
+		  		$(".layui-box").click(function(){
+		  			var page = $(".layui-laypage-curr").text();
+		  			var condition = {
+		  					page : page,
+		  			};
+		  			reload(page);
+		  		});
 		  	  }
 		  	  //支持所有基础参数
 		  	});

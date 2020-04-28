@@ -13,6 +13,7 @@ import com.fuhao.books.common.BaseController;
 import com.fuhao.books.common.GlobalConstants;
 import com.fuhao.books.domain.Book;
 import com.fuhao.books.domain.JsonResult;
+import com.fuhao.books.form.BookForm;
 import com.fuhao.books.service.BookService;
 
 import java.util.Arrays;
@@ -72,8 +73,8 @@ public class BookController extends BaseController{
 	 */
 	@GetMapping("/list")
 	@ResponseBody
-	public JsonResult<List<Book>> list(Book book){
-		List<Book> list = bookService.list();
+	public JsonResult<List<BookForm>> list(BookForm book){
+		List<BookForm> list = bookService.listAll(book);
 		if (list != null) { 
 			return jr("0","查询成功",list); 
 			}

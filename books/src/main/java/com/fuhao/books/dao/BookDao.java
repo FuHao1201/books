@@ -1,6 +1,7 @@
 package com.fuhao.books.dao;
 
 import com.fuhao.books.domain.Book;
+import com.fuhao.books.form.BookForm;
 
 import java.util.List;
 
@@ -30,5 +31,19 @@ public interface BookDao extends BaseMapper<Book> {
 	 * @return 图书集合
 	 */
 	List<Book> listBytype(@Param("book")Book book);
+
+	/**
+	 * 
+	 * @param book
+	 * @return
+	 */
+	BookForm getCount(@Param("book")BookForm book);
+
+	/**
+	 * 
+	 * @param book
+	 * @return
+	 */
+	List<BookForm> listAll(@Param("book")BookForm book);
 
 }

@@ -39,8 +39,18 @@ layui.use(['form' ,'table' ,'layer','laypage'], function() {
             }
         });
 		_form.on('submit(SearchForm)', function(data){
-			  var condition = {where : data.field, page : 1};
-			  _table.reload('user', condition);
+			  _table.reload('user', {
+				  page: {
+	  			  layout: ['prev','page', 'next','count',],
+	  			  limit: 20,
+	  		  },where: {
+	  			  name : data.field.name,
+	  			  loginname : data.field.loginname,
+	  			  identity : data.field.identity,
+	  			  status : data.field.status,
+	  			  page : '1'
+	  		  	}
+	  		  });
 			  return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
 		});
 	};
@@ -49,6 +59,9 @@ layui.use(['form' ,'table' ,'layer','laypage'], function() {
 			title : '新增用户',
 			type : 2,
 			area: ['500px', '500px'],
+			end: function(){
+				reload();
+			},
 			content : '/user/users/user_add'
 		})
 	};
@@ -58,6 +71,9 @@ layui.use(['form' ,'table' ,'layer','laypage'], function() {
 			title : "编辑用户",
 			type : 2,
 			area: ['500px', '500px'],
+			end: function(){
+				reload();
+			},
 			content : '/user/users/user_update?id='+ id
 		});
 	};
@@ -93,50 +109,57 @@ layui.use(['form' ,'table' ,'layer','laypage'], function() {
 	};
 	function reload(condition) { // 重载列表
 		_table.reload('user',{
-			condition
+			page: {
+	  			  layout: ['prev','page', 'next','count',],
+	  			  limit: 20,
+	  		  },where: {
+	  			condition
+	  		  }
 		});
 	}; 	
+	
     $(function() {    	
+    	var flag = false;
     	_table.init('user', {
 		  	  height: 315, //设置高度
-//		  	  ,limit: 10//注意：请务必确保 limit 参数（默认：10）是与你服务端限定的数据条数一致
 	  		  page: {
 	  			  curr: '1', //重新从第 1 页开始
-	  		  },
-		  	  limit: 6,
-	    	  limits: [6, 12, 20],
-	    	  first: '首页',
-	    	  last: '尾页',
-	    	  layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+	  			  layout: ['prev','page', 'next','count',],
+	  			  limit: 20,
+	  		  },    	  
 	    	  parseData: function(res){ //res 即为原始返回的数据
-//		  		  debugger
-		  		  console.log(res)
+	    		  console.log(res)
+	    		  if(res.data == null){
+                      //显示无数据提示内容
+                      return {
+                          "code": 201, //解析接口状态
+                          "msg": '未查到数据' //解析提示文本
+                      };
+                  }
 		       return {
 		          "code": res.code, //解析接口状态
 		          "msg": res.message, //解析提示文本
-		          "count": res.total, //解析数据长度
+		          "count": res.data[0].count, //解析数据长度
 		          "data": res.data, //解析数据列表
 		        };
-		    	
 		  	  }
 		  	  ,done : function(res){
 		  		  console.log(res)
-		  		  var i=0;
-		  		  if(i=0){
-		  			  debugger
-		  			i=i+1;
-		  			var size = $(".layui-laypage-limits").find("option:selected").val(); //分页数目
-				  	var current = $(".layui-laypage-skip .layui-input").val(); //当前页码值
-				  	var json = {
-				  		size : size,
-				  		current : current,
-				  	};
-		    		reload(json);
-				  	console.log(json)  
+		  		  if(!flag){
+		  			  var page = $(".layui-laypage-curr").text();
+					  var json = {
+					  		page : page
+					  };
+					  reload(json);
+					  console.log(json) 
+					  flag = true;
 		  		  }
-		  		$(".layui-laypage-skip .layui-input").on("propertychange", function () {
-		  			debugger
-		  	        console.log("正在输入...");
+		  		$(".layui-box").click(function(){
+		  			var page = $(".layui-laypage-curr").text();
+		  			var condition = {
+		  					page : page,
+		  			};
+		  			reload(page);
 		  		});
 		  	  }
 		  	  //支持所有基础参数

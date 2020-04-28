@@ -1,12 +1,15 @@
 package com.fuhao.books.form;
 
-import com.fuhao.books.domain.User;
+import com.fuhao.books.domain.Book;
 
 import lombok.Data;
 
 @Data
-public class UserForm extends User{
+public class BookForm extends Book{
 
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 	
 	/**
@@ -23,9 +26,5 @@ public class UserForm extends User{
 	 * 页码
 	 */
 	private int page;
-	
-	/**
-	 * 总数
-	 */
-	private int total;
+
 }
