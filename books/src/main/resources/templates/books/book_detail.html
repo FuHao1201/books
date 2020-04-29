@@ -20,17 +20,20 @@
    	 <input type="hidden" placeholder="图书id" name="bookId" id="bookId" th:value="${bookId}" class="layui-input">
    	 <input type="hidden" placeholder="用户id" name="userId" id="userId" th:value="${userId}" class="layui-input">
 	 <div class="layui-form-item">
-	  	<div class="layui-col-sm3" style="margin-left:30px;">
+	 	 <ul class="layui-row" style="margin-left:30px" id="book" lay-filter="book">
+    
+    	</ul>
+<!-- 	  	<div class="layui-col-sm3" style="margin-left:30px;margin-top:30px;">
 	      	<img name="bookPictures" id="bookPictures" alt="" src="">
 	  	</div>
 	  	<div class="layui-col-sm4">
-			<input type="text" name="bookName" class="layui-input" readOnly="true" width="60px">
+			<input style="color:blue;font-size:20px;" type="text" name="bookName" class="layui-input" readOnly="true" width="60px">
 			<input type="text" name="bookType" readOnly="true" class="layui-input" width="60px">
 			<input type="text" name="bookNum" readOnly="true" class="layui-input" width="60px">
-	  		<input type="text" name="price" readOnly="true" class="layui-input" width="60px">
+	  		<input style="color:red;font-size:20px;" id="price" type="text" name="price" readOnly="true" class="layui-input" width="60px">
 	  		<input type="text" name="author" readOnly="true" class="layui-input" width="60px">
 	  		<textarea style="width: 500px; border: none;" name="synopsis" readOnly="true" class="layui-textarea"></textarea>
-	  	</div>
+	  	</div> -->
 	</div>
 </form>
 </body>

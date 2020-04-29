@@ -37,7 +37,7 @@ layui.use(['form' ,'layer' ,'element'], function() {
         		console.log(data.delegateTarget.id)
         		var bookType = data.delegateTarget.id;
         		var str = "";
-            	str += "<a>图书分类</a><a><cite>"+bookType+"</cite></a>";
+            	str += "<a><cite>图书分类</cite></a><a><cite>"+bookType+"</cite></a>";
             	_element.render('breadcrumb');
             	$("#breadcrumb").html(str);
             	getBooks(bookType);
@@ -46,7 +46,10 @@ layui.use(['form' ,'layer' ,'element'], function() {
         		console.log(data.currentTarget.id)
         		var userId = $("#userId").val();
         		if(userId == ""){
-        			window.location.href="/user/login_view";
+        			_layer.msg('请登录后再操作');
+        			setTimeout(function(){//两秒后跳转
+            			window.location.href="/user/login_view";
+					  },2000);
         		}
         		var json={
         			bookId:data.currentTarget.id,
@@ -57,7 +60,10 @@ layui.use(['form' ,'layer' ,'element'], function() {
         	$("#book").delegate(".AddCollection","click",function(data){//收藏点击
         		var userId = $("#userId").val();
         		if(userId == ""){
-        			window.location.href="/user/login_view";
+        			_layer.msg('请登录后再操作');
+        			setTimeout(function(){//两秒后跳转
+            			window.location.href="/user/login_view";
+					  },2000);
         		}
         		var json={
             			bookId:data.currentTarget.id,
@@ -98,6 +104,7 @@ layui.use(['form' ,'layer' ,'element'], function() {
     					publishingHouse : text,
         		};
     		}
+    		$("#breadcrumb").html("");
     		searchBook(json);
     		console.log(json)
 		});
