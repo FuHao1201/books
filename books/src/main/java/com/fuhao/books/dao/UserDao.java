@@ -46,4 +46,6 @@ public interface UserDao extends BaseMapper<User> {
 
 	UserForm getCount(@Param("user")User user);
 
+	User getByLoginName(String loginname);
+
 }

@@ -11,9 +11,15 @@ layui.use(['form','layer'], function() {
 	  	  console.log(data)
 				$.post("/user/save", data.field, function(res) {
 					var msg = res.message;
-					_layer.msg(msg, {
-						  icon: 1,
-						});
+					if(res.code == 'SUCCESS'){
+						_layer.msg(msg, {
+							  icon: 1,
+							});
+					}else{
+						_layer.msg(msg, {
+							  icon: 2,
+							});
+					}
 					_form.val('formData', res.data);
 					parent.layui.layer.closeAll();
 					parent.layui.table.reload('user');//重载父页表格，参数为表格ID

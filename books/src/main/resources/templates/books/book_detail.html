@@ -11,29 +11,41 @@
 </style>
 </head>
 <body>
+<input type="hidden" placeholder="图书id" name="bookId" id="bookId" th:value="${bookId}" class="layui-input">
+<input type="hidden" placeholder="用户id" name="userId" id="userId" th:value="${userId}" class="layui-input">
+
+	 	 <ul class="layui-row" style="margin-left:30px" id="book" lay-filter="book">
+    		<li style='height: 250px;'>
+    			<div class='layui-col-md2'>
+    				<img id="bookPictures" src="">
+    			</div>
+    			<div class='layui-col-md9'>
+    				<h2><a style="color: blue;" name="bookName" id="bookName"></a></h2>
+    				<div><span name="author" id="author"></span>
+    				<i>&nbsp;&nbsp;/&nbsp;&nbsp;</i>
+    				<span title='出版时间' name="time" id="time">&nbsp;&nbsp;/&nbsp;&nbsp;</span>
+    				<span name="publishingHouse" id="publishingHouse"></span>
+    			</div>
+    			<div><span style='color: red; font-size: 26px;' name="price" id="price"></span></div>
+    				<div style='height: 100px;' name="synopsis" id="synopsis"></div>
+    				<div>
+    					<button id='AddCar' class='layui-btn layui-bg-red'><i class='layui-icon layui-icon-cart'></i>加入购物车</button>
+    					<button id='AddCollection' class='layui-btn'><i class='layui-icon layui-icon-star'></i>收藏</button>
+    				</div>
+    			</div>
+    		</li>
+    
+    	</ul>
+
 <form class="layui-form" action="" lay-filter="formData">
 <br>
 <!--    <div class="layui-tools">
        <a href="#" class="layui-btn layui-btn-sm" lay-submit><i class="layui-icon layui-icon-ok"></i>保存</a>
    </div>
    <br> -->
-   	 <input type="hidden" placeholder="图书id" name="bookId" id="bookId" th:value="${bookId}" class="layui-input">
-   	 <input type="hidden" placeholder="用户id" name="userId" id="userId" th:value="${userId}" class="layui-input">
 	 <div class="layui-form-item">
-	 	 <ul class="layui-row" style="margin-left:30px" id="book" lay-filter="book">
-    
-    	</ul>
-<!-- 	  	<div class="layui-col-sm3" style="margin-left:30px;margin-top:30px;">
-	      	<img name="bookPictures" id="bookPictures" alt="" src="">
-	  	</div>
-	  	<div class="layui-col-sm4">
-			<input style="color:blue;font-size:20px;" type="text" name="bookName" class="layui-input" readOnly="true" width="60px">
-			<input type="text" name="bookType" readOnly="true" class="layui-input" width="60px">
-			<input type="text" name="bookNum" readOnly="true" class="layui-input" width="60px">
-	  		<input style="color:red;font-size:20px;" id="price" type="text" name="price" readOnly="true" class="layui-input" width="60px">
-	  		<input type="text" name="author" readOnly="true" class="layui-input" width="60px">
-	  		<textarea style="width: 500px; border: none;" name="synopsis" readOnly="true" class="layui-textarea"></textarea>
-	  	</div> -->
+
+
 	</div>
 </form>
 </body>

@@ -12,6 +12,7 @@ layui.use(['form' ,'layer' ,'element'], function() {
              ,bgcolor: '#393D49'
            });
         var userId = $("#userId").val();
+        getSuggestion();
     	console.log(userId)
     	if(userId != ''){
     		getMine(userId , function(){	
@@ -132,11 +133,23 @@ layui.use(['form' ,'layer' ,'element'], function() {
     		fn && fn();
     	})
     };
+    function getSuggestion(){
+    	var bookType = '计算机';
+    	$.post("/book/listBytype",{bookType:bookType},function(res){
+    		console.log(res)
+    		var str = "";
+    		for(var i = 0;i < res.data.length;i++){
+    			str += "<div class='layui-col-md3' style='text-align:center;height:300px;'><a title="+res.data[i].bookName+"><img class='bookDetail' style='cursor:pointer;height:200px;' id="+res.data[i].id+" src="+res.data[i].bookPictures+" alt="+res.data[i].bookName+"></a><br/><a style='color: blue; cursor: pointer;' id="+res.data[i].id+">"+res.data[i].bookName+"</a><br/><span style='color: red; font-size: 26px;'>¥"+res.data[i].price+"</span></div>";
+    			_element.render('book');
+    		}
+    		$("#book").html(str);
+    	});
+    };
     function getInformation(userId){//个人资料
     	_layer.open({
 			title: '个人资料',
 			type : 2,
-			area: ['400px', '350px'],
+			area: ['500px', '400px'],
 			content: '/user/users/user_information?id='+userId,
 		});
     };
@@ -214,6 +227,7 @@ layui.use(['form' ,'layer' ,'element'], function() {
 		})
 	};
 	function addCar(json){//加入购物车
+		debugger
 		$.post("/car/addCar",json,function(res){
 			var msg=res.message;
 			if(res.code == "SUCCESS"){
@@ -255,6 +269,8 @@ layui.use(['form' ,'layer' ,'element'], function() {
 			console.log(res)
 			var str = "";
 			if(res.data !=null){
+				str +="共找到<a style='color:red'>"+res.data.length+"</a>本图书<br/>";
+				_element.render('book');
 				for(var i = 0;i < res.data.length;i++){
 					var d = new Date(res.data[i].publicationTime); 
 					var year = d.getFullYear();

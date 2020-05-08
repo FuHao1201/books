@@ -8,10 +8,57 @@
 <body>
   <br/>
   <input id="id" type="hidden" th:value="${id}" class="layui-input">
-  <div id="information" lay-filter="information" style="margin-left:10px;">
+  <div id="showInformation" style="display:block;">
+  	<div id="information" lay-filter="information" style="margin-left:10px;">
+  	</div>
+  	<br/>
+  	<button id="editInformation" class="layui-btn" style="margin-left:40px;">编辑个人资料</button>
   </div>
-  <br/>
-  <button id="editInformation" class="layui-btn" style="margin-left:40px;">编辑个人资料</button>
+  <div id="updateInformation" style="display:none;">
+  	<form class="layui-form" lay-filter="formData">
+  		<input id="id" name="id" type="hidden" th:value="${id}" class="layui-input">
+  		<input id="loginnameOld" type="hidden" name="loginnameOld" class="layui-input">
+  		<div class="layui-form-item">
+    		<label class="layui-form-label">用户名：</label>
+    		<div class="layui-input-inline">
+      			<input type="text" name="loginname" id="loginname" required lay-verify="required|loginname" placeholder="请输入登录名" autocomplete="off" class="layui-input">
+    		</div>
+    	</div>
+    	<div class="layui-form-item">
+    		<label class="layui-form-label">真实姓名：</label>
+    		<div class="layui-input-inline">
+      			<input type="text" name="name" id="name" required lay-verify="required" placeholder="请输入真实姓名" autocomplete="off" class="layui-input">
+    		</div>
+    	</div>
+    	<div class="layui-form-item">
+    		<label class="layui-form-label">性别：</label>
+    		<div class="layui-input-inline">
+    			<select name="sex" lay-verify="required">
+        			<option value=""></option>
+        			<option value="男">男</option>
+        			<option value="女">女</option>
+      			</select>
+    		</div>
+    	</div>
+    	<div class="layui-form-item">
+    		<label class="layui-form-label">电话号码：</label>
+    		<div class="layui-input-inline">
+      			<input type="text" name="phone" id="phone" required lay-verify="required|phone" placeholder="请输入电话号码" autocomplete="off" class="layui-input">
+    		</div>
+    	</div>
+    	<div class="layui-form-item">
+    		<label class="layui-form-label">身份证号：</label>
+    		<div class="layui-input-inline">
+      			<input type="text" name="identity" id="identity" required lay-verify="required|identity" placeholder="请输入身份证号" autocomplete="off" class="layui-input">
+    		</div>
+    	</div>
+    	<div class="layui-form-item">
+    		<div class="layui-input-block">
+    			<button class="layui-btn" style="width:190px;" lay-submit lay-filter="update">修改</button>
+    		</div>
+  		</div>
+  	</form>
+  </div>
 </body>
 <script type="text/javascript" src="/layui/layui.js"></script>
 <script type="text/javascript" src="/js/user_information.js"></script>

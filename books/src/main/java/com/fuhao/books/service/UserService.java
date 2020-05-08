@@ -34,4 +34,6 @@ public interface UserService extends IService<User> {
 	 */
 	List<UserForm> listAll(UserForm user);
 
+	User getByLoginName(String loginname);
+
 }

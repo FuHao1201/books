@@ -193,6 +193,21 @@ public class UserController extends BaseController{
 	}
 	
 	/**
+	 * 获取用户信息
+	 * @param id 用户id
+	 * @return json
+	 */
+	@GetMapping("/getByLoginName")
+	@ResponseBody
+	public JsonResult<User> getByLoginName(String loginname){
+		User user1 = userService.getByLoginName(loginname);
+		if (user1 != null) { 
+			return jr(GlobalConstants.SUCCESS,"查询成功",user1); 
+			}
+		return jr(GlobalConstants.ERROR,"未找到资源");	
+	}
+	
+	/**
 	 * 保存
 	 * @param user 表单参数
 	 * @return json

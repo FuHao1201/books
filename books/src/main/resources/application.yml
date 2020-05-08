@@ -4,7 +4,7 @@ server:
 spring:
   datasource:
     name: books
-    url: jdbc:mysql://localhost:3306/books
+    url: jdbc:mysql://localhost:3306/books?useSSL=false
     username: root
     password: 
     # 使用druid数据源

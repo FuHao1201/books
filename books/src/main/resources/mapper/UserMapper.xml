@@ -67,4 +67,13 @@ WHERE
 	and status = #{user.status}
 	</if>
     </select>
+        <select id="getByLoginName" resultType="com.fuhao.books.domain.User">
+SELECT
+	* 
+FROM
+	USER 
+WHERE
+	loginname = #{loginname}
+	AND logic_delete_flag = 0
+    </select>
 </mapper>

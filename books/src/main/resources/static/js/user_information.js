@@ -2,17 +2,63 @@ layui.use(['form' ,'layer' ,'element'], function() {
 	var _form = layui.form,_layer = layui.layer,_element = layui.element; 
     var $ = layui.$;
     function init(){
+/*    	$("#showInformation").show();
+	    $("#updateInformation").hide();*/
     	var userId = $("#id").val();
     	getInformation();
     	$("#editInformation").click(function(){
-			
+    		$("#showInformation").hide();//隐藏div
+    	    $("#updateInformation").show();//显示div
 		});
+    	_form.on("submit(update)",function (data){
+        	console.log(data)
+        	if(data.field.loginnameOld != data.field.loginname){
+        		$.get("/user/getByLoginName",{loginname : data.field.loginname},function(res){
+    				console.log(res)
+    				if(res.code == 'SUCCESS'){
+    					_layer.msg('用户名已被使用', {icon: 2});
+    					return false;
+    				}else{
+    					$.post("/user/save",data.field,function(res){
+    	        			console.log(res)
+    	        			var msg = res.message;
+    						if(res.code == 'SUCCESS'){
+    							_layer.msg(msg, {
+    								  icon: 1,
+    								});
+    						}else{
+    							_layer.msg(msg, {
+    								  icon: 2,
+    								});
+    						}
+    	        		})
+    				}
+        		})
+        	}else{
+        		$.post("/user/save",data.field,function(res){
+        			console.log(res)
+        			var msg = res.message;
+					if(res.code == 'SUCCESS'){
+						_layer.msg(msg, {
+							  icon: 1,
+							});
+					}else{
+						_layer.msg(msg, {
+							  icon: 2,
+							});
+					}
+        		})
+        	}
+        	return false;
+        });
     };
     function getInformation(){
     	var userId = $("#id").val();
     	$.get("/user/get",{id:userId}, function(res){
     		var create = res.data.createTime;
     		var createTime = showTime(create);
+    		$('#loginnameOld').val(res.data.loginname);
+    		_form.val('formData', res.data);
     		var str = "";
     		str += "<div class='layui-row'>\
     					<div style='float: right;width: 100px;height: 100px;border:1px solid #0000FF;'>\

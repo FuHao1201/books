@@ -53,4 +53,10 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserS
 		}
 	}
 
+	@Override
+	public User getByLoginName(String loginname) {
+		User user = userdao.getByLoginName(loginname);
+		return user;
+	}
+
 }
