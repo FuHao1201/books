@@ -7,6 +7,7 @@
         <id column="id" property="id" />
         <result column="book_id" property="bookId" />
         <result column="user_id" property="userId" />
+        <result column="address_id" property="addressId" />
         <result column="book_num" property="bookNum" />
         <result column="create_time" property="createTime" />
         <result column="logic_delete_flag" property="logicDeleteFlag" />

@@ -5,17 +5,16 @@
 <title>图书详情</title>
 <link rel="stylesheet" href="/layui/css/layui.css">
 <style>
-	.layui-input{
+/* 	.layui-input{
 		border : none;
-	}
+	} */
 </style>
 </head>
 <body>
 <input type="hidden" placeholder="图书id" name="bookId" id="bookId" th:value="${bookId}" class="layui-input">
 <input type="hidden" placeholder="用户id" name="userId" id="userId" th:value="${userId}" class="layui-input">
-
-	 	 <ul class="layui-row" style="margin-left:30px" id="book" lay-filter="book">
-    		<li style='height: 250px;'>
+<ul class="layui-row" style="margin-left:10px;margin-top:10px; height:400px;" id="book" lay-filter="book">
+<!--     		<li style='height: 250px;'>
     			<div class='layui-col-md2'>
     				<img id="bookPictures" src="">
     			</div>
@@ -29,13 +28,17 @@
     			<div><span style='color: red; font-size: 26px;' name="price" id="price"></span></div>
     				<div style='height: 100px;' name="synopsis" id="synopsis"></div>
     				<div>
-    					<button id='AddCar' class='layui-btn layui-bg-red'><i class='layui-icon layui-icon-cart'></i>加入购物车</button>
-    					<button id='AddCollection' class='layui-btn'><i class='layui-icon layui-icon-star'></i>收藏</button>
+    					<button  class='layui-btn layui-bg-red'><i class='layui-icon layui-icon-cart'></i>加入购物车</button>
+    					<button class='layui-btn'><i class='layui-icon layui-icon-star'></i>收藏</button>
     				</div>
     			</div>
-    		</li>
-    
-    	</ul>
+    		</li> -->
+</ul>
+<div style="margin-left:50px;">
+	<span>库存</span><span style="color:red;" id="bookNum"></span><span>本</span><br/>
+	<button id='AddCar'class='layui-btn layui-bg-red'><i class='layui-icon layui-icon-cart'></i>加入购物车</button>
+	<button id='AddCollection' class='layui-btn'><i class='layui-icon layui-icon-star'></i>收藏</button>
+</div>
 
 <form class="layui-form" action="" lay-filter="formData">
 <br>

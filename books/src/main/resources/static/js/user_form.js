@@ -7,7 +7,7 @@ layui.use(['form','layer'], function() {
 	function init(){
 	    getForm();
 	    _form.render();
-	    _form.on('submit',function(data){
+	    _form.on('submit',function(data){//保存点击监听
 	  	  console.log(data)
 				$.post("/user/save", data.field, function(res) {
 					var msg = res.message;

@@ -9,12 +9,12 @@ layui.use(['form' ,'layer'], function() {
     	getCanvas(show_num);
     	var num = show_num.join("");
     	console.log(num)
-        $("#canvas").on('click',function(){
+        $("#canvas").on('click',function(){//验证码点击切换
         	getCanvas(show_num);
         	var num = show_num.join("");
         	console.log(num)
         })
-        _form.on("submit(login)",function (data) {
+        _form.on("submit(login)",function (data) {//登录点击监听
         	var val = $("#code").val().toLowerCase();
         	console.log(val)
         	var num = show_num.join("");
@@ -58,7 +58,7 @@ layui.use(['form' ,'layer'], function() {
         	return false;
         });
     };
-    function getCanvas(show_num){
+    function getCanvas(show_num){//生成验证码
     	var canvas_width=$('#canvas').width();
         var canvas_height=$('#canvas').height();
         var canvas = document.getElementById("canvas");//获取到canvas的对象，演员

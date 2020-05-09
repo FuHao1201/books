@@ -135,6 +135,19 @@ public class BookController extends BaseController{
 	}
 	
 	/**
+	 * 减少图书数量
+	 * @param book 参数
+	 * @return json
+	 */
+	@PostMapping("/lessBookNum")
+	public JsonResult<Book> lessBookNum(Book book){
+		if(bookService.lessBookNum(book)) {
+			return jr(GlobalConstants.SUCCESS, "减少图书数量成功");
+		}
+		return jr(GlobalConstants.ERROR, "减少图书数量失败");
+	}
+	
+	/**
 	 * 查询图书类型
 	 * @return json
 	 */

@@ -1,3 +1,6 @@
+/** 
+  * 图书详情
+  */ 
 layui.use(['form' ,'layer','element'], function() {
 	var _form = layui.form,_layer = layui.layer,_element = layui.element; 
     var $ = layui.$;
@@ -7,51 +10,42 @@ layui.use(['form' ,'layer','element'], function() {
     	getDetail(bookId);
     	$("#AddCar").click(function(){
     		debugger
+    		var bookNum = $("#bookNum").html();
+    		if(userId == ""){
+    			_layer.msg('请登录后再操作');
+    			return;
+    		}
+    		if(bookNum == '0'){
+    			_layer.msg('库存不足 加入购物车失败',{icon: 2,});
+    			return;
+    		}
+    		var json={
+    			bookId:bookId,
+    			userId:userId
+    		}
+    		addCar(json);
     	});
-/*    	,function(){
-    		$("#book").delegate(".AddCar","click",function(data){//加入购物车点击
-        		console.log(data)
-        		var userId = $("#userId").val();
-        		if(userId == ""){
-        			_layer.msg('请登录后再操作');
-        			setTimeout(function(){//两秒后跳转
-            			window.location.href="/user/login_view";
-    				  },2000);
-        		}
-        		var json={
-        			bookId:data.currentTarget.id,
-        			userId:userId
-        		}
-        		addCar(json);
-        	});
-        	$("#book").delegate(".AddCollection","click",function(data){//收藏点击
-        		var userId = $("#userId").val();
-        		if(userId == ""){
-        			_layer.msg('请登录后再操作');
-        			setTimeout(function(){//两秒后跳转
-            			window.location.href="/user/login_view";
-    				  },2000);
-        		}
-        		var json={
-            			bookId:data.currentTarget.id,
-            			userId:userId
-            	}
-        		addCollection(json);
-        	});
-    	}*/
+    	$("#AddCollection").click(function(){
+    		if(userId == ""){
+    			_layer.msg('请登录后再操作');
+    			return;
+    		}
+    		var json={
+    			bookId:bookId,
+    			userId:userId
+    		}
+    		addCollection(json);
+    	});
     };
     function getDetail(bookId){
     	$.get("/book/get",{id:bookId},function(res){
     		console.log(res)
-    		debugger
-    		$("#bookPictures").attr("src",res.data.bookPictures);
-//    		_form.val('formData', res.data);
-//    		_form.render();
-    		$("#price").val("￥"+res.data.price);
-    		$("#bookName").val(res.data.bookName);
-    		$("#author").val(res.data.author);
-    		$("#synopsis").val(res.data.synopsis);
-    		$("#publishingHouse").val(res.data.publishingHouse);
+    		$("#bookNum").text(res.data.bookNum);
+    		if(res.data.bookNum == '0'){
+//    			$("#AddCar").text("库存不足");
+    			$("#AddCar").addClass("layui-btn-disabled");
+    		}
+    		var str = "";
     		var d = new Date(res.data.publicationTime); 
 			var year = d.getFullYear();
 			var month = d.getMonth();
@@ -61,12 +55,14 @@ layui.use(['form' ,'layer','element'], function() {
 			day = day<10 ? "0"+day:day;
 			var time = year+"-"+month+"-"+day;
 			$("#time").val(time);
+			str += "<li><div class='layui-col-md2'><a title="+res.data.bookName+"><img style='height: 200px;' src="+res.data.bookPictures+" alt="+res.data.bookName+"></a></div><div class='layui-col-md9'><h2><a style='color: blue;'>"+res.data.bookName+"</a></h2><div><span>"+res.data.author+"</span><i>&nbsp;&nbsp;/&nbsp;&nbsp;</i><span title='出版时间'>"+time+"&nbsp;&nbsp;/&nbsp;&nbsp;</span><span>"+res.data.publishingHouse+"</span></div><div><span style='color: red; font-size: 26px;'>¥"+res.data.price+"</span></div><p style='height: 100px;width:750px;'>"+res.data.synopsis+"</p></div></li>";
+			_element.render('book');
+			$("#book").html(str);
     	})
     };
     function addCar(json){//加入购物车
-//    	debugger
+    	console.log(json)
 		$.post("/car/addCar",json,function(res){
-//			console.log(res)
 			var msg=res.message;
 			if(res.code == "SUCCESS"){
 				_layer.msg(msg, {

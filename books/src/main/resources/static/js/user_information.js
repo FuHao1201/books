@@ -1,3 +1,6 @@
+/**
+ * 个人资料
+ */
 layui.use(['form' ,'layer' ,'element'], function() {
 	var _form = layui.form,_layer = layui.layer,_element = layui.element; 
     var $ = layui.$;
@@ -6,11 +9,11 @@ layui.use(['form' ,'layer' ,'element'], function() {
 	    $("#updateInformation").hide();*/
     	var userId = $("#id").val();
     	getInformation();
-    	$("#editInformation").click(function(){
+    	$("#editInformation").click(function(){//编辑个人资料点击监听
     		$("#showInformation").hide();//隐藏div
     	    $("#updateInformation").show();//显示div
 		});
-    	_form.on("submit(update)",function (data){
+    	_form.on("submit(update)",function (data){//修改个人资料
         	console.log(data)
         	if(data.field.loginnameOld != data.field.loginname){
         		$.get("/user/getByLoginName",{loginname : data.field.loginname},function(res){
@@ -52,7 +55,7 @@ layui.use(['form' ,'layer' ,'element'], function() {
         	return false;
         });
     };
-    function getInformation(){
+    function getInformation(){//获取个人资料
     	var userId = $("#id").val();
     	$.get("/user/get",{id:userId}, function(res){
     		var create = res.data.createTime;

@@ -1,5 +1,5 @@
 /** 
-  * 购物车列表 
+  * 收藏列表 
   */ 
 
 layui.use(['form' ,'table' ,'layer','element'], function() { 

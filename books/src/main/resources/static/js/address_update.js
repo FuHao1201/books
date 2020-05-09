@@ -1,5 +1,5 @@
 /**
- * 新增修改图书信息
+ * 修改地址信息
  */
 layui.use(['form','layer'], function() {
 	var _form = layui.form,_layer = layui.layer;

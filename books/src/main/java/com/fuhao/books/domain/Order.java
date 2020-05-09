@@ -5,8 +5,9 @@ import com.baomidou.mybatisplus.annotation.TableLogic;
 
 import lombok.Data;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.io.Serializable;
+import java.math.BigDecimal;
 /**
  * <p>
  * 
@@ -35,17 +36,32 @@ public class Order implements Serializable {
      * 用户编号
      */
     private String userId;
+    
+    /**
+     * 收货人信息编号
+     */
+    private String addressId;
 
     /**
      * 数量
      */
     private Integer bookNum;
+    
+    /**
+     * 小计
+     */
+    private BigDecimal sum;
 
     /**
      * 下单时间
      */
-    private LocalDateTime createTime;
+    private Date createTime;
 
+    /**
+     * 退订时间
+     */
+    private Date updateTime;
+    
     /**
      * 逻辑删除字段
      */

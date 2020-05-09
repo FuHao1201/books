@@ -64,4 +64,10 @@ WHERE
 	and book_type = #{book.bookType}
 	</if>
     </select>
+    <update id="lessBookNum">
+    	UPDATE book 
+SET book_num = #{book.bookNum}
+WHERE
+	id = #{book.id}
+    </update>
 </mapper>

@@ -31,10 +31,17 @@ public interface BookService extends IService<Book> {
 	List<Book> listBytype(Book book);
 
 	/**
-	 * 
+	 * 查询所有的图书
 	 * @param book
 	 * @return
 	 */
 	List<BookForm> listAll(BookForm book);
+
+	/**
+	 * 减少图书数量
+	 * @param book 参数
+	 * @return
+	 */
+	boolean lessBookNum(Book book);
 
 }

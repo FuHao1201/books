@@ -33,17 +33,24 @@ public interface BookDao extends BaseMapper<Book> {
 	List<Book> listBytype(@Param("book")Book book);
 
 	/**
-	 * 
-	 * @param book
+	 * 获取查询的总数
+	 * @param book 参数
 	 * @return
 	 */
 	BookForm getCount(@Param("book")BookForm book);
 
 	/**
-	 * 
-	 * @param book
+	 * 分页查询所有图书
+	 * @param book 参数
 	 * @return
 	 */
 	List<BookForm> listAll(@Param("book")BookForm book);
+
+	/**
+	 * 减少图书数量
+	 * @param book 参数
+	 * @return
+	 */
+	boolean lessBookNum(@Param("book")Book book);
 
 }

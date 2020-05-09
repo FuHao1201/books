@@ -56,4 +56,11 @@ public class BookServiceImpl extends ServiceImpl<BookDao, Book> implements BookS
 		}
 	}
 
+	@Override
+	public boolean lessBookNum(Book book) {
+		Book book1 = getById(book.getId());
+		book.setBookNum(book1.getBookNum()-book.getBookNum());;
+		return bookdao.lessBookNum(book);
+	}
+
 }

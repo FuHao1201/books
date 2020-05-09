@@ -1,8 +1,11 @@
+/** 
+  * 注册 
+  */ 
 layui.use(['form' ,'layer'], function() {
 	var _form = layui.form,_layer = layui.layer; 
     var $ = layui.$;
     function init(){
-    	_form.verify({
+    	_form.verify({//自定义验证
     		loginname: function(value){
     			/*console.log(value)
     			$.get("/user/getByLoginName",{loginname : value},function(res){
@@ -18,7 +21,7 @@ layui.use(['form' ,'layer'], function() {
     		    ,'密码必须6到12位，且不能出现空格'
     		  ]
     	});
-    	_form.on("submit(register)",function (data){
+    	_form.on("submit(register)",function (data){//注册点击监听
     		console.log(data.field)
     		if(data.field.password != data.field.password_confirm){
     			_layer.msg('两次输入的密码不一致', {icon: 2});

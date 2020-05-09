@@ -105,6 +105,7 @@ layui.use(['form' ,'table' ,'layer','element'], function() {
 			  obj.document.write(res);
 			  console.log(userId);
 			  $.get("/buy/buy_list",{userId:userId},function(res){
+				  console.log(res.data)
 				  for(var i=0; i<res.data.length; i++){
   						var bookId = res.data[i].bookId;
   						var json = {
@@ -112,20 +113,24 @@ layui.use(['form' ,'table' ,'layer','element'], function() {
   								bookId:bookId
   						}
   						$.post("/car/remove",json);
-//  						var jsonOrder = {
-//  								userId:userId,
-//  								bookId:bookId,
-//  								addressId:addressId,
-//  								book_num:res.data[i].book_num,
-//  								sum:res.data[i].sum
-//  						}
-//  						$.post("/order/addOrder",jsonOrder,function(res){
-//  							console.log(res)
-//  						});
+  						var jsonBookNum = {
+  								id:bookId,
+  								bookNum:res.data[i].book_num
+  						}
+  						$.post("/book/lessBookNum",jsonBookNum);
+  						var jsonOrder = {
+  								userId:userId,
+  								bookId:bookId,
+  								addressId:addressId,
+  								bookNum:res.data[i].bookNum,
+  								sum:res.data[i].sum
+  						}
+  						$.post("/order/save",jsonOrder,function(res){
+  							console.log(res)
+  						});
   					}
 				  $.post("/buy/removeByUserId",{userId:userId},function(res){
 					  parent.layui.layer.closeAll();
-//					  parent.layui.table.reload('car');//重载父页表格，参数为表格ID
 				  });
 			  }); 
 		});
