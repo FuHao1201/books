@@ -9,7 +9,6 @@ layui.use(['form' ,'layer','element'], function() {
     	var bookId = $("#bookId").val();
     	getDetail(bookId);
     	$("#AddCar").click(function(){
-    		debugger
     		var bookNum = $("#bookNum").html();
     		if(userId == ""){
     			_layer.msg('请登录后再操作');

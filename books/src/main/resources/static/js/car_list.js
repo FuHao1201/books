@@ -174,7 +174,7 @@ layui.use(['form' ,'table' ,'layer','element'], function() {
 			area: ['750px', '400px'],
 			content: '/buy/buys/buy_list/?userId='+userId,
 			end: function(){
-				_table.reload();
+				_table.reload('car');
 			},
 			closeBtn: 0
 		});

@@ -7,9 +7,33 @@
         <id column="id" property="id" />
         <result column="book_id" property="bookId" />
         <result column="user_id" property="userId" />
-        <result column="address_id" property="addressId" />
         <result column="book_num" property="bookNum" />
+        <result column="sum" property="sum" />
+        <result column="address_name" property="addressName" />
+        <result column="post_code" property="postCode" />
+        <result column="phone" property="phone" />
+        <result column="address" property="address" />
+        <result column="address_id" property="addressId" />
         <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
         <result column="logic_delete_flag" property="logicDeleteFlag" />
     </resultMap>
+    <insert id="addOrder">
+    insert 
+into 
+`order` 
+(user_id,book_id,book_num,sum,address_id,create_time) 
+VALUES 
+(#{order.userId},#{order.bookId},#{order.bookNum},#{order.sum},#{order.addressId},#{order.createTime})
+    </insert>
+    <select id="listByUserId" resultType="com.fuhao.books.form.OrderForm">
+SELECT
+	`order`.* ,
+	book.book_name,book_pictures,book.author,book.book_type,book.price,book.publishing_house,
+	address.`name`,address.phone,address.post_code,address.address
+FROM
+	`order` JOIN book book ON `order`.book_id = book.id JOIN address address ON `order`.address_id = address.id
+WHERE
+	`order`.user_id = #{order.userId}
+    </select>
 </mapper>

@@ -19,8 +19,18 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface BuyDao extends BaseMapper<Buy> {
 
+	/**
+	 * 结算列表查询
+	 * @param buy 参数
+	 * @return
+	 */
 	List<BuyForm> listByUserId(@Param("buy")BuyForm buy);
 
+	/**
+	 * 通过用户id删除结算数据
+	 * @param buy 参数
+	 * @return
+	 */
 	boolean removeByUserId(@Param("buy")Buy buy);
 
 }

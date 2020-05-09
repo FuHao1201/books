@@ -115,7 +115,7 @@ layui.use(['form' ,'table' ,'layer','element'], function() {
   						$.post("/car/remove",json);
   						var jsonBookNum = {
   								id:bookId,
-  								bookNum:res.data[i].book_num
+  								bookNum:res.data[i].bookNum
   						}
   						$.post("/book/lessBookNum",jsonBookNum);
   						var jsonOrder = {
@@ -125,12 +125,14 @@ layui.use(['form' ,'table' ,'layer','element'], function() {
   								bookNum:res.data[i].bookNum,
   								sum:res.data[i].sum
   						}
-  						$.post("/order/save",jsonOrder,function(res){
+  						$.post("/order/addOrder",jsonOrder,function(res){
   							console.log(res)
   						});
   					}
 				  $.post("/buy/removeByUserId",{userId:userId},function(res){
-					  parent.layui.layer.closeAll();
+					  var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+					  parent.layer.close(index); //再执行关闭
+//					  parent.layui.layer.closeAll();
 				  });
 			  }); 
 		});

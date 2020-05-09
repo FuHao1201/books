@@ -18,11 +18,10 @@ SELECT
 	buy.*,
 	book.book_name,
 	book.price,
-	book.book_pictures,
-	book.logic_delete_flag
+	book.book_pictures
 FROM
-	buy
-	JOIN book ON buy.book_id = book.id
+	buy buy
+	JOIN book book ON buy.book_id = book.id
 	where buy.user_id = #{buy.userId}
 	and buy.logic_delete_flag = "0"
     </select>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/layui/css/layui.css">
+</head>
+<style>
+	.layui-table-cell{
+		height:auto!important;
+		white-space: normal;
+	}		
+</style>
+<body>
+<input type="hidden" name="userId" th:value="${userId}" id="userId">
+<table class="layui-table" lay-size="lg" align="center" lay-skin="line" lay-data="{ id:'order', toolbar:'#tableToolbar', defaultToolbar: [], }" lay-filter="order">
+  <thead>
+    <tr>
+      <!-- <th lay-data="{type:'checkbox', event:'checks',}"></th> -->
+      <!-- <th lay-data="{field:'id', width:60, align:'center'}">id</th> -->
+      <th lay-data="{field:'bookPictures', width:150, align:'center', templet:'#bookPictures',}">图书图片</th>
+      <th lay-data="{field:'bookName', width:300, align:'center'}">图书名</th>
+      <th lay-data="{field:'price', width:80, align:'center', templet:'#price', }">单价</th>
+      <th lay-data="{field:'bookNum', width:80, align:'center', }">数量</th>
+      <th lay-data="{field:'sum', width:80, align:'center', templet:'#sum',}">实付款</th>
+      <th lay-data="{field:'statu', width:100, align:'center', templet:'#statu',}">交易状态</th>
+      <th lay-data="{toolbar:'#toolbar', align:'center', fixed:'right'}">操作</th>
+    </tr>
+  </thead>
+</table>
+<ul class="layui-row" id="order" lay-filter="order">
+
+</ul>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/order_list.js"></script>
+</body>
+<script type="text/html" id="bookPictures">
+	<img src="{{d.bookPictures}}" height="100px"/>
+</script>
+<script type="text/html" id="price">
+	<span name="price" value="{{d.price}}" readonly="true">￥{{d.price}}</span>
+</script>
+<script type="text/html" id="sum">
+	<span name="price" value="{{d.sum}}" style="font-weight:bold;" readonly="true">￥{{d.sum}}</span>
+</script>
+<script type="text/html" id="statu">
+	<span name="statu" readonly="true">已下单</span>
+</script>
+<script type="text/html" id="toolbar">
+  <div class="layui-btn-container">
+    <a class="layui-btn layui-btn-xs" lay-event="detail">详情</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="remove">删除</a>
+  </div>
+</script>
+</html>

@@ -17,8 +17,18 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface BuyService extends IService<Buy> {
 
+	/**
+	 * 结算列表查询
+	 * @param buy 参数
+	 * @return
+	 */
 	List<BuyForm> listByUserId(BuyForm buy);
 
+	/**
+	 * 通过用户id删除结算数据
+	 * @param buy 参数
+	 * @return
+	 */
 	boolean removeByUserId(Buy buy);
 
 }

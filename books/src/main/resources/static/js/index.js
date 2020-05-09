@@ -28,6 +28,9 @@ layui.use(['form' ,'layer' ,'element'], function() {
     			$("#collection").click(function(){//收藏点击监听
     				collectionList(userId);
     			});
+    			$("#order").click(function(){//订单点击监听
+    				orderList(userId);
+    			});
     			$("#exit").click(function(){//退出点击监听
     				exit(userId);
     			});
@@ -117,6 +120,7 @@ layui.use(['form' ,'layer' ,'element'], function() {
     		if(res.data != null){
     			str += "<li class='layui-nav-item'>\<a class='layui-icon layui-icon-cart' id='car' href='javascript:;'>购物车</a></li>\
 		      <li class='layui-nav-item'><a class='layui-icon layui-icon-star' id='collection' href='javascript:;'>收藏</a></li>\
+    		  <li class='layui-nav-item'><a class='layui-icon layui-icon-list' id='order' href='javascript:;'>订单</a></li>\
 		      <li class='layui-nav-item'>\
 		        <a href='javascript:;'>\
 		          <img src="+res.data.head+" class='layui-nav-img'>\
@@ -199,6 +203,14 @@ layui.use(['form' ,'layer' ,'element'], function() {
 			type : 2,
 			area: ['1000px', '550px'],
 			content: '/collection/collections/collection_list?userId='+userId,
+		});
+    };
+    function orderList(userId){//订单列表
+    	_layer.open({
+			title: '订单',
+			type : 2,
+			area: ['1000px', '550px'],
+			content: '/order/orders/order_list?userId='+userId,
 		});
     };
     function getBooks(bookType){//根据图书类型获取图书列表

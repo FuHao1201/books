@@ -58,10 +58,8 @@ public class CarController extends BaseController{
 	 */
 	@GetMapping("/car_list")
 	public JsonResult<List<CarForm>> car_list(CarForm car){
-		System.out.println(car.getUserId());
 		List<CarForm> list = carService.listByUserId(car);
 		if (list != null) {
-			System.out.println(list);
 			return jr("0","查询成功",list); 
 			}
 		return jr(GlobalConstants.ERROR,"未找到资源");	
@@ -89,7 +87,6 @@ public class CarController extends BaseController{
 	 */
 	@PostMapping("/remove")
 	public JsonResult<Car> remove(Car car){
-		System.out.println(car);
 		if(carService.removeByBookId(car)) {
 			return jr(GlobalConstants.SUCCESS, "删除成功");
 		}

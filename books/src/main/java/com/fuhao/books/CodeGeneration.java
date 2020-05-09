@@ -28,7 +28,7 @@ public class CodeGeneration {
         mpg.setTemplateEngine(new BeetlTemplateEngine());
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
-        gc.setOutputDir("E:\\school\\git\\books\\src\\main\\java");//输出文件路径
+        gc.setOutputDir("E:\\school\\books\\books\\src\\main\\java");//输出文件路径
         gc.setIdType(IdType.AUTO);//主键策略
         gc.setFileOverride(true);  //是否文件覆盖
         gc.setActiveRecord(false);// 不需要ActiveRecord特性的请改为false（是否支持AR模式）
@@ -58,7 +58,7 @@ public class CodeGeneration {
         StrategyConfig strategy = new StrategyConfig();
         // strategy.setTablePrefix(new String[] { "sys_" });// 此处可以修改为您的表前缀
         strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
-        strategy.setInclude(new String[] { "buy"}); // 需要生成的表
+        strategy.setInclude(new String[] { "order"}); // 需要生成的表
         //strategy.setDbColumnUnderline(true);   //指定表名字段是否使用下划线
 
         strategy.setSuperServiceClass(null);
