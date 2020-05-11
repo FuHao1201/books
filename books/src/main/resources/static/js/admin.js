@@ -61,7 +61,7 @@ layui.use(['form' ,'layer','element'], function() {
     	_layer.confirm('确认退出当前账号？', {
 			  btn: ['确认','取消'] //按钮
 			}, function(){
-				window.location.href="/user/login_view";
+				window.location.href="/user/admin_login_view";
 			}, function(){
 				_layer.close();
 			});
@@ -70,7 +70,6 @@ layui.use(['form' ,'layer','element'], function() {
 	   	init();
 	   	$(document).ready(function () {
    	     if(location.href.indexOf("")==-1){
-   	    	 debugger
    	        location.href=location.href;
    	        location.reload();
    	    }

@@ -31,4 +31,18 @@ public interface OrderService extends IService<Order> {
 	 */
 	List<OrderForm> listByUserId(OrderForm order);
 
+	/**
+	 * 获取订单详情
+	 * @param id 订单id
+	 * @return
+	 */
+	OrderForm getAllById(String id);
+
+	/**
+	 * 修改订单逻辑删除状态
+	 * @param order 参数
+	 * @return
+	 */
+	boolean updateLogicById(Order order);
+
 }

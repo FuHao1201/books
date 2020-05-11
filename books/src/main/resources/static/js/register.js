@@ -6,17 +6,7 @@ layui.use(['form' ,'layer'], function() {
     var $ = layui.$;
     function init(){
     	_form.verify({//自定义验证
-    		loginname: function(value){
-    			/*console.log(value)
-    			$.get("/user/getByLoginName",{loginname : value},function(res){
-    				console.log(res)
-    				debugger
-    				if(res.code == 'SUCCESS'){
-    					return '用户名已被使用';
-    				}
-    			})*/
-    		}
-    		,password: [
+    		password: [
     		    /^[\S]{6,12}$/
     		    ,'密码必须6到12位，且不能出现空格'
     		  ]
@@ -31,7 +21,7 @@ layui.use(['form' ,'layer'], function() {
     			$.get("/user/getByLoginName",{loginname : data.field.loginname},function(res){
     				console.log(res)
     				if(res.code == 'SUCCESS'){
-    					_layer.msg('用户名已被使用', {icon: 2});
+    					_layer.msg('登录名已被使用', {icon: 2});
     					return false;
     				}else{
     					$.post("/user/save",data.field,function(res){

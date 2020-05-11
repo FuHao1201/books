@@ -170,7 +170,7 @@ layui.use(['form' ,'layer' ,'element'], function() {
     	_layer.confirm('确认退出当前账号？', {
 			  btn: ['确认','取消'] //按钮
 			}, function(){
-				window.location.href="/user/admin_login_view";
+				window.location.href="/user/login_view";
 			}, function(){
 				_layer.close();
 			});
@@ -209,7 +209,7 @@ layui.use(['form' ,'layer' ,'element'], function() {
     	_layer.open({
 			title: '订单',
 			type : 2,
-			area: ['1000px', '550px'],
+			area: ['1200px', '550px'],
 			content: '/order/orders/order_list?userId='+userId,
 		});
     };

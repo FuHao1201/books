@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>图书列表</title>
+<title>缺货图书列表</title>
 <link rel="stylesheet" href="/layui/css/layui.css">
 </head>
 <style>
@@ -44,7 +44,7 @@
 		</form>
 	</div>  		
 </div>
-<table class="layui-table" lay-size="lg" align="center" page="true" lay-skin="line" lay-data="{height:500,toolbar:'#tableToolbar', url:'/book/list/', id:'book'}" lay-filter="book">
+<table class="layui-table" lay-size="lg" align="center" page="true" lay-skin="line" lay-data="{height:500,toolbar:'#tableToolbar',url:'/book/listNull', id:'book'}" lay-filter="book">
   <thead>
     <tr>
       <th lay-data="{type:'checkbox'}"></th>
@@ -63,7 +63,7 @@
   </thead>
 </table>
 <script type="text/javascript" src="/layui/layui.js"></script>
-<script type="text/javascript" src="/js/book_list.js"></script>
+<script type="text/javascript" src="/js/book_list_null.js"></script>
 </body>
 <script type="text/html" id="bookPictures">
 	<img src="{{d.bookPictures}}" height="100px"/>
@@ -76,7 +76,6 @@
 </script>
 <script type="text/html" id="tableToolbar">
   <div class="layui-btn-container">
-    <button class="layui-btn layui-btn-sm" lay-event="add">新增</button>
     <button class="layui-btn layui-btn-sm" lay-event="removeBatch">批量删除</button>
   </div>
 </script>

@@ -35,5 +35,26 @@ FROM
 	`order` JOIN book book ON `order`.book_id = book.id JOIN address address ON `order`.address_id = address.id
 WHERE
 	`order`.user_id = #{order.userId}
+	and `order`.logic_delete_flag = #{order.logicDeleteFlag}
+	<if test="order.bookName != null and order.bookName != ''">
+	and book.book_name like "%"#{order.bookName}"%"
+	</if>
+	ORDER BY `order`.create_time DESC
     </select>
+    <select id="getAllById" resultType="com.fuhao.books.form.OrderForm">
+SELECT
+	`order`.* ,
+	book.book_name,book_pictures,book.author,book.book_type,book.price,book.publishing_house,
+	address.`name`,address.phone,address.post_code,address.address
+FROM
+	`order` JOIN book book ON `order`.book_id = book.id JOIN address address ON `order`.address_id = address.id
+WHERE
+	`order`.id = #{id}
+    </select>
+    <update id="updateLogicById">
+UPDATE `order` 
+SET logic_delete_flag = #{order.logicDeleteFlag}
+WHERE
+	id = #{order.id}
+    </update>
 </mapper>

@@ -150,6 +150,8 @@ layui.use(['form' ,'table' ,'layer','element'], function() {
 			_layer.msg('请选择商品', {icon: 0});
 			return;
 		}
+		var userId=$("#userId").val();
+		$.post("/buy/removeByUserId/",{userId : userId});
 		for(var i=0; i<data.length; i++){
 			var numId = data[i].id;
 			var bookNum = $("#"+numId).val();

@@ -34,4 +34,14 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements Or
 	public List<OrderForm> listByUserId(OrderForm order) {
 		return orderDao.listByUserId(order);
 	}
+
+	@Override
+	public OrderForm getAllById(String id) {
+		return orderDao.getAllById(id);
+	}
+
+	@Override
+	public boolean updateLogicById(Order order) {
+		return orderDao.updateLogicById(order);
+	}
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -34,15 +34,14 @@
           <a class="" href="javascript:;">图书管理</a>
           <dl class="layui-nav-child">
             <dd><a href="/book/books/book_list" target="main">所有图书</a></dd>
-            <dd><a href="javascript:;">列表二</a></dd>
-            <dd><a href="javascript:;">列表三</a></dd>
+            <dd><a href="/book/books/book_list_null" target="main">缺货图书</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item">
           <a href="javascript:;">用户管理</a>
           <dl class="layui-nav-child">
             <dd><a href="/user/users/user_list" target="main">用户列表</a></dd>
-            <dd><a href="javascript:;">管理员列表</a></dd>
+<!--             <dd><a href="/user/users/user_list" target="main">管理员列表</a></dd> -->
           </dl>
         </li>
       </ul>

@@ -2,6 +2,7 @@ package com.fuhao.books.domain;
 import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 
 import lombok.Data;
 
@@ -64,5 +65,6 @@ public class Order implements Serializable {
     /**
      * 逻辑删除字段
      */
+    @TableLogic
     private Integer logicDeleteFlag;
 }

@@ -43,6 +43,9 @@ WHERE
 	<if test="book.publishingHouse != null and book.publishingHouse != ''">
 	and publishing_house = #{book.publishingHouse}
 	</if>
+	<if test="book.BookNum == 0">
+	and book_num = 0
+	</if>
 	<if test="book.page != 0">
 	limit #{book.page},20
 	</if>
@@ -62,6 +65,9 @@ WHERE
 	</if>
 	<if test="book.bookType != null and book.bookType != ''">
 	and book_type = #{book.bookType}
+	</if>
+	<if test="book.BookNum == 0">
+	and book_num = 0
 	</if>
     </select>
     <update id="lessBookNum">

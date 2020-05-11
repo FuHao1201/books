@@ -5,8 +5,14 @@
 <title>新增用户</title>
 <link rel="stylesheet" href="/layui/css/layui.css">
 </head>
+<style>
+	.layui-form-item .layui-input-inline {
+		width:250px;
+	}
+</style>
 <body>
 <form class="layui-form" action="" lay-filter="formData">
+<input type="hidden" id="loginnameOld" name="loginnameOld" class="layui-input">
 <br>
    <div class="layui-tools">
        <a href="#" class="layui-btn layui-btn-sm" lay-submit><i class="layui-icon layui-icon-ok"></i>保存</a>
@@ -14,6 +20,7 @@
    </div>
    <br>
    <div class="layui-card layui-padding-15 layui-margin-50 auto-height">
+   <input type="hidden" name="head" value="/image/head1.jpg"/>
 	  <div class="layui-form-item">
 	    <label class="layui-form-label">姓名：</label>
 	    <div class="layui-input-inline">
@@ -29,7 +36,7 @@
 	  <div class="layui-form-item">
 	    <label class="layui-form-label">密码：</label>
 	    <div class="layui-input-inline">
-	      <input type="password" placeholder="密码" name="password" lay-verify="required" autocomplete="off" class="layui-input" width="60px">
+	      <input type="password" placeholder="密码" name="password" lay-verify="required|password" autocomplete="off" class="layui-input" width="60px">
 	    </div>
 	  </div>
 	  <div class="layui-form-item">

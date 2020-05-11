@@ -33,4 +33,18 @@ public interface OrderDao extends BaseMapper<Order> {
 	 */
 	List<OrderForm> listByUserId(@Param("order")OrderForm order);
 
+	/**
+	 * 获取订单详情
+	 * @param id 订单id
+	 * @return
+	 */
+	OrderForm getAllById(String id);
+
+	/**
+	 * 修改订单逻辑删除状态
+	 * @param order 订单id
+	 * @return
+	 */
+	boolean updateLogicById(@Param("order")Order order);
+
 }

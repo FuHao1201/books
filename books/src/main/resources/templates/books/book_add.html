@@ -5,6 +5,11 @@
 <title>新增图书</title>
 <link rel="stylesheet" href="/layui/css/layui.css">
 </head>
+<style>
+	.layui-form-item .layui-input-inline {
+		width:250px;
+	}
+</style>
 <body>
 <form class="layui-form" action="" lay-filter="formData">
 <br>
@@ -17,37 +22,37 @@
 	  <div class="layui-form-item">
 	    <label class="layui-form-label">图书名：</label>
 	    <div class="layui-input-inline">
-	      <input type="text" placeholder="图书名" name="bookName" lay-verify="required" autocomplete="off" class="layui-input" width="60px">
+	      <input type="text" placeholder="图书名" name="bookName" lay-verify="required" autocomplete="off" class="layui-input">
 	    </div>
 	  </div>
 	  <div class="layui-form-item">
 	    <label class="layui-form-label">图书类型：</label>
 	    <div class="layui-input-inline">
-	      <input type="text" placeholder="图书类型" name="bookType" lay-verify="required" autocomplete="off" class="layui-input" width="60px">
+	      <input type="text" placeholder="图书类型" name="bookType" lay-verify="required" autocomplete="off" class="layui-input">
 	    </div>
 	  </div>
 	  <div class="layui-form-item">
 	    <label class="layui-form-label">图书数量：</label>
 	    <div class="layui-input-inline">
-	      <input type="number" placeholder="图书数量" name="bookNum" lay-verify="required" autocomplete="off" class="layui-input" width="60px">
+	      <input type="number" min="0" placeholder="图书数量" name="bookNum" lay-verify="required" autocomplete="off" class="layui-input">
 	    </div>
 	  </div>
 	  <div class="layui-form-item">
 	    <label class="layui-form-label">图书单价：</label>
 	    <div class="layui-input-inline">
-	      <input type="text" placeholder="图书单价" name="price" lay-verify="required" autocomplete="off" class="layui-input" width="60px">
+	      <input type="text" placeholder="图书单价" name="price" lay-verify="required" autocomplete="off" class="layui-input">
 	    </div>
 	  </div>
 	  <div class="layui-form-item">
 	    <label class="layui-form-label">作者：</label>
 	    <div class="layui-input-inline">
-	      <input type="text" placeholder="作者" name="author" lay-verify="required" autocomplete="off" class="layui-input" width="60px">
+	      <input type="text" placeholder="作者" name="author" lay-verify="required" autocomplete="off" class="layui-input">
 	    </div>
 	  </div>
 	  <div class="layui-form-item">
 	    <label class="layui-form-label">简介：</label>
 	    <div class="layui-input-inline">
-	      <textarea placeholder="简介" name="synopsis" lay-verify="required" autocomplete="off" class="layui-textarea" width="60px"></textarea>
+	      <textarea placeholder="简介" name="synopsis" lay-verify="required" autocomplete="off" class="layui-textarea"></textarea>
 	    </div>
 	  </div>
    </div>

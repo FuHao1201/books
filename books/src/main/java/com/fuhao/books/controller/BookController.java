@@ -62,6 +62,9 @@ public class BookController extends BaseController{
 			model.put("bookId", bookId);
 			model.put("userId", userId);
 			return view("books/"+html,model);
+		}if (html.equals("book_share")) {
+			model.put("bookId", bookId);
+			return view("books/"+html,model);
 		}
 		return view("books/"+html);
 	}
@@ -74,6 +77,22 @@ public class BookController extends BaseController{
 	@GetMapping("/list")
 	@ResponseBody
 	public JsonResult<List<BookForm>> list(BookForm book){
+		List<BookForm> list = bookService.listAll(book);
+		if (list != null) { 
+			return jr("0","查询成功",list); 
+			}
+		return jr(GlobalConstants.ERROR,"未找到资源");	
+	}
+	
+	/**
+	 * 查询所有的图书信息
+	 * @param book 查询的表单参数
+	 * @return json
+	 */
+	@GetMapping("/listNull")
+	@ResponseBody
+	public JsonResult<List<BookForm>> listNull(BookForm book){
+		book.setBookNum(0);
 		List<BookForm> list = bookService.listAll(book);
 		if (list != null) { 
 			return jr("0","查询成功",list); 

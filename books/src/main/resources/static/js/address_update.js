@@ -14,8 +14,8 @@ layui.use(['form','layer'], function() {
 			var msg = res.message;
 			_layer.msg(msg, {icon: 1});
 			_form.val('formData', res.data);
-			parent.layui.layer.closeAll();
-			parent.layui.table.reload('address');//重载父页表格，参数为表格ID
+//			parent.layui.layer.closeAll();
+//			parent.layui.table.reload('address');//重载父页表格，参数为表格ID
 	  	  	});
 	    });
 	};

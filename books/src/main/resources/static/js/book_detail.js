@@ -35,6 +35,9 @@ layui.use(['form' ,'layer','element'], function() {
     		}
     		addCollection(json);
     	});
+    	$("#share").click(function(){
+    		share(bookId);
+    	});
     };
     function getDetail(bookId){
     	$.get("/book/get",{id:bookId},function(res){
@@ -86,6 +89,14 @@ layui.use(['form' ,'layer','element'], function() {
 					  icon: 2,
 				});
 			}
+		})
+	};
+	function share(bookId){//分享
+		_layer.open({
+			title : '分享图书(复制网页地址)',
+			type : 2,
+			area: ['500px', '100px'],
+			content : '/book/books/book_share?bookId='+bookId
 		})
 	};
     $(function(){

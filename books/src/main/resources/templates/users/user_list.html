@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>用户列表</title>
 <link rel="stylesheet" href="/layui/css/layui.css">
 </head>
 <body>
+<input id="status" type="hidden" th:value="${status}">
 <div class="form-search-con layui-bg-white layui-fluid">
 	<div class="layui-row layui-col-md-offset2">
 		<form class="layui-form" id="searchForm" autocomplete="off">
@@ -54,14 +55,14 @@
     <tr>
       <th lay-data="{type:'checkbox'}"></th>
       <!-- <th lay-data="{field:'id', width:60, align:'center', sort: true}">id</th> -->
-      <th lay-data="{field:'name', width:80, align:'center', sort: true}">姓名</th>
-      <th lay-data="{field:'loginname', width:100, align:'center', sort: true}">登录名</th>
-      <th lay-data="{field:'password', width:80, align:'center', sort: true}">密码</th>
-      <th lay-data="{field:'sex', width:80, align:'center', sort: true}">性别</th>
-      <th lay-data="{field:'identity', width:180, align:'center', sort: true}">身份证号</th>
-      <th lay-data="{field:'phone', width:120, align:'center', sort: true}">电话号码</th>
-	  <th lay-data="{field:'createTime', align:'center', sort: true ,templet:function (d){return showTime(d.createTime);}}">创建时间</th>
-      <th lay-data="{field:'updateTime', align:'center', sort: true ,templet:function (d){return showTime(d.updateTime);}}">修改时间</th>
+      <th lay-data="{field:'name', width:80, align:'center'}">姓名</th>
+      <th lay-data="{field:'loginname', width:100, align:'center'}">登录名</th>
+      <th lay-data="{field:'password', width:80, align:'center'}">密码</th>
+      <th lay-data="{field:'sex', width:80, align:'center'}">性别</th>
+      <th lay-data="{field:'identity', width:180, align:'center'}">身份证号</th>
+      <th lay-data="{field:'phone', width:120, align:'center'}">电话号码</th>
+	  <th lay-data="{field:'createTime', align:'center', templet:function (d){return showTime(d.createTime);}}">创建时间</th>
+      <th lay-data="{field:'updateTime', align:'center', templet:function (d){return showTime(d.updateTime);}}">修改时间</th>
       <th lay-data="{toolbar:'#toolbar', align:'center', fixed:'right'}">操作</th>
     </tr>
   </thead>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>图书分享</title>
+<link rel="stylesheet" href="/layui/css/layui.css">
+</head>
+<body>
+<input type="hidden" placeholder="图书id" name="bookId" id="bookId" th:value="${bookId}" class="layui-input">
+<input type="text" id="shareWeb" class="layui-input" readOnly="readOnly">
+</body>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/book_share.js"></script>
+</html>

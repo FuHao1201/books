@@ -12,7 +12,6 @@ import com.fuhao.books.common.BaseController;
 import com.fuhao.books.common.GlobalConstants;
 import com.fuhao.books.domain.JsonResult;
 import com.fuhao.books.domain.Order;
-import com.fuhao.books.form.BuyForm;
 import com.fuhao.books.form.OrderForm;
 import com.fuhao.books.service.OrderService;
 
@@ -42,13 +41,18 @@ public class OrderController extends BaseController{
 	 * 跳转与订单有关的界面
 	 * @param html 界面名
 	 * @param userId 用户id
+	 * @param id 订单id
 	 * @param model 参数
 	 * @return 界面
 	 */
 	@GetMapping("/orders/{html}")
-	public ModelAndView views(@PathVariable String html,String userId,ModelMap model) {
+	public ModelAndView views(@PathVariable String html,String userId,String id,ModelMap model) {
 		if (html.equals("order_list")) {
 			model.put("userId", userId);
+			return view("orders/"+html,model);
+		}if (html.equals("order_detail")) {
+			model.put("id", id);
+			System.out.println("ccc"+id);
 			return view("orders/"+html,model);
 		}
 		return view("orders/"+html);
@@ -64,11 +68,10 @@ public class OrderController extends BaseController{
 	public JsonResult<Order> addOrder(Order order) {
 		Date create_time = new Date();
 		order.setCreateTime(create_time);
-		System.out.println("ccc"+order);
 		if (orderService.addOrder(order)) {
 			return jr(GlobalConstants.SUCCESS, "新增成功");
 		}
-		return jr(GlobalConstants.ERROR, "保存失败");
+		return jr(GlobalConstants.ERROR, "新增失败");
 	}
 	
 	/**
@@ -78,9 +81,68 @@ public class OrderController extends BaseController{
 	 */
 	@GetMapping("/listByUserId")
 	public JsonResult<List<OrderForm>> buy_list(OrderForm order){
+		order.setLogicDeleteFlag(0);
 		List<OrderForm> list = orderService.listByUserId(order);
 		if (list != null) {
 			return jr("0","查询成功",list); 
+			}
+		return jr(GlobalConstants.ERROR,"未找到资源");	
+	}
+	
+	/**
+	 * 根据用户id查询已删除订单
+	 * @param order 参数
+	 * @return json
+	 */
+	@GetMapping("/recoveryList")
+	public JsonResult<List<OrderForm>> recoveryList(OrderForm order){
+		order.setLogicDeleteFlag(1);
+		List<OrderForm> list = orderService.listByUserId(order);
+		if (list != null) {
+			return jr("0","查询成功",list); 
+			}
+		return jr(GlobalConstants.ERROR,"未找到资源");	
+	}
+	
+	/**
+	 * 删除
+	 * @param id 订单id
+	 * @return json
+	 */
+	@PostMapping("/remove")
+	public JsonResult<Order> remove(Order order){
+		order.setLogicDeleteFlag(1);
+		if(orderService.updateLogicById(order)) {
+			return jr(GlobalConstants.SUCCESS, "删除成功");
+		}
+		return jr(GlobalConstants.ERROR, "删除失败");
+	}
+	
+	/**
+	 * 还原
+	 * @param id 订单id
+	 * @return json
+	 */
+	@PostMapping("/reBack")
+	public JsonResult<Order> reBack(Order order){
+		order.setLogicDeleteFlag(0);
+		if(orderService.updateLogicById(order)) {
+			return jr(GlobalConstants.SUCCESS, "还原成功");
+		}
+		return jr(GlobalConstants.ERROR, "还原失败");
+	}
+	
+	/**
+	 * 获取订单信息
+	 * @param id 订单id
+	 * @return json
+	 */
+	@GetMapping("/get")
+	@ResponseBody
+	public JsonResult<OrderForm> get(String id){
+		OrderForm order = orderService.getAllById(id);
+		if (order != null) { 
+			return jr("0","查询成功",order); 
 			}
 		return jr(GlobalConstants.ERROR,"未找到资源");	
 	}

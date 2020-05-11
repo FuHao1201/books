@@ -13,7 +13,46 @@
 </style>
 <body>
 <input type="hidden" name="userId" th:value="${userId}" id="userId">
-<table class="layui-table" lay-size="lg" align="center" lay-skin="line" lay-data="{ id:'order', toolbar:'#tableToolbar', defaultToolbar: [], }" lay-filter="order">
+<div id="orderList" style="display:block;">
+<div class="layui-row">
+		<form class="layui-form" id="searchForm" autocomplete="off">
+   		<br>
+	   	  <div class="layui-form-item">
+	   	  	<div class="layui-col-md4">
+	   	  		<label class="layui-form-label">图书名：</label>
+		    	<div class="layui-input-inline">
+		      		<input type="text" placeholder="图书名" name="bookName" autocomplete="off" class="layui-input" width="60px">
+		    	</div>
+	   	  	</div>
+		    <div class="layui-col-md2" style="float:right;">
+		    	<button type="button" class="layui-btn layui-btn-sm" id="recoveryShow">订单回收站</button>
+		  	</div>
+		  	<div class="form-btn-nav  layui-col-md-offset5">
+				<button type="button" class="layui-btn" lay-submit lay-filter="SearchForm">查询</button>
+				<button type="reset" class="layui-btn" >重置</button>
+			</div>
+		  </div>
+		</form>
+</div>
+<table class="layui-table" lay-size="lg" align="center" lay-skin="line" page="false" lay-data="{ id:'order', defaultToolbar: [], }" lay-filter="order">
+  <thead>
+    <tr>
+      <!-- <th lay-data="{type:'checkbox', event:'checks',}"></th> -->
+      <!-- <th lay-data="{field:'id', width:60, align:'center'}">id</th> -->
+      <th lay-data="{field:'bookPictures', width:150, align:'center', templet:'#bookPictures',}">图书图片</th>
+      <th lay-data="{field:'bookName', width:300, align:'center'}">图书名</th>
+      <th lay-data="{field:'price', width:80, align:'center', templet:'#price', }">单价</th>
+      <th lay-data="{field:'bookNum', width:80, align:'center', }">数量</th>
+      <th lay-data="{field:'sum', width:80, align:'center', templet:'#sum',}">实付款</th>
+      <th lay-data="{field:'createTime', width:160, align:'center', templet:function (d){return showTime(d.createTime);}}">创建时间</th>
+      <th lay-data="{field:'statu', width:100, align:'center', templet:'#statu',}">交易状态</th>
+      <th lay-data="{toolbar:'#toolbar', align:'center', fixed:'right'}">操作</th>
+    </tr>
+  </thead>
+</table>
+</div>
+<div id="recoveryList" style="display:none;">
+<table class="layui-table" lay-size="lg" align="center" lay-skin="line" lay-data="{ id:'recovery', defaultToolbar: [], }" lay-filter="recovery">
   <thead>
     <tr>
       <!-- <th lay-data="{type:'checkbox', event:'checks',}"></th> -->
@@ -24,10 +63,11 @@
       <th lay-data="{field:'bookNum', width:80, align:'center', }">数量</th>
       <th lay-data="{field:'sum', width:80, align:'center', templet:'#sum',}">实付款</th>
       <th lay-data="{field:'statu', width:100, align:'center', templet:'#statu',}">交易状态</th>
-      <th lay-data="{toolbar:'#toolbar', align:'center', fixed:'right'}">操作</th>
+      <th lay-data="{toolbar:'#recoveryToolbar', align:'center', fixed:'right'}">操作</th>
     </tr>
   </thead>
 </table>
+</div>
 <ul class="layui-row" id="order" lay-filter="order">
 
 </ul>
@@ -50,6 +90,11 @@
   <div class="layui-btn-container">
     <a class="layui-btn layui-btn-xs" lay-event="detail">详情</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="remove">删除</a>
+  </div>
+</script>
+<script type="text/html" id="recoveryToolbar">
+  <div class="layui-btn-container">
+    <a class="layui-btn layui-btn-xs" lay-event="reBack">还原</a>
   </div>
 </script>
 </html>

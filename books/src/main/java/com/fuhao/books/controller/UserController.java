@@ -108,20 +108,23 @@ public class UserController extends BaseController{
 	 * 跳转用户有关的界面
 	 * @param html 界面名
 	 * @param id 用户id
+	 * @param status 用户身份
 	 * @param model 参数
 	 * @return 界面
 	 */
 	@GetMapping("/users/{html}")
-	public ModelAndView views(@PathVariable String html,String id,ModelMap model) {
+	public ModelAndView views(@PathVariable String html,String id,String status,ModelMap model) {
 		if(html.equals("user_update")) {
 			model.put("id", id);
 	        return view("users/"+html,model);
 		}if(html.equals("user_information")) {
 			model.put("id", id);
 	        return view("users/"+html,model);
-		}
-		if(html.equals("user_changePass")) {
+		}if(html.equals("user_changePass")) {
 			model.put("id", id);
+	        return view("users/"+html,model);
+		}if(html.equals("user_list")) {
+			model.put("status", status);
 	        return view("users/"+html,model);
 		}
 		return view("users/"+html);
@@ -166,11 +169,8 @@ public class UserController extends BaseController{
 	@GetMapping("/listAll")
 	@ResponseBody
 	public JsonResult<List<UserForm>> listAll(UserForm user){
-//		System.out.println(page);
-//		user.setPage(page);
 		System.out.println(user.getPage());
 		List<UserForm> list = userService.listAll(user);
-		System.out.println("444"+list);
 		if (list != null) { 
 			return jr("0","查询成功",list); 
 			}
