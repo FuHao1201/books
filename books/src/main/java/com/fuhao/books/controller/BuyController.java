@@ -72,7 +72,7 @@ public class BuyController extends BaseController{
         Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 //		System.out.println(sdf.format(date));
-        model.setOutTradeNo(sdf.format(date)+"-"+body);
+        model.setOutTradeNo(sdf.format(date)+body);
         model.setSubject(subject);
         model.setTotalAmount(total_amount);
         model.setBody(body);

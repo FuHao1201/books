@@ -19,15 +19,12 @@ layui.use(['form' ,'layer'], function() {
         	console.log(val)
         	var num = show_num.join("");
         	if(val==''){
-//        		debugger
         		_layer.msg('请输入验证码！',{icon: 0});
             }else if(val == num){
-//            	debugger
                 $("#code").val('');
                 getCanvas(show_num);
           		$.post("/user/login",data.field,function(res) {
           			console.log(res)
-//          			var loginname = res.data.loginname;
           			var msg = res.message;
           			if(res.code == "SUCCESS"){
           				_layer.msg(msg, {icon: 1});

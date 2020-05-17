@@ -5,6 +5,12 @@
 <title>用户列表</title>
 <link rel="stylesheet" href="/layui/css/layui.css">
 </head>
+<style>
+/* 	.layui-table-cell{
+		height:auto!important;
+		white-space: normal;
+	}	 */
+</style>
 <body>
 <input id="status" type="hidden" th:value="${status}">
 <div class="form-search-con layui-bg-white layui-fluid">
@@ -72,14 +78,14 @@
 </body>
 <script type="text/html" id="toolbar">
   <div class="layui-btn-container">
-    <button class="layui-btn layui-btn-sm" lay-event="update">编辑</button>
-    <button class="layui-btn layui-btn-sm" lay-event="remove">删除</button>
+    <button class="layui-btn layui-btn-radius layui-btn-xs layui-icon layui-icon-edit" lay-event="update"></button>
+    <button class="layui-btn layui-btn-danger layui-btn-radius layui-btn-xs layui-icon layui-icon-delete" lay-event="remove"></button>
   </div>
 </script>
 <script type="text/html" id="tableToolbar">
   <div class="layui-btn-container">
     <button class="layui-btn layui-btn-sm" lay-event="add">新增</button>
-    <button class="layui-btn layui-btn-sm" lay-event="removeBatch">批量删除</button>
+    <button class="layui-btn layui-btn-sm layui-btn-danger" lay-event="removeBatch">批量删除</button>
   </div>
 </script>
 </html>

@@ -23,7 +23,7 @@ FROM
 	buy buy
 	JOIN book book ON buy.book_id = book.id
 	where buy.user_id = #{buy.userId}
-	and buy.logic_delete_flag = "0"
+	and buy.logic_delete_flag = 0
     </select>
     <update id="removeByUserId">
     UPDATE buy set logic_delete_flag = 1

@@ -14,7 +14,7 @@
     <label class="layui-form-label">原密码：</label>
     <a id="eye_old" style="cursor: pointer;float: right;margin-right:140px;display:none"><img width="30px" height="30px" src="/image/eye.png"></a>
     <div class="layui-input-inline">
-      <input id="password_old" name="password_old" placeholder="请输入原密码" autocomplete="off" type="password" class="layui-input">
+      <input id="password_old" name="password_old" lay-verify="required|password" placeholder="请输入原密码" autocomplete="off" type="password" class="layui-input">
       <!-- <a><img src="/image/eye.png"></a> -->
     </div>
   </div>
@@ -22,14 +22,14 @@
     <label class="layui-form-label">新密码：</label>
     <a id="eye_new" style="cursor: pointer;float: right;margin-right:140px;display:none"><img width="30px" height="30px" src="/image/eye.png"></a>
     <div class="layui-input-inline">
-      <input id="password_new" name="password_new" placeholder="请输入新密码" autocomplete="off" type="password" class="layui-input">
+      <input id="password_new" name="password_new" lay-verify="required|password" placeholder="请输入新密码" autocomplete="off" type="password" class="layui-input">
     </div>
   </div>
   <div class="layui-form-item">
     <label class="layui-form-label">确认密码：</label>
     <a id="eye_confirm" style="cursor: pointer;float: right;margin-right:140px;display:none"><img width="30px" height="30px" src="/image/eye.png"></a>
     <div class="layui-input-inline">
-      <input id="password_confirm" name="password_confirm" placeholder="请再次输入新密码" autocomplete="off" type="password" class="layui-input">
+      <input id="password_confirm" name="password_confirm" lay-verify="required|password" placeholder="请再次输入新密码" autocomplete="off" type="password" class="layui-input">
     </div>
   </div>
   <div class="layui-form-item">

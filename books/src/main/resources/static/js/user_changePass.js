@@ -53,6 +53,12 @@ layui.use(['form','layer'], function() {
 				$("#password_confirm").attr("type","password");
 			}
 		  });
+		_form.verify({//自定义验证
+    		password: [
+    		    /^[\S]{6,12}$/
+    		    ,'密码必须6到12位，且不能出现空格'
+    		  ]
+    	});
 	    _form.on('submit',function(data){//修改密码点击监听
 	    	//console.log(data.field.password_new)
 	    	var password_old = data.field.password_old;

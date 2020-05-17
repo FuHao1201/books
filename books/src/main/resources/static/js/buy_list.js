@@ -53,7 +53,10 @@ layui.use(['form' ,'table' ,'layer','element'], function() {
     	_layer.open({
 			title : "新增收件人",
 			type : 2,
-			area: ['400px', '400px'],
+			area: ['500px', '400px'],
+			end: function(){
+				reloadAddress();
+			},
 			content : '/address/addresses/address_add?userId='+ userId
 		});
     };
@@ -61,7 +64,10 @@ layui.use(['form' ,'table' ,'layer','element'], function() {
     	_layer.open({
 			title : "编辑收件人",
 			type : 2,
-			area: ['400px', '400px'],
+			area: ['500px', '400px'],
+			end: function(){
+				reloadAddress();
+			},
 			content : '/address/addresses/address_update?id='+ id
 		});
     };

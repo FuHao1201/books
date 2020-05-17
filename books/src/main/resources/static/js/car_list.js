@@ -165,15 +165,12 @@ layui.use(['form' ,'table' ,'layer','element'], function() {
 					sum : sum,
 				}
 			$.post("/buy/addBuy/",json);
-			console.log(json)
 		}
 		var userId = $("#userId").val();
-		console.log(userId)
-		//$.get("/buy/buys/buy_list/?userId="+userId);
 		_layer.open({
 			title: '下单',
 			type : 2,
-			area: ['750px', '400px'],
+			area: ['750px', '600px'],
 			content: '/buy/buys/buy_list/?userId='+userId,
 			end: function(){
 				_table.reload('car');

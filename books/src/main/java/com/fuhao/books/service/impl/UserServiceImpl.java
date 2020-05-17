@@ -46,7 +46,6 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserS
 		}else {
 			int page = (user.getPage()-1)*20;
 			user.setPage(page);
-			System.out.println("bbb"+user.getStatus());
 			List<UserForm> list = userdao.listAll(user);
 			list.get(0).setCount(user1.getCount());
 			return list;

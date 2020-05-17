@@ -24,6 +24,15 @@ layui.use(['form','layer'], function() {
 		if(id == "") return;
 		$.get("/book/get", {id:id}, function(res) {
 			_form.val('formData', res.data);
+			var d = new Date(res.data.publicationTime); 
+			var year = d.getFullYear();
+			var month = d.getMonth();
+			month++;
+			var day = d.getDate();
+			month = month<10 ? "0"+month:month;
+			day = day<10 ? "0"+day:day;
+			var time = year+"-"+month+"-"+day;
+			$("#publicationTime").val(time);
 		});
 	};
 	$(function(){

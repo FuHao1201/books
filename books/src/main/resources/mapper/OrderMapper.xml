@@ -49,7 +49,7 @@ SELECT
 FROM
 	`order` JOIN book book ON `order`.book_id = book.id JOIN address address ON `order`.address_id = address.id
 WHERE
-	`order`.id = #{id}
+	`order`.id = #{id} and `order`.logic_delete_flag = 0  and book.logic_delete_flag = 0
     </select>
     <update id="updateLogicById">
 UPDATE `order` 
