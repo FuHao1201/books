@@ -56,7 +56,6 @@ public class BookController extends BaseController{
 	        return view("books/"+html,model);
 		}if (html.equals("book_list_type")) {
 			model.put("bookType", bookType);
-			System.out.println(model);
 			return view("books/"+html,model);
 		}if (html.equals("book_detail")) {
 			model.put("bookId", bookId);
@@ -146,7 +145,6 @@ public class BookController extends BaseController{
 	 */
 	@PostMapping("/remove")
 	public JsonResult<Book> remove(@NotNull @RequestParam(value = "ids[]") String[] ids){
-		//System.out.println();
 		if(bookService.removeByIds(Arrays.asList(ids))) {
 			return jr(GlobalConstants.SUCCESS, "删除成功");
 		}

@@ -27,7 +27,6 @@ public class CollectionServiceImpl extends ServiceImpl<CollectionDao, Collection
 	
 	@Override
 	public List<CollectionForm> listByUserId(CollectionForm collection) {
-		System.out.println("111"+collectionDao.listByUserId(collection));
 		return collectionDao.listByUserId(collection);
 	}
 

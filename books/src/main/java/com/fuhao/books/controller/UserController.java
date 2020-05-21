@@ -169,7 +169,6 @@ public class UserController extends BaseController{
 	@GetMapping("/listAll")
 	@ResponseBody
 	public JsonResult<List<UserForm>> listAll(UserForm user){
-		System.out.println(user.getPage());
 		List<UserForm> list = userService.listAll(user);
 		if (list != null) { 
 			return jr("0","查询成功",list); 
@@ -238,7 +237,6 @@ public class UserController extends BaseController{
 	 */
 	@PostMapping("/remove")
 	public JsonResult<User> remove(@NotNull @RequestParam(value = "ids[]") String[] ids){
-		//System.out.println();
 		if(userService.removeByIds(Arrays.asList(ids))) {
 			return jr(GlobalConstants.SUCCESS, "删除成功");
 		}

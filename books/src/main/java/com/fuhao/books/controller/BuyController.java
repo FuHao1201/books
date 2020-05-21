@@ -63,7 +63,6 @@ public class BuyController extends BaseController{
     @RequestMapping(value = "/paySum", produces = "text/html; charset=UTF-8")
     @ResponseBody
     public String goAlipay(String total_amount,String subject,String body) throws IOException, AlipayApiException {
-        System.out.println(total_amount+subject+body);
     	//获得初始化的AlipayClient
         AlipayClient alipayClient = BuyController.alipayClient;
         // 订单模型
@@ -71,7 +70,6 @@ public class BuyController extends BaseController{
         AlipayTradePagePayModel model = new AlipayTradePagePayModel();
         Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-//		System.out.println(sdf.format(date));
         model.setOutTradeNo(sdf.format(date)+body);
         model.setSubject(subject);
         model.setTotalAmount(total_amount);
@@ -122,7 +120,6 @@ public class BuyController extends BaseController{
 //    		System.out.println("trade_no:"+trade_no+"<br/>out_trade_no:"+out_trade_no+"<br/>total_amount:"+total_amount);
     		ModelMap model = new ModelMap();
     		model.put("userId",userId);
-    		System.out.println("用户"+userId);
     		return view("index",model);
     	}else {
     		return null;

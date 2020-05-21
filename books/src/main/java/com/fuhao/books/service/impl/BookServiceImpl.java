@@ -43,7 +43,6 @@ public class BookServiceImpl extends ServiceImpl<BookDao, Book> implements BookS
 		}else {
 			if (book.getPage()!= 0) {
 				int page = (book.getPage()-1)*20;
-				System.out.println("888"+page);
 				book.setPage(page);
 				List<BookForm> list = bookdao.listAll(book);
 				list.get(0).setCount(book1.getCount());

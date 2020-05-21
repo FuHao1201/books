@@ -72,7 +72,6 @@ public class CollectionController extends BaseController{
 	 */
 	@GetMapping("/collection_list")
 	public JsonResult<List<CollectionForm>> collection_list(CollectionForm collection){
-//		System.out.println(collection.getUserId());
 		List<CollectionForm> list = collectionService.listByUserId(collection);
 		if (list != null) {
 			return jr("0","查询成功",list); 

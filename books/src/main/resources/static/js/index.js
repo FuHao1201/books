@@ -144,7 +144,13 @@ layui.use(['form' ,'layer' ,'element'], function() {
     		var str = "";
     		str += "<h2 style='margin-left:100px;color:red;'>今日推荐</h2><br/>"
     		for(var i = 0;i < res.data.length;i++){
-    			str += "<div class='layui-col-md3' style='text-align:center;height:300px;'><a title="+res.data[i].bookName+"><img class='bookDetail' style='cursor:pointer;height:200px;' id="+res.data[i].id+" src="+res.data[i].bookPictures+" alt="+res.data[i].bookName+"></a><br/><a style='color: blue; cursor: pointer;' id="+res.data[i].id+">"+res.data[i].bookName+"</a><br/><span style='color: red; font-size: 26px;'>¥"+res.data[i].price+"</span></div>";
+    			str += "<div class='layui-col-md3' style='text-align:center;height:300px;'>\
+    						<a title="+res.data[i].bookName+">\
+    							<img class='bookDetail' style='cursor:pointer;height:200px;' id="+res.data[i].id+" src="+res.data[i].bookPictures+" alt="+res.data[i].bookName+">\
+    						</a><br/>\
+    						<a style='color: blue; cursor: pointer;' id="+res.data[i].id+">"+res.data[i].bookName+"</a><br/>\
+    						<span style='color: red; font-size: 26px;'>¥"+res.data[i].price+"</span>\
+    					</div>";
     			_element.render('book');
     		}
     		$("#book").html(str);
@@ -193,7 +199,7 @@ layui.use(['form' ,'layer' ,'element'], function() {
     	_layer.open({
 			title: '购物车',
 			type : 2,
-			area: ['1000px', '700px'],
+			area: ['1000px', '650px'],
 			content: '/car/cars/car_list?userId='+userId,
 		});
     };
@@ -201,7 +207,7 @@ layui.use(['form' ,'layer' ,'element'], function() {
     	_layer.open({
 			title: '收藏',
 			type : 2,
-			area: ['1000px', '700px'],
+			area: ['1000px', '650px'],
 			content: '/collection/collections/collection_list?userId='+userId,
 		});
     };
@@ -209,7 +215,7 @@ layui.use(['form' ,'layer' ,'element'], function() {
     	_layer.open({
 			title: '订单',
 			type : 2,
-			area: ['1200px', '700px'],
+			area: ['1200px', '650px'],
 			content: '/order/orders/order_list?userId='+userId,
 		});
     };
