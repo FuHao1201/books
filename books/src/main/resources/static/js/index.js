@@ -148,7 +148,7 @@ layui.use(['form' ,'layer' ,'element'], function() {
     						<a title="+res.data[i].bookName+">\
     							<img class='bookDetail' style='cursor:pointer;height:200px;' id="+res.data[i].id+" src="+res.data[i].bookPictures+" alt="+res.data[i].bookName+">\
     						</a><br/>\
-    						<a style='color: blue; cursor: pointer;' id="+res.data[i].id+">"+res.data[i].bookName+"</a><br/>\
+    						<a class='bookDetail' style='color: blue; cursor: pointer;' id="+res.data[i].id+">"+res.data[i].bookName+"</a><br/>\
     						<span style='color: red; font-size: 26px;'>¥"+res.data[i].price+"</span>\
     					</div>";
     			_element.render('book');
