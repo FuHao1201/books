@@ -28,7 +28,7 @@
       <th lay-data="{field:'bookName', width:300, align:'center'}">图书名</th>
       <th lay-data="{field:'price', width:80, align:'center', templet:'#price', }">单价</th>
       <th lay-data="{field:'number', width:200, align:'center', templet:'#number', }">数量</th>
-      <th lay-data="{field:'sum', width:80, align:'center', templet:'#sum',}">金额</th>
+      <th lay-data="{field:'sum', width:120, align:'center', templet:'#sum',}">金额</th>
       <th lay-data="{toolbar:'#toolbar', align:'center', fixed:'right'}">操作</th>
     </tr>
   </thead>
@@ -43,8 +43,9 @@
 	<span name="price" value="{{d.price}}" readonly="true">￥{{d.price}}</span>
 </script>
 <script type="text/html" id="number">
-	<input id="{{d.id}}" name="{{d.price}}" type="number" class="number layui-input" value="1" style="width: 60px; height: 30px;" min="1" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"/>
+	<input title="{{d.bookId}}" id="{{d.id}}" name="{{d.price}}" type="number" class="number layui-input" value="1" style="width: 60px; height: 30px;" min="1";max="{{d.bookNum}}" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"/>
 </script>
+
 <script type="text/html" id="sum">
 	<span name="sum" style="color: red;" id="sum{{d.id}}" value="{{d.price}}" readonly="true">￥{{d.price}}</span>
 </script>

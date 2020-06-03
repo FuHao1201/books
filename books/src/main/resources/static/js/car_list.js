@@ -186,8 +186,15 @@ layui.use(['form' ,'table' ,'layer','element'], function() {
     			$(".number").on("input",function(data){
     	    		console.log(data)
     	    		var spanid = "sum"+data.target.id;
+    	    		var id = data.target.id;
+    	    		var bookId = data.target.title;
     	    		var price = data.target.name;
     	    		var number = data.delegateTarget.value;
+    	    		$.get("/book/get/",{id : bookId},function(res){
+    	    			if(number > res.data.bookNum){
+    	    				$("#"+id).val(res.data.bookNum);
+    	    			}
+    	    		});
     	    		var sum = price*number;		    
     	    		$("#"+spanid).html("￥"+sum);
     	    	  });
