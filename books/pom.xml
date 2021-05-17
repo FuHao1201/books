@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
  
 	<groupId>com.fuhao</groupId>
-	<artifactId>mybatisDemo</artifactId>
+	<artifactId>books</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
  
-	<name>mybatisDemo</name>
+	<name>books</name>
 	<description>Demo project for Spring Boot</description>
  
 	<parent>
@@ -43,12 +43,12 @@
    			 <groupId>org.springframework.boot</groupId>
    			 <artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
-		<dependency>
-　　			<groupId>org.springframework.boot</groupId>
-　　			<artifactId>spring-boot-devtools</artifactId>
-　　			<!-- optional=true, 依赖不会传递, 该项目依赖devtools; 之后依赖boot项目的项目如果想要使用devtools, 需要重新引入 -->
-　　			<optional>true</optional>
-		</dependency>
+<!--		<dependency>-->
+<!--　　			<groupId>org.springframework.boot</groupId>-->
+<!--　　			<artifactId>spring-boot-devtools</artifactId>-->
+<!--　　			&lt;!&ndash; optional=true, 依赖不会传递, 该项目依赖devtools; 之后依赖boot项目的项目如果想要使用devtools, 需要重新引入 &ndash;&gt;-->
+<!--　　			<optional>true</optional>-->
+<!--		</dependency>-->
 
 
 <!--                 MyBatis

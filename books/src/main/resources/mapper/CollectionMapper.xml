@@ -25,7 +25,7 @@ FROM
 	JOIN book ON collection.book_id = book.id
 	where collection.user_id = #{collection.userId}
 	and collection.logic_delete_flag = 0
-	GROUP BY collection.book_id
+	GROUP BY collection.book_id,collection.id
     </select>
     <update id="removeByBookId">
     UPDATE collection set logic_delete_flag = 1

@@ -36,7 +36,7 @@
 	where car.user_id = #{car.userId}
 	and car.logic_delete_flag = 0
 	and book.logic_delete_flag = 0
-	GROUP BY book.id
+	GROUP BY book.id,car.id
     </select>
     <update id="removeByBookId">
     UPDATE  car set logic_delete_flag = 1
